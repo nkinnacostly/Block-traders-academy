@@ -2,7 +2,7 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 
 import axios from "axios";
 import { getSessionStorageItem } from "../utils/storage";
-import { useUserStore } from "@/store/store";
+// import { useUserStore } from "@/store/store";
 // import { toast } from "sonner";
 import { useCallback } from "react";
 
@@ -10,11 +10,7 @@ import { useCallback } from "react";
 
 // Custom hook for handling API requests
 function useApiRequest() {
-  const { loggedInUserDetails } = useUserStore();
-  axios.defaults.baseURL =
-    loggedInUserDetails?.block_level === "1"
-      ? process.env.NEXT_PUBLIC_API_BASE_URL_2
-      : process.env.NEXT_PUBLIC_API_BASE_URL_2;
+  axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   const token = getSessionStorageItem({ key: "__session" });
 
@@ -29,7 +25,6 @@ function useApiRequest() {
       });
       return response;
     } catch (error) {
-      // throw new Error(`Failed to fetch data from ${url}: ${error.message}`);
       console.log("Request Error:", error);
     }
   };
@@ -42,16 +37,13 @@ function useApiRequest() {
         url,
         data,
         headers: {
-          ...headers, // Include custom headers if provided
+          ...headers,
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
         },
       });
       return response.data;
     } catch (error) {
-      // toast.error(`${error.response.data.error}`);
-
-      // throw new Error(`${error}`);
       return error?.response?.data;
     }
   };

@@ -39,15 +39,16 @@ function LoginComponent() {
     try {
       const response = await mutateAsync(userData);
       if (response) {
-        toast.success(`Login Successfull`);
+        toast.success(`Login Successful`);
         Cookies.set("__session", response?.token);
         storeItemToSessionStorage({ key: "__session", value: response?.token });
         setLoggedInUserDetails(response.user);
         router.push("/dashboard");
       }
     } catch (error) {
-      console.error("Login failed:", error.error);
-      toast.error(`${error.error}`);
+      // console.error("Login failed:", error.error);
+      return error;
+      // toast.error(`${error.error}`);
     }
   };
 
