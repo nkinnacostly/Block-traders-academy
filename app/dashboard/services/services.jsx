@@ -40,6 +40,7 @@ export const GetCoursesDuration = () => {
 
   return { duration: data?.data, error, isLoading };
 };
+
 export const GetBadges = () => {
   const { loggedInUserDetails } = useUserStore();
   const { useGetRequest } = useApiRequest();
@@ -48,4 +49,13 @@ export const GetBadges = () => {
   const { data, error, isLoading } = useGetRequest(url, reqKey);
 
   return { badges: data?.data, error, isLoading };
+};
+
+export const GetLiveClasses = () => {
+  const { useGetRequest } = useApiRequest();
+  const url = `/user-meetings`;
+  const reqKey = ["courses-live-classes"];
+  const { data, error, isLoading } = useGetRequest(url, reqKey);
+
+  return { liveClasses: data?.data, error, isLoading };
 };
