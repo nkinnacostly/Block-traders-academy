@@ -1,7 +1,21 @@
 import { BarsLoadingIcon } from "@/public/assets/icons";
 import React from "react";
 
-function Button({ onClick, btnText, className, disabled, loading }) {
+interface ButtonProps {
+  onClick: () => void;
+  btnText: string;
+  className?: string;
+  disabled?: boolean;
+  loading?: boolean;
+}
+
+function Button({
+  onClick,
+  btnText,
+  className,
+  disabled,
+  loading,
+}: ButtonProps) {
   return (
     <button
       className={`w-full py-4 rounded-[10px] text-white  mt-5 ${className}`}
