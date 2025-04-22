@@ -35,7 +35,7 @@ function Dashboard() {
   // const [selectedDate, setSelectedDate] = useState(null);
   const router = useRouter();
   const { loggedInUserDetails } = useUserStore();
-  console.log(loggedInUserDetails, "loggedInUserDetails");
+
   // const { user } = loggedInUserDetails;
 
   const { data, isLoading: inProgressLoading } = GetCoursesInProgress();
@@ -44,7 +44,7 @@ function Dashboard() {
   const { duration: coursesDuration } = GetCoursesDuration();
   const { badges: courseBadges } = GetBadges();
   const { liveClasses } = GetLiveClasses();
-  console.log(liveClasses, "liveClasses");
+
   // const [modalIsOpen, setModalIsOpen] = useState(false);
   // const [description, setDescription] = useState("");
   // const [meetings] = useState([]);

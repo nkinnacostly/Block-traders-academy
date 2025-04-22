@@ -8,7 +8,7 @@ export function LiveClasses({ meetings }) {
       </div>
     );
   }
-
+  console.log(meetings, "meetings");
   return (
     <div className="space-y-5">
       {meetings.map((meeting) => (

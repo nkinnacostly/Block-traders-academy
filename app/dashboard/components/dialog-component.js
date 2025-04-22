@@ -12,11 +12,8 @@ import {
 
 // import { Button } from "@/components/ui/button";
 import { useDialog } from "@/store/store";
-import { useUserStore } from "@/store/store";
 export function DialogComponent() {
   const { isOpen, onClose } = useDialog();
-  const { loggedInUserDetails } = useUserStore();
-  console.log(loggedInUserDetails, "loggedInUserDetails");
   return (
     <AlertDialog open={isOpen} defaultOpen={isOpen} onOpenChange={onClose}>
       {/* <AlertDialogTrigger asChild>
