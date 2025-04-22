@@ -9,10 +9,11 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { useCurrencyFormatter } from "@/hooks/use-currency-formatter";
 import { useQueryClient } from "@tanstack/react-query";
-
+import { verifyPayment } from "../services/verify-payment";
 import React from "react";
 import { PaystackConsumer } from "react-paystack";
-// import { toast } from "sonner";
+import { toast } from "sonner";
+
 function PaymentDialog({ handleOpenChange, openChange, data }) {
   const queryClient = useQueryClient();
   const email = data?.sender_email;
@@ -28,14 +29,26 @@ function PaymentDialog({ handleOpenChange, openChange, data }) {
     name: data?.sender_name,
   };
 
-  // you can call this function anything
-  const onSuccess = (reference) => {
-    queryClient.invalidateQueries({ queryKey: ["users-videos"] });
-    queryClient.invalidateQueries({ queryKey: ["users-info"] });
+  const onSuccess = async (reference) => {
     console.log(reference);
+    try {
+      // Verify the payment
+      const verificationResponse = await verifyPayment(reference.reference);
+
+      if (verificationResponse?.status === 200) {
+        // Invalidate queries to refresh user data
+        queryClient.invalidateQueries({ queryKey: ["users-videos"] });
+        queryClient.invalidateQueries({ queryKey: ["users-info"] });
+        toast.success("Payment verified successfully!");
+      } else {
+        toast.error("Payment verification failed. Please contact support.");
+      }
+    } catch (error) {
+      console.error("Payment verification error:", error);
+      toast.error("Error verifying payment. Please contact support.");
+    }
   };
 
-  // you can call this function anything
   const onClose = () => {
     console.log("closed");
   };
@@ -59,7 +72,6 @@ function PaymentDialog({ handleOpenChange, openChange, data }) {
           <h2>Amount: {formatCurrency(data?.amount)}</h2>
           <h2>Email: {data?.sender_email}</h2>
           <h2>Phone: {data?.sender_phone}</h2>
-
           <h2>Reference: {data?.reference}</h2>
         </div>
         <Separator />

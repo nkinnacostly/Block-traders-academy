@@ -1,8 +1,9 @@
 // import { CoursePathVideos } from "./components/course-path-video";
 // import { CoursesInProgress } from "./components/course-in-progress";
-import { CoursesVideos } from "./components/course-videos";
+
 import React from "react";
 import SearchCourses from "./components/search-courses";
+import CoursesVideos from "./components/course-videos";
 
 // import { VideoWithButton } from "@/app/src/components/ui/video-with-button";
 function Courses() {

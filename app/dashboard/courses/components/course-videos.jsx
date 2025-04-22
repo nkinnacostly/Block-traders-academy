@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { WatchVideo } from "./video-modal";
 import { useRouter } from "next/navigation";
@@ -14,33 +14,23 @@ import useToggle from "@/hooks/use-toggle";
 import PaymentDialog from "./payment-dialog";
 import useFetchLevel2 from "@/hooks/usefetchlevel2";
 import { ChallengeModal } from "./ChallengeModal";
+import { toast } from "sonner";
 
-export function CoursesVideos() {
+export default function CoursesVideos() {
   const router = useRouter();
   const { loggedInUserDetails } = useUserStore();
   const { watchedVideos, incrementWatchedVideos } = useVideoStore();
   const [isVisible, toggleVisibility] = useToggle(false);
-  const [paymentData, setPaymentData] = useState({});
-  // const [watchedVideos, setWatchedVideos] = useState(0);
+  const [paymentData, setPaymentData] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
-  const [inProgress, setInProgress] = React.useState({
-    user_id: loggedInUserDetails?.id,
+  const [inProgress, setInProgress] = useState({
+    user_id: loggedInUserDetails?.id || "",
     course_id: "",
   });
-  console.log(loggedInUserDetails);
-
-
-  const url = `/all-videos`;
-  const url2 = `/api/get-level-2`;
-  // const url =
-  //   loggedInUserDetails?.block_level === "1"
-  //     ? "/all-videos"
-  //     : "/api/get-level-2";
-
-  const reqKey = ["users-videos"];
-  const reqKey2 = ["level2-videos"];
   const isLevel1 = loggedInUserDetails?.learners_level === "1";
-
+  const url = isLevel1 ? "/all-videos" : "/api/get-level-2";
+  const reqKey = isLevel1 ? ["users-videos"] : ["level2-videos"];
+  // console.log(loggedInUserDetails.paid);
   const { useGetRequest } = useApiRequest();
   const { useGetRequest2 } = useFetchLevel2();
   const {
@@ -52,38 +42,38 @@ export function CoursesVideos() {
     data: level2Data,
     isLoading: isLoadingLevel2,
     isError: isErrorLevel2,
-  } = useGetRequest2(url2, reqKey2, { enabled: !isLevel1 });
+  } = useGetRequest2(url, reqKey, { enabled: !isLevel1 });
 
-  const data = isLevel1 ? level1Data : level2Data;
-  const isLoading = isLevel1 ? isLoadingLevel1 : isLoadingLevel2;
-  const isError = isLevel1 ? isErrorLevel1 : isErrorLevel2;
+  const { mutateAsync: initiatePayment, isPending: isPaymentPending } =
+    useInitiatePayment(loggedInUserDetails?.uuid);
 
-  const { mutateAsync, isPending } = useInitiatePayment(
-    loggedInUserDetails?.uuid
-  );
-
-  const onSubmit = async () => {
+  const handlePayment = async () => {
     try {
-      const response = await mutateAsync();
+      const response = await initiatePayment();
       if (response?.status === 200) {
-        console.log(response);
+        setPaymentData(response.data);
         toggleVisibility();
-        setPaymentData(response?.data);
       }
     } catch (error) {
-      console?.error("Login failed:", error?.error);
-      //  toast.error(`${error.error}`);
+      toast.error("Payment initiation failed. Please try again.");
+      console.error("Payment failed:", error);
     }
   };
-  console.log(data);
-  const videos = React.useMemo(
-    () => data?.data?.videos || [],
-    [data?.data?.videos]
+
+  const videos = useMemo(
+    () =>
+      (isLevel1 ? level1Data?.data?.videos : level2Data?.data?.videos) || [],
+    [isLevel1, level1Data, level2Data]
   );
-  const updatedData = videos.map((item) => ({
-    ...item,
-    image: `/assets/${item.id}.jpeg`,
-  }));
+
+  const updatedVideos = useMemo(
+    () =>
+      videos.map((video) => ({
+        ...video,
+        image: `/assets/${video.id}.jpeg`,
+      })),
+    [videos]
+  );
 
   const handleVideoWatched = () => {
     if (!isLevel1) {
@@ -91,40 +81,43 @@ export function CoursesVideos() {
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (watchedVideos === 3 && !isLevel1) {
-      setModalOpen(true); // Open modal
+      setModalOpen(true);
     }
   }, [watchedVideos, isLevel1]);
 
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
+  const closeModal = () => setModalOpen(false);
   const navigateToChallenge = () => {
-    setModalOpen(false);
+    closeModal();
     router.push("/dashboard/challenges");
   };
 
-  if (isError)
+  if (isErrorLevel1 || isErrorLevel2) {
     return (
-      <p className="text-red-500 font-bold">
-        Oooops Something went Wrong, We`&apos;`re working on it!!
-      </p>
-    );
-  return (
-    <div className=" flex flex-col  gap-4">
-      <div className=" w-full flex items-center justify-between p-2 ">
-        <h5 className="text-[24px]  font-[500] ">
-          Pay to Unlock other Lessons
-        </h5>
-        <Button isLoading={isPending} onClick={() => onSubmit()}>
-          Proceed to Payment
-        </Button>
+      <div className="text-red-500 font-bold text-center p-4">
+        Oops! Something went wrong. We&apos;re working on it!
       </div>
+    );
+  }
 
-      {isLoading && (
-        <>
+  return (
+    <div className="flex flex-col gap-4">
+      {loggedInUserDetails.paid === 0 && (
+        <div className="w-full flex items-center justify-between p-4 bg-secondary rounded-lg shadow-sm">
+          <h5 className="text-2xl font-medium">Pay to Unlock other Lessons</h5>
+          <Button
+            onClick={handlePayment}
+            disabled={isPaymentPending}
+            className="bg-amber-500 hover:bg-amber-600"
+          >
+            {isPaymentPending ? "Processing..." : "Proceed to Payment"}
+          </Button>
+        </div>
+      )}
+
+      {(isLoadingLevel1 || isLoadingLevel2) && (
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="flex flex-col space-y-3">
               <Skeleton className="h-[125px] w-full rounded-xl" />
@@ -134,63 +127,59 @@ export function CoursesVideos() {
               </div>
             </div>
           ))}
-        </>
+        </div>
       )}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-3">
-        {updatedData.map((video, index) => {
-          const isAccessible = index === 0 || loggedInUserDetails.paid === 0;
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        {updatedVideos.map((video, index) => {
+          const isAccessible = index === 0 || loggedInUserDetails.paid === 1;
 
           return (
-            <div className="border-2 rounded-2xl relative" key={video.id}>
-              <div
-                className={`flex items-center justify-between shadow-md rounded-xl ${
-                  !isAccessible && "pointer-events-none"
-                }`}
-              >
-                <div className="relative rounded-bl-3xl rounded-br-3xl">
-                  <Image
-                    src={video.image}
-                    alt=""
-                    className="w-full rounded-t-xl"
-                    height={100}
-                    width={100}
-                  />
-                  <div className="px-5">
-                    <p className="text-2xl font-medium mt-[2rem]">
-                      {video?.name}
-                    </p>
-
-                    <div className="flex items-center justify-center w-full mt-8 mb-8">
-                      {isAccessible ? (
-                        <WatchVideo
-                          data={video}
-                          setInProgress={setInProgress}
-                          inProgress={inProgress}
-                          onWatched={handleVideoWatched}
+            <div
+              key={video.id}
+              className="border-2 rounded-2xl overflow-hidden bg-secondary shadow-sm hover:shadow-md transition-shadow duration-200"
+            >
+              <div className={`relative ${!isAccessible && "opacity-50"}`}>
+                <Image
+                  src={video.image}
+                  alt={video.name}
+                  className="w-full h-48 object-cover"
+                  width={400}
+                  height={200}
+                  priority={index < 3}
+                />
+                <div className="p-4">
+                  <h3 className="text-xl font-medium mb-4">{video.name}</h3>
+                  <div className="flex justify-center">
+                    {isAccessible ? (
+                      <WatchVideo
+                        data={video}
+                        setInProgress={setInProgress}
+                        inProgress={inProgress}
+                        onWatched={handleVideoWatched}
+                      >
+                        <Button className="bg-amber-500 hover:bg-amber-600">
+                          Watch Video
+                        </Button>
+                      </WatchVideo>
+                    ) : (
+                      <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="h-16 w-16 text-white"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          stroke="currentColor"
                         >
-                          <button className="px-5 py-2.5 bg-amber-400 rounded-lg text-center text-base font-medium capitalize">
-                            Watch video
-                          </button>
-                        </WatchVideo>
-                      ) : (
-                        <div className="absolute inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center">
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-16 w-16 text-white"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth="2"
-                              d="M12 11V8a4 4 0 10-8 0v3m4 4v1a1 1 0 001 1h3m10 0a1 1 0 001-1v-1m0 0v-4a4 4 0 10-8 0v4m4 4v1a1 1 0 001 1h3m10 0a1 1 0 001-1v-1m0 0V9a4 4 0 10-8 0v4m4 4v1a1 1 0 001 1h3"
-                            />
-                          </svg>
-                        </div>
-                      )}
-                    </div>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+                          />
+                        </svg>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>
