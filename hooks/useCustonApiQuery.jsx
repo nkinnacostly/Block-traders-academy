@@ -15,14 +15,6 @@ const axiosInstance = axios.create({
 
 // Custom hook for handling API requests
 function useApiRequest() {
-
-  // const { loggedInUserDetails } = useUserStore();
-  // axios.defaults.baseURL =
-  //   loggedInUserDetails?.block_level === "1"
-  //     ? process.env.NEXT_PUBLIC_API_BASE_URL
-  //     : process.env.NEXT_PUBLIC_API_BASE_URL_2;
-
-
   const token = getSessionStorageItem({ key: "__session" });
 
   // Function to fetch data from API
@@ -73,7 +65,6 @@ function useApiRequest() {
       enabled,
 
       // enabled: !url,
-
     });
   };
 

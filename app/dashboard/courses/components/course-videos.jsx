@@ -15,10 +15,12 @@ import PaymentDialog from "./payment-dialog";
 import useFetchLevel2 from "@/hooks/usefetchlevel2";
 import { ChallengeModal } from "./ChallengeModal";
 import { toast } from "sonner";
+import useGetUserInfo from "@/hooks/useGetUserInfo";
 
 export default function CoursesVideos() {
   const router = useRouter();
   const { loggedInUserDetails } = useUserStore();
+
   const { watchedVideos, incrementWatchedVideos } = useVideoStore();
   const [isVisible, toggleVisibility] = useToggle(false);
   const [paymentData, setPaymentData] = useState(null);
@@ -28,21 +30,27 @@ export default function CoursesVideos() {
     course_id: "",
   });
   const isLevel1 = loggedInUserDetails?.learners_level === "1";
-  const url = isLevel1 ? "/all-videos" : "/api/get-level-2";
-  const reqKey = isLevel1 ? ["users-videos"] : ["level2-videos"];
-  // console.log(loggedInUserDetails.paid);
+  const isLevel2 =
+    loggedInUserDetails?.learners_level === "2" &&
+    loggedInUserDetails?.paid === 1;
+  const level1Url = "/all-videos";
+  const level2Url = "/api/get-level-2";
+  const level1reqKey = ["level1-videos"];
+  const level2reqKey = ["level2-videos"];
+  const { data: userInfo } = useGetUserInfo();
+  const userData = userInfo?.data?.user;
   const { useGetRequest } = useApiRequest();
   const { useGetRequest2 } = useFetchLevel2();
   const {
     data: level1Data,
     isLoading: isLoadingLevel1,
     isError: isErrorLevel1,
-  } = useGetRequest(url, reqKey, { enabled: isLevel1 });
+  } = useGetRequest(level1Url, level1reqKey, { enabled: isLevel1 });
   const {
     data: level2Data,
     isLoading: isLoadingLevel2,
     isError: isErrorLevel2,
-  } = useGetRequest2(url, reqKey, { enabled: !isLevel1 });
+  } = useGetRequest2(level2Url, level2reqKey, { enabled: isLevel2 });
 
   const { mutateAsync: initiatePayment, isPending: isPaymentPending } =
     useInitiatePayment(loggedInUserDetails?.uuid);
@@ -103,7 +111,7 @@ export default function CoursesVideos() {
 
   return (
     <div className="flex flex-col gap-4">
-      {loggedInUserDetails.paid === 0 && (
+      {userData?.paid === 0 && (
         <div className="w-full flex items-center justify-between p-4 bg-secondary rounded-lg shadow-sm">
           <h5 className="text-2xl font-medium">Pay to Unlock other Lessons</h5>
           <Button
@@ -113,6 +121,14 @@ export default function CoursesVideos() {
           >
             {isPaymentPending ? "Processing..." : "Proceed to Payment"}
           </Button>
+        </div>
+      )}
+      {!isLevel1 && !isLevel2 && (
+        <div className="w-full flex items-center justify-between p-4 bg-secondary rounded-lg shadow-sm">
+          <h5 className="text-2xl font-medium">
+            You have not paid for this course, you can't be in level 2 without
+            paying
+          </h5>
         </div>
       )}
 

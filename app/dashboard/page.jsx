@@ -179,7 +179,7 @@ function Dashboard() {
             </div>
           </div>
         </div> */}
-        <LiveClasses meetings={liveClasses} />
+        <LiveClasses meetings={liveClasses.meetings} />
       </div>
       <DashboardChallenges />
     </>

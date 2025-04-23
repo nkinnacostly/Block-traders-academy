@@ -9,7 +9,7 @@ function useGetUserInfo() {
   const reqKey = ["users-info"];
   const { useGetRequest } = useApiRequest();
   const { data, error, isLoading, isSuccess } = useGetRequest(url, reqKey);
-
+  // console.log(isSuccess, "This is isSuccess");
   useEffect(() => {
     if (isSuccess && data?.data?.user) {
       setLoggedInUserDetails(data.data?.user);

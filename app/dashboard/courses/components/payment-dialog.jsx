@@ -30,15 +30,22 @@ function PaymentDialog({ handleOpenChange, openChange, data }) {
   };
 
   const onSuccess = async (reference) => {
-    console.log(reference);
     try {
       // Verify the payment
-      const verificationResponse = await verifyPayment(reference.reference);
+      const verificationResponse = await verifyPayment(
+        reference.reference,
+        reference.redirecturl
+      );
+      // console.log(verificationResponse, "This is verification response");
 
       if (verificationResponse?.status === 200) {
         // Invalidate queries to refresh user data
-        queryClient.invalidateQueries({ queryKey: ["users-videos"] });
-        queryClient.invalidateQueries({ queryKey: ["users-info"] });
+        queryClient.invalidateQueries({
+          queryKey: ["users-info"],
+        });
+        queryClient.invalidateQueries({
+          queryKey: ["level1-videos"],
+        });
         toast.success("Payment verified successfully!");
       } else {
         toast.error("Payment verification failed. Please contact support.");
