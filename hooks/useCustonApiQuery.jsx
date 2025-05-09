@@ -1,5 +1,4 @@
 import { useMutation, useQuery } from "@tanstack/react-query";
-
 import axios from "axios";
 import { getSessionStorageItem } from "../utils/storage";
 // import { useUserStore } from "@/store/store";
@@ -35,7 +34,7 @@ function useApiRequest() {
   // Function to handle mutation (POST, PUT, DELETE, etc.)
   const mutateData = async ({ method, url, data, headers = {} }) => {
     try {
-      const response = await axios({
+      const response = await axiosInstance({
         method,
         url,
         data,
