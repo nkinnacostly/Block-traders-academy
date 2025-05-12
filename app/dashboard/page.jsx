@@ -163,22 +163,6 @@ function Dashboard() {
       <div className="w-full p-4 mt-8 border-2 mb-4 shadow-lg rounded-xl">
         <h5 className="text-[24px]  font-[500] mb-8">Live Classes</h5>
 
-        {/* <div className="bg-[#1E1E1E99] flex w-full h-[97px] rounded-tr-lg rounded-br-lg text-white mb-5">
-          <div className="bg-[#D4AF37] w-8"></div>
-          <div className="w-[calc(100%-32px)] flex flex-col justify-center mb-5">
-            <div className="flex  justify-start space-x-5 w-[80%] mt-2   border-b-2 ml-3">
-              <p>Zoom Meeting</p>
-              <p>Traders Onboarding</p>
-              <p> 10min</p>
-            </div>
-            <div className="flex justify-start ml-3 space-x-5">
-              <p>Meeting Link</p>
-              <Link className="text-[#A0A0FF]" href={"https://zoom.com"}>
-                https://zoom.com
-              </Link>
-            </div>
-          </div>
-        </div> */}
         <LiveClasses meetings={liveClasses?.meetings} />
       </div>
       <DashboardChallenges />

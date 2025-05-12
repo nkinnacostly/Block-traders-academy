@@ -17,22 +17,9 @@ import { toast } from "sonner";
 import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-// import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 
-// console.log(toast, "This is toast");
-
 function SignUp() {
-  // const {
-  //   email,
-  //   username,
-  //   password,
-  //   setEmail,
-  //   setUserName,
-  //   setPassword,
-  //   notification_status,
-  //   setNotification,
-  // } = useUserStore();
   const { useMutationRequest } = useApiRequest(); // Destructure the custom hook
   const router = useRouter();
 

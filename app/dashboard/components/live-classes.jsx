@@ -1,20 +1,20 @@
 import Link from "next/link";
 
 export function LiveClasses({ meetings }) {
-  if (!meetings?.length) {
+  console.log(meetings, "meetings");
+  if (!meetings?.length || meetings.length === 0) {
     return (
-      <div className="text-white text-center py-4">
+      <div className=" text-center py-4">
         No live classes scheduled at the moment.
       </div>
     );
   }
-  console.log(meetings, "meetings");
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 border border-red-500">
       {meetings.map((meeting) => (
         <div
           key={meeting.id}
-          className="bg-[#1E1E1E99] flex w-full h-[97px] rounded-tr-lg rounded-br-lg text-white hover:bg-[#1E1E1E] transition-colors duration-200"
+          className=" flex w-full h-[97px] rounded-tr-lg rounded-br-lg  hover:bg-[#1E1E1E] transition-colors duration-200"
         >
           <div className="bg-[#D4AF37] w-8"></div>
           <div className="w-[calc(100%-32px)] flex flex-col justify-center">

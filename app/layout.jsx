@@ -6,6 +6,7 @@ import NextTopLoader from "nextjs-toploader";
 import Providers from "@/utils/provider";
 import ThemeProviderWrapper from "@/theme-provider";
 import { Toaster } from "@/components/ui/toaster";
+import { LanguageProvider } from "./i18n/LanguageProvider";
 
 // import Navbar from "./homepage/ui/layout/nav-bar";
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -27,13 +28,15 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${inter.variable} ${manrope.variable}`}>
         <ThemeProviderWrapper>
-          <NextTopLoader
-            color="#D4AF37"
-            height={6}
-            shadow="0 0 10px #D4AF37,0 0 5px #D4AF37"
-          />
-          <Providers>{children}</Providers>
-          <Toaster />
+          <LanguageProvider>
+            <NextTopLoader
+              color="#D4AF37"
+              height={6}
+              shadow="0 0 10px #D4AF37,0 0 5px #D4AF37"
+            />
+            <Providers>{children}</Providers>
+            <Toaster />
+          </LanguageProvider>
         </ThemeProviderWrapper>
       </body>
     </html>
