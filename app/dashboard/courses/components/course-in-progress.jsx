@@ -16,7 +16,7 @@ export function CoursesInProgress() {
             .fill(1)
             .map((_, index) => {
               return (
-                <Skeleton className="h-96 w-full bg-gray-300" key={index} />
+                <Skeleton className="h-40 w-full bg-gray-300" key={index} />
               );
             })}
         </div>

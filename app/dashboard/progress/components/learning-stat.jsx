@@ -1,10 +1,24 @@
+"use client";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 import { GiAlarmClock } from "react-icons/gi";
 import React from "react";
 import { Separator } from "@/components/ui/separator";
+import {
+  GetBadges,
+  GetCoursesCompleted,
+  GetCoursesInProgress,
+} from "../../services/services";
 
 function LearningStat() {
+  const { data, isLoading: inProgressLoading } = GetCoursesInProgress();
+  const { completed: completedData, isLoading: completedLoading } =
+    GetCoursesCompleted();
+  const { badges: courseBadges } = GetBadges();
+
+  if (inProgressLoading || completedLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <Card className="max-w-[264px]">
       <CardHeader>
@@ -28,19 +42,16 @@ function LearningStat() {
             </div>
             <div className="flex items-center justify-between border-b-2">
               <p className="text-sm font-normal">Completed</p>
-              <p className="text-sm font-normal">2</p>
+              <p className="text-sm font-normal">{completedData?.count || 0}</p>
             </div>
             <div className="flex items-center justify-between border-b-2">
               <p className="text-sm font-normal">Courses in Progress</p>
-              <p className="text-sm font-normal">2</p>
+              <p className="text-sm font-normal">{data?.count || 0}</p>
             </div>
-            <div className="flex items-center justify-between border-b-2">
-              <p className="text-sm font-normal">Challenges Completed</p>
-              <p className="text-sm font-normal">0</p>
-            </div>
+
             <div className="flex items-center justify-between border-b-2">
               <p className="text-sm font-normal">Badges Earned</p>
-              <p className="text-sm font-normal">0</p>
+              <p className="text-sm font-normal">{courseBadges?.length || 0}</p>
             </div>
           </div>
         </CardContent>

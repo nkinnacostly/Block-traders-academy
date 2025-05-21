@@ -2,7 +2,7 @@
 
 import { GiProgression } from "react-icons/gi";
 import { GoBook } from "react-icons/go";
-import Image from "next/image";
+// import Image from "next/image";
 import { IoMdSettings } from "react-icons/io";
 // import { useRouter } from "next/navigation";
 import Link from "next/link";
@@ -12,7 +12,8 @@ import { TbTargetArrow } from "react-icons/tb";
 import { usePathname } from "next/navigation";
 import { useUserStore } from "@/store/store";
 import { useVideoStore } from "@/store/store";
-
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { UserIcon } from "lucide-react";
 function DashboardSidebar() {
   const { loggedInUserDetails } = useUserStore();
   const { watchedVideos } = useVideoStore();
@@ -51,14 +52,12 @@ function DashboardSidebar() {
   return (
     <div className="flex flex-col w-full h-full px-5 space-y-3 border-2 py-5 rounded-xl">
       <div className="flex items-center justify-center">
-        <div className="items-center w-20 h-20 border-2 rounded-full ">
-          <Image
-            src={"/assets/img/png/chef.png"}
-            width={100}
-            height={100}
-            className="w-full h-full rounded-full"
-            alt="prof-img"
-          />
+        <div className="items-center w-20 h-20 border-2 rounded-full flex justify-center ">
+          <Avatar>
+            <AvatarFallback>
+              <UserIcon className="w-20 h-20" />
+            </AvatarFallback>
+          </Avatar>
         </div>
       </div>
       <>

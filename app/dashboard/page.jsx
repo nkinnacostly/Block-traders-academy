@@ -18,7 +18,7 @@ import { AnimatePage } from "@/components/animations/page";
 import DashboardChallenges from "@/components/dashboard/challenges";
 // import { DatePickerCalendar } from "./components/calendar";
 // import DatePicker from "react-datepicker";
-import { DialogComponent } from "./components/dialog-component";
+// import { DialogComponent } from "./components/dialog-component";
 import { FaCircleCheck } from "react-icons/fa6";
 import { GiHourglass } from "react-icons/gi";
 import { GiProgression } from "react-icons/gi";
@@ -44,21 +44,6 @@ function Dashboard() {
   const { duration: coursesDuration } = GetCoursesDuration();
   const { badges: courseBadges } = GetBadges();
   const { liveClasses } = GetLiveClasses();
-
-  // const [modalIsOpen, setModalIsOpen] = useState(false);
-  // const [description, setDescription] = useState("");
-  // const [meetings] = useState([]);
-  // const { theme } = useTheme();
-  // console.log(theme, "This is theme");
-  // const now = new Date();
-  // const dates = eachDayOfInterval({
-  //   start: startOfMonth(now),
-  //   end: endOfMonth(now),
-  // });
-  // const handleDateChange = (date) => {
-  //   setSelectedDate(date);
-  //   setModalIsOpen(true);
-  // };
 
   useEffect(() => {
     // <DialogComponent />;
@@ -103,15 +88,7 @@ function Dashboard() {
       bgColor: "#D4AF37",
     },
   ];
-  // const handleDescriptionChange = (event) => {
-  //   setDescription(event.target.value);
-  // };
 
-  // const handleAddMeeting = () => {
-  //   setMeetings([...meetings, { description }]);
-  //   setDescription("");
-  //   setModalIsOpen(false);
-  // };
   const appsContainer = {
     hidden: { opacity: 0 },
     show: {
@@ -122,10 +99,10 @@ function Dashboard() {
       },
     },
   };
-
+  // console.log(courseContent, "This is live classes");
   return (
     <>
-      <DialogComponent />
+      {/* <DialogComponent /> */}
       <div>
         <h5 className="text-[24px]  font-[500]">Overview</h5>
       </div>
@@ -171,7 +148,3 @@ function Dashboard() {
 }
 
 export default AnimatePage(Dashboard);
-// export const Component = AnimatePage(Dashboard);
-
-// box-shadow: 0px 8px 4px 0px #00000040;
-//

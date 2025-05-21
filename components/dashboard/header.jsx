@@ -5,6 +5,8 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
 import React from "react";
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import { UserIcon } from "lucide-react";
 
 function DashboardHeader() {
   return (
@@ -37,14 +39,12 @@ function DashboardHeader() {
           <div className="flex items-center justify-center space-x-5">
             {/* <Buttonwithoutbg Btntext={"Sign in"} /> */}
             {/* <Buttonwithbg btnText={"Create account"} /> */}
-            <div className="w-20 h-20 border-2 rounded-full">
-              <Image
-                src={"/assets/img/png/chef.png"}
-                width={100}
-                height={100}
-                className="w-full h-full rounded-full"
-                alt="prof-img"
-              />
+            <div className="w-20 h-20 border-2 rounded-full flex justify-center items-center">
+              <Avatar>
+                <AvatarFallback>
+                  <UserIcon className="w-20 h-20" />
+                </AvatarFallback>
+              </Avatar>
             </div>
           </div>
         </div>
