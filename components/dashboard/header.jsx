@@ -5,10 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
 import React from "react";
-import { Avatar, AvatarFallback } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { UserIcon } from "lucide-react";
+import { useUserStore } from "@/store/store";
 
 function DashboardHeader() {
+  const { loggedInUserDetails } = useUserStore();
+  console.log(loggedInUserDetails);
   return (
     <>
       <div className="items-center justify-center hidden w-full h-full p-4 mb-2 lg:flex">
@@ -39,13 +42,14 @@ function DashboardHeader() {
           <div className="flex items-center justify-center space-x-5">
             {/* <Buttonwithoutbg Btntext={"Sign in"} /> */}
             {/* <Buttonwithbg btnText={"Create account"} /> */}
-            <div className="w-20 h-20 border-2 rounded-full flex justify-center items-center">
-              <Avatar>
+            <Avatar>
+              <div className="w-20 h-20 border-2 rounded-full flex justify-center items-center">
+                <AvatarImage src={loggedInUserDetails?.image_url} />
                 <AvatarFallback>
                   <UserIcon className="w-20 h-20" />
                 </AvatarFallback>
-              </Avatar>
-            </div>
+              </div>
+            </Avatar>
           </div>
         </div>
       </div>

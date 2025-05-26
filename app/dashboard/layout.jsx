@@ -20,7 +20,7 @@ function DashboardLayout({ children }) {
         </aside>
         <main className="w-full lg:w-[calc(100%-250px)] h-full p-3">
           <div className="rounded-[20px] h-full overflow-y-scroll p-3 shadow-xl">
-            <NextTopLoader color="#fff" />
+            <NextTopLoader color="#D4AF37" />
             <Suspense fallback={<Loading />}>{children}</Suspense>
           </div>
         </main>

@@ -2,9 +2,7 @@
 
 import { GiProgression } from "react-icons/gi";
 import { GoBook } from "react-icons/go";
-// import Image from "next/image";
 import { IoMdSettings } from "react-icons/io";
-// import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { MdDashboard } from "react-icons/md";
 import React from "react";
@@ -12,15 +10,14 @@ import { TbTargetArrow } from "react-icons/tb";
 import { usePathname } from "next/navigation";
 import { useUserStore } from "@/store/store";
 import { useVideoStore } from "@/store/store";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserIcon } from "lucide-react";
 function DashboardSidebar() {
   const { loggedInUserDetails } = useUserStore();
+
   const { watchedVideos } = useVideoStore();
-  // const router = useRouter();
   const isLevel1 = loggedInUserDetails?.learners_level === "1";
   const pathname = usePathname();
-  // console.log(pathname, "This is pathname");
   const sideLinks = [
     {
       icon: <MdDashboard />,
@@ -54,6 +51,7 @@ function DashboardSidebar() {
       <div className="flex items-center justify-center">
         <div className="items-center w-20 h-20 border-2 rounded-full flex justify-center ">
           <Avatar>
+            <AvatarImage src={loggedInUserDetails?.image_url} />
             <AvatarFallback>
               <UserIcon className="w-20 h-20" />
             </AvatarFallback>
