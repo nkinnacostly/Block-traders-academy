@@ -67,7 +67,7 @@ function Dashboard() {
       number: data?.count,
       icon: <IoRefreshCircleSharp size={30} />,
       tittle: "Courses-in-Progress",
-      // bgColor: "#000000",
+      bgColor: "#D4AF37",
     },
     {
       number: coursesDuration?.total_duration,
@@ -82,7 +82,7 @@ function Dashboard() {
       bgColor: "#D4AF37",
     },
     {
-      number: courseBadges?.count,
+      number: courseBadges?.courses,
       icon: <RiAwardFill size={20} />,
       tittle: "Badges Earned",
       bgColor: "#D4AF37",
