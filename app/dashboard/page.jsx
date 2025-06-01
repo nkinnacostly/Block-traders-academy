@@ -76,7 +76,7 @@ function Dashboard() {
       bgColor: "#D4AF37",
     },
     {
-      number: "4",
+      number: loggedInUserDetails?.learners_level,
       icon: <GiProgression size={20} />,
       tittle: "Learners Level",
       bgColor: "#D4AF37",

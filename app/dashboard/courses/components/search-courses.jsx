@@ -1,6 +1,6 @@
 import { IoIosSearch } from "react-icons/io";
 import React from "react";
-import { VscBellDot } from "react-icons/vsc";
+// import { VscBellDot } from "react-icons/vsc";
 
 function SearchCourses() {
   return (
@@ -16,9 +16,9 @@ function SearchCourses() {
             className="absolute  w-50  left-[0.8em] top-[1.30rem] "
           />
         </div>
-        <div className="flex items-center justify-center w-[10%]">
+        {/* <div className="flex items-center justify-center w-[10%]">
           <VscBellDot size={30} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
