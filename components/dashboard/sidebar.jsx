@@ -12,6 +12,7 @@ import { useUserStore } from "@/store/store";
 import { useVideoStore } from "@/store/store";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { UserIcon } from "lucide-react";
+import { CopyIcon } from "@radix-ui/react-icons";
 function DashboardSidebar() {
   const { loggedInUserDetails } = useUserStore();
 
@@ -33,6 +34,11 @@ function DashboardSidebar() {
       icon: <GiProgression />,
       tittle: "Progress",
       link: "/dashboard/progress",
+    },
+    {
+      icon: <CopyIcon />,
+      tittle: "Copy Trade",
+      link: "/dashboard/copy-trade",
     },
     {
       icon: <TbTargetArrow />,
