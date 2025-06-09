@@ -12,18 +12,16 @@ export default function TopTraders() {
   const { data, error } = useGetTopTraders();
   const response = data;
   const traders = response?.data;
-
   const copyTraderMutation = useCopyTrader();
+
   const [loadingTraders, setLoadingTraders] = useState({});
 
   const handleCopyTrade = async (userId) => {
     try {
       setLoadingTraders((prev) => ({ ...prev, [userId]: true }));
-      const response = await copyTraderMutation.mutateAsync({
-        url: `/copy-trader/${userId}`,
-        method: "POST",
+      await copyTraderMutation.mutateAsync({
+        url: `https://block-traders.com.blocktraders.academy/api/copy-trader/${userId}`,
       });
-      console.log("response", response);
       const trader = traders?.find((t) => t.user_id === userId);
       toast.success(`Successfully copied ${trader?.user_name}'s trades`);
     } catch (error) {
