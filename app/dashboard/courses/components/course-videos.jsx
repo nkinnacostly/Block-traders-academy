@@ -32,7 +32,7 @@ export default function CoursesVideos() {
   const isLevel1 = loggedInUserDetails?.learners_level === "1";
   const isLevel2 =
     loggedInUserDetails?.learners_level === "2" &&
-    loggedInUserDetails?.paid === 1;
+    loggedInUserDetails?.paid === "1";
   const level1Url = "/all-videos";
   const level2Url = "/api/get-level-2";
   const level1reqKey = ["level1-videos"];
@@ -148,7 +148,7 @@ export default function CoursesVideos() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {updatedVideos.map((video, index) => {
-          const isAccessible = index === 0 || loggedInUserDetails.paid === 1;
+          const isAccessible = index === 0 || loggedInUserDetails.paid === "1";
 
           return (
             <div
