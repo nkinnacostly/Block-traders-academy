@@ -36,7 +36,13 @@ export default function UserProfilePic() {
   useEffect(() => {
     if (loggedInUserDetails) {
       setValue("id", loggedInUserDetails?.id);
-      setValue("image", loggedInUserDetails?.image_url);
+      setValue(
+        "image",
+        loggedInUserDetails?.image_url === "1" ||
+          loggedInUserDetails?.image_url === "0"
+          ? ""
+          : loggedInUserDetails?.image_url
+      );
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUserDetails]);
