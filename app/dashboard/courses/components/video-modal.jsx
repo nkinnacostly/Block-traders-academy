@@ -20,7 +20,7 @@ import { getYouTubeVideoId } from "@/utils/get-youtube-url";
 import { useUserStore } from "@/store/store";
 import { useState } from "react";
 
-export function WatchVideo({ children, data, setInProgress, inProgress }) {
+export function WatchVideo({ children, data, inProgress }) {
   const { loggedInUserDetails } = useUserStore();
   const match = getYouTubeVideoId(data?.path);
   const { onSubmit, completed } = SubmitCourse();
@@ -64,11 +64,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
     // YouTube player states: -1 (unstarted), 0 (ended), 1 (playing), 2 (paused), 3 (buffering), 5 (video cued)
     if (e.data === 1) {
       // When video starts playing
-      setInProgress({
-        ...inProgress,
-        course_id: data?.id,
-        course_level: data?.level,
-      });
+
       await onSubmit({
         ...inProgress,
         course_id: data?.id,
