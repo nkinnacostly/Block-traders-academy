@@ -34,7 +34,6 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
     videoCode = match;
   }
   const checkElapsedTime = (e) => {
-    console.log(e.target.playerInfo.playerState);
     const duration = e.target.getDuration();
     const currentTime = e.target.getCurrentTime();
     if (currentTime / duration > 0.95) {
@@ -58,13 +57,21 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
     });
   };
   const handleVideoReady = async () => {
-    setInProgress({
-      ...inProgress,
-      course_id: data?.id,
-      course_level: data?.level,
-    });
-    await onSubmit(inProgress);
     setIsLoading(false);
+  };
+
+  const handleStateChange = async (e) => {
+    // YouTube player states: -1 (unstarted), 0 (ended), 1 (playing), 2 (paused), 3 (buffering), 5 (video cued)
+    if (e.data === 1) {
+      // When video starts playing
+      setInProgress({
+        ...inProgress,
+        course_id: data?.id,
+        course_level: data?.level,
+      });
+      await onSubmit(inProgress);
+    }
+    checkElapsedTime(e);
   };
 
   return (
@@ -82,7 +89,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
             <YouTube
               videoId={videoCode}
               containerClassName="w-full"
-              onStateChange={(e) => checkElapsedTime(e)}
+              onStateChange={handleStateChange}
               opts={opts}
               onReady={handleVideoReady}
             />
