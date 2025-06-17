@@ -58,9 +58,11 @@ function useApiRequest() {
     return useQuery({
       queryKey: reqKey,
       queryFn: () => fetchData(url),
-      refetchOnWindowFocus: false,
-      refetchOnMount: false,
-
+      refetchOnWindowFocus: true,
+      refetchOnMount: true,
+      refetchOnReconnect: true,
+      // refetchInterval: 1000 * 60 * 5, // 5 minutes
+      // refetchIntervalInBackground: true,
       enabled,
 
       // enabled: !url,

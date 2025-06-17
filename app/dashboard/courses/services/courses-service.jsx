@@ -40,7 +40,7 @@ export function SubmitCourse() {
       await mutateAsync(
         {
           method: "POST",
-          url: "/courses/viewed_courses",
+          url: "/courses/completedCourse",
           data: userData,
         },
         {

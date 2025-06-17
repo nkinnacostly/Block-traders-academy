@@ -1,6 +1,5 @@
 import {
   Dialog,
-  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
@@ -29,6 +28,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
   // console.log(data);
   const [showButton, setShowButton] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [showDialog, setShowDialog] = useState(false);
   let videoCode;
   if (match) {
     videoCode = match;
@@ -50,19 +50,25 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
   };
   // console.log(loggedInUserDetails?.block_level, "Block level");
   const handleExerciseComplete = async () => {
-    await completed(inProgress);
+    await completed({
+      ...inProgress,
+      course_id: data?.id,
+      course_level: data?.level,
+    });
+    setShowDialog(false);
   };
   const handleVideoReady = async () => {
     setInProgress({
       ...inProgress,
       course_id: data?.id,
+      course_level: data?.level,
     });
     await onSubmit(inProgress);
     setIsLoading(false);
   };
-  console.log(data, "data");
+
   return (
-    <Dialog>
+    <Dialog open={showDialog} onOpenChange={setShowDialog}>
       <DialogTrigger asChild>{children}</DialogTrigger>
       <DialogContent className=" ">
         <DialogHeader>
@@ -88,13 +94,8 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
 
         {showButton && (
           <DialogFooter>
-            <DialogClose asChild>
-              <Button size="sm" variant="ghost" type="button">
-                Cancel
-              </Button>
-            </DialogClose>
             <Button size="sm" onClick={handleExerciseComplete}>
-              Save
+              Done
             </Button>
           </DialogFooter>
         )}
