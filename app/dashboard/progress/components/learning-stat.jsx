@@ -51,7 +51,9 @@ function LearningStat() {
 
             <div className="flex items-center justify-between border-b-2">
               <p className="text-sm font-normal">Badges Earned</p>
-              <p className="text-sm font-normal">{courseBadges.courses || 0}</p>
+              <p className="text-sm font-normal">
+                {courseBadges?.courses || 0}
+              </p>
             </div>
           </div>
         </CardContent>

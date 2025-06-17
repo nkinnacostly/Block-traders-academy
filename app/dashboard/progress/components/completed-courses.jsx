@@ -11,7 +11,7 @@ export function CoursesCompleted() {
     isLoading: completedLoading,
     error,
   } = GetCoursesCompleted();
-  console.log(completedData, "This is completed data");
+  // console.log(completedData, "This is completed data");
   if (completedLoading)
     return (
       <>

@@ -40,9 +40,9 @@ function Badges() {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-      {courseBadges.courses.map((badge) => (
+      {courseBadges?.courses?.map((badge) => (
         <motion.div
-          key={badge.id}
+          key={badge?.id}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
@@ -54,10 +54,10 @@ function Badges() {
               <div className="relative w-32 h-32">
                 <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300" />
                 <Image
-                  src={badge.image || "/assets/img/svg/Warranty.svg"}
+                  src={badge?.image || "/assets/img/svg/Warranty.svg"}
                   height={150}
                   width={150}
-                  alt={badge.name}
+                  alt={badge?.name}
                   className="relative z-10 transform group-hover:scale-110 transition-transform duration-300"
                 />
               </div>
