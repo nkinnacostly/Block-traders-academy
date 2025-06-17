@@ -20,11 +20,11 @@ import { getYouTubeVideoId } from "@/utils/get-youtube-url";
 import { useUserStore } from "@/store/store";
 import { useState } from "react";
 
-export function WatchVideo({ children, data, inProgress }) {
+export function WatchVideo({ children, data, setInProgress, inProgress }) {
   const { loggedInUserDetails } = useUserStore();
   const match = getYouTubeVideoId(data?.path);
   const { onSubmit, completed } = SubmitCourse();
-  // console.log(match);
+  console.log(setInProgress, "setInProgress");
   // console.log(data);
   const [showButton, setShowButton] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
