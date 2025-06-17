@@ -38,7 +38,7 @@ export function CoursesCompleted() {
       </>
     );
   return (
-    <Card className="h-[90%] border-none">
+    <Card className="h-[90%] border-none overflow-scroll">
       {/* <Separator /> */}
       <CardContent className="">
         {completedData?.courses?.length === 0 ? (
