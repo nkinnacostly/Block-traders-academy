@@ -60,7 +60,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
     await onSubmit(inProgress);
     setIsLoading(false);
   };
-  // console.log(inProgress, "In progress");
+  console.log(data, "data");
   return (
     <Dialog>
       <DialogTrigger asChild>{children}</DialogTrigger>
@@ -72,7 +72,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
         <Separator />
         {isLoading && <Skeleton className="h-4 w-full" />}
         <div className="w-full flex items-center justify-center">
-          {loggedInUserDetails?.block_level === 1 ? (
+          {loggedInUserDetails?.block_level === "1" ? (
             <YouTube
               videoId={videoCode}
               containerClassName="w-full"
