@@ -50,12 +50,12 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
   };
   // console.log(loggedInUserDetails?.block_level, "Block level");
   const handleExerciseComplete = async () => {
+    setShowDialog(false);
     await completed({
       ...inProgress,
       course_id: data?.id,
       course_level: data?.level,
     });
-    setShowDialog(false);
   };
   const handleVideoReady = async () => {
     setInProgress({
