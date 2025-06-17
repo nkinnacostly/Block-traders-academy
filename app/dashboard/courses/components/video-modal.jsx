@@ -69,7 +69,11 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
         course_id: data?.id,
         course_level: data?.level,
       });
-      await onSubmit(inProgress);
+      await onSubmit({
+        ...inProgress,
+        course_id: data?.id,
+        course_level: data?.level,
+      });
     }
     checkElapsedTime(e);
   };
