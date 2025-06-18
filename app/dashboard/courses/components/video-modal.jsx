@@ -85,7 +85,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
         <Separator />
         {isLoading && <Skeleton className="h-4 w-full" />}
         <div className="w-full flex items-center justify-center">
-          {loggedInUserDetails?.block_level === "1" ? (
+          {loggedInUserDetails?.learners_level === "1" ? (
             <YouTube
               videoId={videoCode}
               containerClassName="w-full"
