@@ -56,6 +56,13 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
       course_level: data?.level,
     });
   };
+  const handleVideoPlay = async () => {
+    await onSubmit({
+      ...inProgress,
+      course_id: data?.id,
+      course_level: data?.level,
+    });
+  };
   const handleVideoReady = async () => {
     setIsLoading(false);
   };
@@ -98,6 +105,7 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
               src={data?.path}
               controls
               autoPlay={false}
+              onPlay={handleVideoPlay}
               onEnded={handleExerciseComplete}
             />
           )}
