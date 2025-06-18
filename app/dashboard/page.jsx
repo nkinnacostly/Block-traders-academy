@@ -82,7 +82,7 @@ function Dashboard() {
       bgColor: "#D4AF37",
     },
     {
-      number: courseBadges?.courses,
+      number: courseBadges?.data?.length,
       icon: <RiAwardFill size={20} />,
       tittle: "Badges Earned",
       bgColor: "#D4AF37",

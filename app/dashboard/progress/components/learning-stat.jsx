@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import {
   GetBadges,
   GetCoursesCompleted,
+  GetCoursesDuration,
   GetCoursesInProgress,
 } from "../../services/services";
 
@@ -15,6 +16,7 @@ function LearningStat() {
   const { completed: completedData, isLoading: completedLoading } =
     GetCoursesCompleted();
   const { badges: courseBadges } = GetBadges();
+  const { duration: coursesDuration } = GetCoursesDuration();
 
   if (inProgressLoading || completedLoading) {
     return <div>Loading...</div>;
@@ -31,7 +33,9 @@ function LearningStat() {
             <div className="flex items-center justify-between">
               <div>
                 {" "}
-                <p className="text-2xl font-medium  ">O Mins</p>
+                <p className="text-2xl font-medium  ">
+                  {coursesDuration?.total_duration || 0} Mins
+                </p>
                 <p className="text-sm font-normal  ">
                   Your Total Learning Time
                 </p>
@@ -52,7 +56,7 @@ function LearningStat() {
             <div className="flex items-center justify-between border-b-2">
               <p className="text-sm font-normal">Badges Earned</p>
               <p className="text-sm font-normal">
-                {courseBadges?.courses || 0}
+                {courseBadges?.data?.length || 0}
               </p>
             </div>
           </div>

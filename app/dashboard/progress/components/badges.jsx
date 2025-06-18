@@ -1,8 +1,9 @@
 "use client";
 import React from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+
 import { GetBadges } from "../../services/services";
+import { Separator } from "@/components/ui/separator";
 
 function Badges() {
   const { badges: courseBadges, isLoading: badgesLoading } = GetBadges();
@@ -15,7 +16,9 @@ function Badges() {
     );
   }
 
-  if (!courseBadges?.courses || courseBadges.courses === 0) {
+  const badges = courseBadges?.data || [];
+
+  if (!badges.length) {
     return (
       <div className="flex flex-col items-center justify-center min-h-[300px] p-8 text-center">
         <div className="w-24 h-24 mb-4 relative">
@@ -39,49 +42,27 @@ function Badges() {
   }
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
-      {courseBadges?.courses?.map((badge) => (
-        <motion.div
-          key={badge?.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          whileHover={{ scale: 1.05 }}
-          className="relative group"
-        >
-          <div className="bg-gradient-to-br from-primary/20 to-primary/5 rounded-2xl p-6 border border-primary/20 backdrop-blur-sm transition-all duration-300 hover:border-primary/40">
-            <div className="flex flex-col items-center space-y-4">
-              <div className="relative w-32 h-32">
-                <div className="absolute inset-0 bg-primary/10 rounded-full blur-xl group-hover:blur-2xl transition-all duration-300" />
-                <Image
-                  src={badge?.image || "/assets/img/svg/Warranty.svg"}
-                  height={150}
-                  width={150}
-                  alt={badge?.name}
-                  className="relative z-10 transform group-hover:scale-110 transition-transform duration-300"
-                />
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-semibold text-primary mb-2">
-                  {badge?.name}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {badge?.description}
-                </p>
-                <div className="w-full bg-secondary/20 rounded-full h-2">
-                  <div
-                    className="bg-primary h-2 rounded-full transition-all duration-300"
-                    style={{ width: `${badge?.progress || 0}%` }}
-                  />
-                </div>
-                <p className="text-xs text-muted-foreground mt-2">
-                  Progress: {badge?.progress || 0}%
-                </p>
-              </div>
+    <div className="flex flex-col  justify-center">
+      <h1 className="text-2xl font-bold text-center">Badges</h1>
+      <Separator />
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+        {badges.map((badge) => (
+          <div
+            key={badge.id}
+            className="flex flex-col items-center group relative"
+          >
+            <div className="w-20 h-20 rounded-full bg-primary/20 flex items-center justify-center text-3xl font-bold text-primary shadow-lg border-2 border-primary/40 group-hover:scale-105 transition-transform duration-300 cursor-pointer">
+              {"🏅" || "🏅"}
             </div>
+            <div className="absolute left-1/2 -translate-x-1/2 top-24 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity duration-300 z-20 bg-white text-primary text-sm font-semibold px-4 py-2 rounded shadow-lg border border-primary/20 whitespace-nowrap">
+              {badge.video?.name}
+            </div>
+            <span className="mt-2 text-xs text-muted-foreground">
+              Completed on {new Date(badge.created_at).toLocaleDateString()}
+            </span>
           </div>
-        </motion.div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
