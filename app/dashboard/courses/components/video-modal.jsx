@@ -94,7 +94,12 @@ export function WatchVideo({ children, data, setInProgress, inProgress }) {
               onReady={handleVideoReady}
             />
           ) : (
-            <video src={data?.path} controls autoPlay={false} />
+            <video
+              src={data?.path}
+              controls
+              autoPlay={false}
+              onEnded={handleExerciseComplete}
+            />
           )}
         </div>
         <Separator />
