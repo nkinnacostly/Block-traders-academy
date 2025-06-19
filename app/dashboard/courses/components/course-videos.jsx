@@ -35,6 +35,8 @@ export default function CoursesVideos() {
     loggedInUserDetails?.paid === "1";
   const level1Url = "/all-videos";
   const level2Url = "/api/get-level-2";
+  const getFirstFourVideos = "/api/get-first-four";
+  const firstFourreqKey = ["first-four-videos"];
   const level1reqKey = ["level1-videos"];
   const level2reqKey = ["level2-videos"];
   const { data: userInfo } = useGetUserInfo();
@@ -50,7 +52,17 @@ export default function CoursesVideos() {
     data: level2Data,
     isLoading: isLoadingLevel2,
     isError: isErrorLevel2,
-  } = useGetRequest2(level2Url, level2reqKey, { enabled: isLevel2 });
+  } = useGetRequest2(level2Url, level2reqKey, {
+    enabled: watchedVideos === 4,
+  });
+
+  const {
+    data: firstFourVideos,
+    isLoading: isLoadingFirstFour,
+    isError: isErrorFirstFour,
+  } = useGetRequest2(getFirstFourVideos, firstFourreqKey, {
+    enabled: isLevel2,
+  });
 
   const { mutateAsync: initiatePayment, isPending: isPaymentPending } =
     useInitiatePayment(loggedInUserDetails?.uuid);
@@ -68,11 +80,18 @@ export default function CoursesVideos() {
     }
   };
 
-  const videos = useMemo(
-    () =>
-      (isLevel1 ? level1Data?.data?.videos : level2Data?.data?.videos) || [],
-    [isLevel1, level1Data, level2Data]
-  );
+  const videos = useMemo(() => {
+    if (isLevel1) {
+      return level1Data?.data?.videos || [];
+    } else {
+      // For level 2 users, show level2Data when watchedVideos equals 4
+      if (watchedVideos === 4) {
+        return level2Data?.data?.videos || [];
+      }
+      // Otherwise show first four videos
+      return firstFourVideos?.data?.videos || [];
+    }
+  }, [isLevel1, level1Data, firstFourVideos, level2Data, watchedVideos]);
 
   const updatedVideos = useMemo(
     () =>
@@ -90,7 +109,7 @@ export default function CoursesVideos() {
   };
 
   useEffect(() => {
-    if (watchedVideos === 3 && !isLevel1) {
+    if (watchedVideos === 4 && !isLevel1) {
       setModalOpen(true);
     }
   }, [watchedVideos, isLevel1]);
@@ -101,7 +120,7 @@ export default function CoursesVideos() {
     router.push("/dashboard/challenges");
   };
 
-  if (isErrorLevel1 || isErrorLevel2) {
+  if (isErrorLevel1 || isErrorLevel2 || isErrorFirstFour) {
     return (
       <div className="text-red-500 font-bold text-center p-4">
         Oops! Something went wrong. We&apos;re working on it!
@@ -132,7 +151,7 @@ export default function CoursesVideos() {
         </div>
       )}
 
-      {(isLoadingLevel1 || isLoadingLevel2) && (
+      {(isLoadingLevel1 || isLoadingLevel2 || isLoadingFirstFour) && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="flex flex-col space-y-3">

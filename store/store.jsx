@@ -50,6 +50,7 @@ export const useStatsStore = create(
     }
   )
 );
+
 export const useVideoStore = create((set) => ({
   watchedVideos: 0,
   incrementWatchedVideos: () =>

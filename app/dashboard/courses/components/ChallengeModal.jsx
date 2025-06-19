@@ -12,7 +12,7 @@ export function ChallengeModal({ isOpen, onClose, onNavigate }) {
           Congratulations!
         </h3>
         <p className="text-gray-700 mb-6">
-          You've completed the first three videos. Are you ready for the
+          You've completed the first four videos. Are you ready for the
           challenge?
         </p>
         <div className="flex justify-end gap-4">
