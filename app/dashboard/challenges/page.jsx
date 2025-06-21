@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import QuestionCard from "./components/QuestionCard";
 import quizData from "./components/data";
 import { useVideoStore } from "@/store/store";
+import { useRouter } from "next/navigation";
 function Challenges() {
+  const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [showModal, setShowModal] = useState(false);
@@ -17,6 +19,7 @@ function Challenges() {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowModal(true);
+      setChallengeCompleted(true);
     }
   };
 
@@ -31,15 +34,16 @@ function Challenges() {
       if (userAnswers[index] === question.answer) {
         return score + 1;
       }
-      setChallengeCompleted(true);
       return score;
     }, 0);
   };
 
   const resetQuiz = () => {
+    router.push("/dashboard/courses");
     setCurrentQuestion(0);
     setUserAnswers({});
     setShowModal(false);
+    setChallengeCompleted(false);
   };
 
   return (
@@ -143,7 +147,7 @@ function Challenges() {
               onClick={resetQuiz}
               className="mt-6 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-md"
             >
-              Close
+              Done
             </button>
           </div>
         </div>

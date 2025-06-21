@@ -25,11 +25,12 @@ export default function CoursesVideos() {
     watchedVideos,
     incrementWatchedVideos,
     challengeCompleted,
-    // setChallengeCompleted,
+    setChallengeCompleted,
   } = useVideoStore();
   const [isVisible, toggleVisibility] = useToggle(false);
   const [paymentData, setPaymentData] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
+  const [hasShownModal, setHasShownModal] = useState(false);
   const [inProgress, setInProgress] = useState({
     user_id: loggedInUserDetails?.id || "",
     course_id: "",
@@ -48,6 +49,7 @@ export default function CoursesVideos() {
   const userData = userInfo?.data?.user;
   const { useGetRequest } = useApiRequest();
   const { useGetRequest2 } = useFetchLevel2();
+  console.log(challengeCompleted);
   const {
     data: level1Data,
     isLoading: isLoadingLevel1,
@@ -121,15 +123,28 @@ export default function CoursesVideos() {
   };
 
   useEffect(() => {
-    if (watchedVideos === 1 && !isLevel1 && !challengeCompleted) {
+    if (
+      watchedVideos === 1 &&
+      !isLevel1 &&
+      !challengeCompleted &&
+      !hasShownModal
+    ) {
       setModalOpen(true);
+      setHasShownModal(true);
     }
   }, [watchedVideos, isLevel1, challengeCompleted]);
+
+  // Reset modal state when challenge is completed
+  useEffect(() => {
+    if (challengeCompleted) {
+      setHasShownModal(false);
+    }
+  }, [challengeCompleted]);
 
   const closeModal = () => setModalOpen(false);
   const navigateToChallenge = () => {
     closeModal();
-    // setChallengeCompleted(true);
+    setChallengeCompleted(true);
     router.push("/dashboard/challenges");
   };
 
