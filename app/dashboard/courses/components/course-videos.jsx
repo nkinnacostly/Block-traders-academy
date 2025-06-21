@@ -124,7 +124,7 @@ export default function CoursesVideos() {
 
   useEffect(() => {
     if (
-      watchedVideos === 1 &&
+      watchedVideos === 4 &&
       !isLevel1 &&
       !challengeCompleted &&
       !hasShownModal
