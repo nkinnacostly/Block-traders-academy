@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuestionCard from "./components/QuestionCard";
 import quizData from "./components/data";
 import { useVideoStore } from "@/store/store";
@@ -10,6 +10,14 @@ function Challenges() {
   const [userAnswers, setUserAnswers] = useState({});
   const [showModal, setShowModal] = useState(false);
   const { setChallengeCompleted } = useVideoStore();
+
+  // Set challenge as completed when score modal is shown
+  useEffect(() => {
+    if (showModal) {
+      setChallengeCompleted(true);
+    }
+  }, [showModal, setChallengeCompleted]);
+
   const handleOptionChange = (option) => {
     setUserAnswers({ ...userAnswers, [currentQuestion]: option });
   };
@@ -19,7 +27,6 @@ function Challenges() {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowModal(true);
-      setChallengeCompleted(true);
     }
   };
 
@@ -43,7 +50,6 @@ function Challenges() {
     setCurrentQuestion(0);
     setUserAnswers({});
     setShowModal(false);
-    setChallengeCompleted(false);
   };
 
   return (

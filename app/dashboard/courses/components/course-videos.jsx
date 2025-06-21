@@ -49,7 +49,7 @@ export default function CoursesVideos() {
   const userData = userInfo?.data?.user;
   const { useGetRequest } = useApiRequest();
   const { useGetRequest2 } = useFetchLevel2();
-  console.log(challengeCompleted);
+
   const {
     data: level1Data,
     isLoading: isLoadingLevel1,
@@ -132,7 +132,7 @@ export default function CoursesVideos() {
       setModalOpen(true);
       setHasShownModal(true);
     }
-  }, [watchedVideos, isLevel1, challengeCompleted]);
+  }, [watchedVideos, isLevel1, challengeCompleted, hasShownModal]);
 
   // Reset modal state when challenge is completed
   useEffect(() => {
