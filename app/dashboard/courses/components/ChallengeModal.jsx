@@ -2,7 +2,7 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 
-export function ChallengeModal({ isOpen, onClose, onNavigate }) {
+export function ChallengeModal({ isOpen, onNavigate }) {
   if (!isOpen) return null;
 
   return (
@@ -16,7 +16,7 @@ export function ChallengeModal({ isOpen, onClose, onNavigate }) {
           challenge?
         </p>
         <div className="flex justify-end gap-4">
-          <Button onClick={onClose}>Close</Button>
+          {/* <Button onClick={onClose}>Close</Button> */}
           <Button onClick={onNavigate}>Go to Challenge</Button>
         </div>
       </div>

@@ -53,6 +53,7 @@ export const useStatsStore = create(
 
 export const useVideoStore = create((set) => ({
   watchedVideos: 0,
+  challengeCompleted: false,
   incrementWatchedVideos: () =>
     set((state) => ({
       watchedVideos: state.watchedVideos + 1,
@@ -60,5 +61,13 @@ export const useVideoStore = create((set) => ({
   resetWatchedVideos: () =>
     set(() => ({
       watchedVideos: 0,
+    })),
+  setChallengeCompleted: (completed) =>
+    set(() => ({
+      challengeCompleted: completed,
+    })),
+  resetChallengeCompleted: () =>
+    set(() => ({
+      challengeCompleted: false,
     })),
 }));

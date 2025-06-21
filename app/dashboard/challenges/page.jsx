@@ -2,12 +2,12 @@
 import React, { useState } from "react";
 import QuestionCard from "./components/QuestionCard";
 import quizData from "./components/data";
-
+import { useVideoStore } from "@/store/store";
 function Challenges() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [showModal, setShowModal] = useState(false);
-
+  const { setChallengeCompleted } = useVideoStore();
   const handleOptionChange = (option) => {
     setUserAnswers({ ...userAnswers, [currentQuestion]: option });
   };
@@ -31,6 +31,7 @@ function Challenges() {
       if (userAnswers[index] === question.answer) {
         return score + 1;
       }
+      setChallengeCompleted(true);
       return score;
     }, 0);
   };
@@ -135,8 +136,8 @@ function Challenges() {
               {calculateScore() === quizData.length
                 ? "🌟 Excellent Work!"
                 : calculateScore() >= quizData.length * 0.7
-                ? "👍 Good Job!"
-                : "🙁 Needs Improvement"}
+                  ? "👍 Good Job!"
+                  : "🙁 Needs Improvement"}
             </p>
             <button
               onClick={resetQuiz}

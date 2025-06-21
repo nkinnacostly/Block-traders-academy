@@ -21,7 +21,12 @@ export default function CoursesVideos() {
   const router = useRouter();
   const { loggedInUserDetails } = useUserStore();
 
-  const { watchedVideos, incrementWatchedVideos } = useVideoStore();
+  const {
+    watchedVideos,
+    incrementWatchedVideos,
+    challengeCompleted,
+    // setChallengeCompleted,
+  } = useVideoStore();
   const [isVisible, toggleVisibility] = useToggle(false);
   const [paymentData, setPaymentData] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
@@ -53,7 +58,7 @@ export default function CoursesVideos() {
     isLoading: isLoadingLevel2,
     isError: isErrorLevel2,
   } = useGetRequest2(level2Url, level2reqKey, {
-    enabled: watchedVideos === 4,
+    enabled: watchedVideos === 4 && challengeCompleted,
   });
 
   const {
@@ -84,14 +89,21 @@ export default function CoursesVideos() {
     if (isLevel1) {
       return level1Data?.data?.videos || [];
     } else {
-      // For level 2 users, show level2Data when watchedVideos equals 4
-      if (watchedVideos === 4) {
+      // For level 2 users, show level2Data when watchedVideos equals 4 AND challenge is completed
+      if (watchedVideos === 4 && challengeCompleted) {
         return level2Data?.data?.videos || [];
       }
       // Otherwise show first four videos
       return firstFourVideos?.data?.videos || [];
     }
-  }, [isLevel1, level1Data, firstFourVideos, level2Data, watchedVideos]);
+  }, [
+    isLevel1,
+    level1Data,
+    firstFourVideos,
+    level2Data,
+    watchedVideos,
+    challengeCompleted,
+  ]);
 
   const updatedVideos = useMemo(
     () =>
@@ -109,14 +121,15 @@ export default function CoursesVideos() {
   };
 
   useEffect(() => {
-    if (watchedVideos === 4 && !isLevel1) {
+    if (watchedVideos === 1 && !isLevel1 && !challengeCompleted) {
       setModalOpen(true);
     }
-  }, [watchedVideos, isLevel1]);
+  }, [watchedVideos, isLevel1, challengeCompleted]);
 
   const closeModal = () => setModalOpen(false);
   const navigateToChallenge = () => {
     closeModal();
+    // setChallengeCompleted(true);
     router.push("/dashboard/challenges");
   };
 
