@@ -44,7 +44,7 @@ function DashboardSidebar() {
       icon: <TbTargetArrow />,
       tittle: "Challenges",
       link: "/dashboard/challenges",
-      disabled: watchedVideos !== 3 || isLevel1,
+      disabled: watchedVideos !== 4 || isLevel1,
     },
     {
       icon: <IoMdSettings />,

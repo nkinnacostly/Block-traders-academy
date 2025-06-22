@@ -1,29 +1,33 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import QuestionCard from "./components/QuestionCard";
-import quizData from "./components/data";
+
 import { useVideoStore } from "@/store/store";
 import { useRouter } from "next/navigation";
+import { quizData, quizData2 } from "./components/data";
+
 function Challenges() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [showModal, setShowModal] = useState(false);
-  const { setChallengeCompleted } = useVideoStore();
+  const {
+    challengeCompleted,
+    setChallengeCompleted,
+    challenge2Completed,
+    setChallenge2Completed,
+  } = useVideoStore();
+  console.log(challengeCompleted, "challengeCompleted");
 
-  // Set challenge as completed when score modal is shown
-  useEffect(() => {
-    if (showModal) {
-      setChallengeCompleted(true);
-    }
-  }, [showModal, setChallengeCompleted]);
+  const quiz =
+    challengeCompleted && !challenge2Completed ? quizData2 : quizData;
 
   const handleOptionChange = (option) => {
     setUserAnswers({ ...userAnswers, [currentQuestion]: option });
   };
 
   const handleNext = () => {
-    if (currentQuestion < quizData.length - 1) {
+    if (currentQuestion < quiz.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setShowModal(true);
@@ -37,7 +41,7 @@ function Challenges() {
   };
 
   const calculateScore = () => {
-    return quizData.reduce((score, question, index) => {
+    return quiz.reduce((score, question, index) => {
       if (userAnswers[index] === question.answer) {
         return score + 1;
       }
@@ -45,11 +49,23 @@ function Challenges() {
     }, 0);
   };
 
-  const resetQuiz = () => {
-    router.push("/dashboard/courses");
-    setCurrentQuestion(0);
-    setUserAnswers({});
-    setShowModal(false);
+  const resetQuiz = (score) => {
+    const passingScore = quiz.length - 3; // Allow 3 wrong answers
+
+    if (score >= passingScore) {
+      router.push("/dashboard/courses");
+      if (challengeCompleted && !challenge2Completed) {
+        // Second challenge completed
+        setChallenge2Completed(true);
+      } else {
+        // First challenge completed
+        setChallengeCompleted(true);
+      }
+    } else {
+      setCurrentQuestion(0);
+      setUserAnswers({});
+      setShowModal(false);
+    }
   };
 
   return (
@@ -57,13 +73,14 @@ function Challenges() {
       <div className="max-w-3xl mx-auto">
         <div className="bg-gray-800 p-6 rounded-lg shadow-lg">
           <h1 className="text-2xl font-bold text-center mb-4">
-            {`Question ${currentQuestion + 1} of ${quizData.length}`}
+            {`Question ${currentQuestion + 1} of ${quiz.length}`}
           </h1>
           <QuestionCard
-            question={quizData[currentQuestion].question}
-            options={quizData[currentQuestion].options}
+            question={quiz[currentQuestion]?.question}
+            options={quiz[currentQuestion]?.options}
             selected={userAnswers[currentQuestion]}
             handleOptionChange={handleOptionChange}
+            image={quiz[currentQuestion]?.image}
           />
           <div className="flex justify-between mt-6">
             <button
@@ -81,7 +98,7 @@ function Challenges() {
               onClick={handleNext}
               className="px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-md"
             >
-              {currentQuestion === quizData.length - 1 ? "Submit" : "Next"}
+              {currentQuestion === quiz.length - 1 ? "Submit" : "Next"}
             </button>
           </div>
         </div>
@@ -140,17 +157,17 @@ function Challenges() {
           <div className="bg-gray-800 text-white p-6 rounded-lg shadow-xl max-w-sm w-full text-center">
             <h2 className="text-3xl font-bold mb-4">Your Score</h2>
             <p className="text-5xl font-extrabold text-yellow-500 mb-4">
-              {calculateScore()}/{quizData.length}
+              {calculateScore()}/{quiz.length}
             </p>
             <p className="text-lg font-medium">
-              {calculateScore() === quizData.length
+              {calculateScore() === quiz.length
                 ? "🌟 Excellent Work!"
-                : calculateScore() >= quizData.length * 0.7
+                : calculateScore() >= quiz.length * 0.7
                   ? "👍 Good Job!"
                   : "🙁 Needs Improvement"}
             </p>
             <button
-              onClick={resetQuiz}
+              onClick={() => resetQuiz(calculateScore())}
               className="mt-6 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold rounded-md"
             >
               Done

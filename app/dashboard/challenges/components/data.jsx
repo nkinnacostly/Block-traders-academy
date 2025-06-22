@@ -94,4 +94,48 @@ const quizData = [
     answer: "Buy Side Liquidity",
   },
 ];
-export default quizData;
+
+const quizData2 = [
+  {
+    id: 1,
+    question: "The question is : which of these zone is a valid Point A or B",
+    image: "/assets/img/challenge1.png",
+    options: ["A", "B"],
+    answer: "B",
+    video: "/assets/videos/challenge1-answer.mp4",
+  },
+  {
+    id: 2,
+    question: "The question is : which of these zone is a valid Point A or B",
+    image: "/assets/img/challenge2.png",
+    options: ["A", "B"],
+    answer: "A",
+    video: "/assets/videos/challenge2-answer.mp4",
+  },
+  {
+    id: 3,
+    question: "The question is : which of these zone is a valid Point A or B",
+    image: "/assets/img/challenge3.png",
+    options: ["A", "B"],
+    answer: "B",
+    video: "/assets/videos/challenge3-answer.mp4",
+  },
+  {
+    id: 4,
+    question: "The question is : which of these zone is a valid Point A or B",
+    image: "/assets/img/challenge4.png",
+    options: ["A", "B"],
+    answer: "A",
+    video: "/assets/videos/challenge4-answer.mp4",
+  },
+  {
+    id: 5,
+    question: "Which direction is price heading to ?",
+    image: "/assets/img/challenge5.png",
+    options: ["A", "B"],
+    answer: "A",
+    video: "/assets/videos/challenge5-answer.mp4",
+  },
+];
+
+export { quizData, quizData2 };

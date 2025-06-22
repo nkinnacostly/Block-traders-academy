@@ -53,14 +53,24 @@ export const useStatsStore = create(
 
 export const useVideoStore = create((set) => ({
   watchedVideos: 0,
+  watchedVideosStage2: 0,
   challengeCompleted: false,
+  challenge2Completed: false,
   incrementWatchedVideos: () =>
     set((state) => ({
       watchedVideos: state.watchedVideos + 1,
     })),
+  incrementWatchedVideosStage2: () =>
+    set((state) => ({
+      watchedVideosStage2: state.watchedVideosStage2 + 1,
+    })),
   resetWatchedVideos: () =>
     set(() => ({
       watchedVideos: 0,
+    })),
+  resetWatchedVideosStage2: () =>
+    set(() => ({
+      watchedVideosStage2: 0,
     })),
   setChallengeCompleted: (completed) =>
     set(() => ({
@@ -69,5 +79,13 @@ export const useVideoStore = create((set) => ({
   resetChallengeCompleted: () =>
     set(() => ({
       challengeCompleted: false,
+    })),
+  setChallenge2Completed: (completed) =>
+    set(() => ({
+      challenge2Completed: completed,
+    })),
+  resetChallenge2Completed: () =>
+    set(() => ({
+      challenge2Completed: false,
     })),
 }));

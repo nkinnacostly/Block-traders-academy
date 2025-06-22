@@ -23,9 +23,11 @@ export default function CoursesVideos() {
 
   const {
     watchedVideos,
+    watchedVideosStage2,
     incrementWatchedVideos,
+    incrementWatchedVideosStage2,
     challengeCompleted,
-    setChallengeCompleted,
+    challenge2Completed,
   } = useVideoStore();
   const [isVisible, toggleVisibility] = useToggle(false);
   const [paymentData, setPaymentData] = useState(null);
@@ -68,7 +70,7 @@ export default function CoursesVideos() {
     isLoading: isLoadingFirstFour,
     isError: isErrorFirstFour,
   } = useGetRequest2(getFirstFourVideos, firstFourreqKey, {
-    enabled: isLevel2,
+    enabled: challengeCompleted ? false : isLevel2,
   });
 
   const { mutateAsync: initiatePayment, isPending: isPaymentPending } =
@@ -91,12 +93,17 @@ export default function CoursesVideos() {
     if (isLevel1) {
       return level1Data?.data?.videos || [];
     } else {
-      // For level 2 users, show level2Data when watchedVideos equals 4 AND challenge is completed
-      if (watchedVideos === 4 && challengeCompleted) {
+      // For level 2 users
+      if (challengeCompleted && !challenge2Completed) {
+        // Stage 2: Show level2Data after first challenge is completed
         return level2Data?.data?.videos || [];
+      } else if (watchedVideos === 4 && challengeCompleted) {
+        // This condition might not be needed anymore
+        return level2Data?.data?.videos || [];
+      } else {
+        // Stage 1: Show first four videos
+        return firstFourVideos?.data?.videos || [];
       }
-      // Otherwise show first four videos
-      return firstFourVideos?.data?.videos || [];
     }
   }, [
     isLevel1,
@@ -105,6 +112,7 @@ export default function CoursesVideos() {
     level2Data,
     watchedVideos,
     challengeCompleted,
+    challenge2Completed,
   ]);
 
   const updatedVideos = useMemo(
@@ -118,21 +126,32 @@ export default function CoursesVideos() {
 
   const handleVideoWatched = () => {
     if (!isLevel1) {
-      incrementWatchedVideos();
+      if (challengeCompleted && !challenge2Completed) {
+        // Stage 2: After first challenge, count second set of videos
+        incrementWatchedVideosStage2();
+      } else {
+        // Stage 1: Count first set of videos
+        incrementWatchedVideos();
+      }
     }
   };
 
   useEffect(() => {
     if (
-      watchedVideos === 4 &&
-      !isLevel1 &&
-      !challengeCompleted &&
+      watchedVideosStage2 === 6 &&
+      challengeCompleted &&
+      !challenge2Completed &&
       !hasShownModal
     ) {
       setModalOpen(true);
       setHasShownModal(true);
     }
-  }, [watchedVideos, isLevel1, challengeCompleted, hasShownModal]);
+  }, [
+    watchedVideosStage2,
+    challengeCompleted,
+    challenge2Completed,
+    hasShownModal,
+  ]);
 
   // Reset modal state when challenge is completed
   useEffect(() => {
@@ -141,10 +160,16 @@ export default function CoursesVideos() {
     }
   }, [challengeCompleted]);
 
+  useEffect(() => {
+    if (watchedVideos === 4 && !challengeCompleted) {
+      setModalOpen(true);
+      setHasShownModal(true);
+    }
+  }, [watchedVideos, challengeCompleted]);
+
   const closeModal = () => setModalOpen(false);
   const navigateToChallenge = () => {
     closeModal();
-    setChallengeCompleted(true);
     router.push("/dashboard/challenges");
   };
 
