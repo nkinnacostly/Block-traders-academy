@@ -70,7 +70,7 @@ export default function CoursesVideos() {
     isLoading: isLoadingFirstFour,
     isError: isErrorFirstFour,
   } = useGetRequest2(getFirstFourVideos, firstFourreqKey, {
-    enabled: challengeCompleted ? false : isLevel2,
+    enabled: (!challengeCompleted || challenge2Completed) && isLevel2,
   });
 
   const { mutateAsync: initiatePayment, isPending: isPaymentPending } =
@@ -94,11 +94,14 @@ export default function CoursesVideos() {
       return level1Data?.data?.videos || [];
     } else {
       // For level 2 users
-      if (challengeCompleted && !challenge2Completed) {
+      if (challengeCompleted && challenge2Completed) {
+        // Final stage: Show both first and second videos together
+        return [
+          ...(firstFourVideos?.data?.videos || []),
+          ...(level2Data?.data?.videos || []),
+        ];
+      } else if (challengeCompleted && !challenge2Completed) {
         // Stage 2: Show level2Data after first challenge is completed
-        return level2Data?.data?.videos || [];
-      } else if (watchedVideos === 4 && challengeCompleted) {
-        // This condition might not be needed anymore
         return level2Data?.data?.videos || [];
       } else {
         // Stage 1: Show first four videos
