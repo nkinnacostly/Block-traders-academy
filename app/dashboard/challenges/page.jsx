@@ -5,6 +5,7 @@ import QuestionCard from "./components/QuestionCard";
 import { useVideoStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { quizData, quizData2 } from "./components/data";
+import { UpdateUserDetails } from "./services/update-user-details";
 
 function Challenges() {
   const router = useRouter();
@@ -18,7 +19,7 @@ function Challenges() {
     setChallenge2Completed,
   } = useVideoStore();
   console.log(challengeCompleted, "challengeCompleted");
-
+  const { updateUserDetails } = UpdateUserDetails();
   const quiz =
     challengeCompleted && !challenge2Completed ? quizData2 : quizData;
 
@@ -57,6 +58,7 @@ function Challenges() {
       if (challengeCompleted && !challenge2Completed) {
         // Second challenge completed
         setChallenge2Completed(true);
+        updateUserDetails();
       } else {
         // First challenge completed
         setChallengeCompleted(true);

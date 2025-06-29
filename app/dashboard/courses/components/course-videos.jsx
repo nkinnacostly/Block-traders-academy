@@ -113,7 +113,6 @@ export default function CoursesVideos() {
     level1Data,
     firstFourVideos,
     level2Data,
-    watchedVideos,
     challengeCompleted,
     challenge2Completed,
   ]);
