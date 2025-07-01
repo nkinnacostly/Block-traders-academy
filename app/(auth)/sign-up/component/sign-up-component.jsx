@@ -38,6 +38,7 @@ function SignUp() {
       password: "",
       notification_status: Number(0),
       paid: 0,
+      referral_code: "",
     },
   });
 
@@ -103,6 +104,15 @@ function SignUp() {
           // setIsValid={setIsValid}
           error={errors.password}
           name={"password"}
+          register={register}
+        />
+        <TextInput
+          inputText={"Referral Code"}
+          placeholder={"Enter Referral Code (Optional)"}
+          // onChange={handleUserInputs}
+          error={errors.referral_code}
+          type="text"
+          name={"referral_code"}
           register={register}
         />
         {/* <div className="grid grid-cols-2 gap-5">
