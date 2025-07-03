@@ -122,14 +122,20 @@ export default function UsersInfo() {
         </div>
         <div className="w-full p-4 border-b-2 ">
           <p>Block Path</p>
-          <TextInput
+          {/* <TextInput
             name="block_path"
             register={register}
             error={errors.block_path}
             type="text" // value=""
             placeholder="Block Path"
             defaultValue={loggedInUserDetails?.block_path}
-          />
+          /> */}
+          <p>
+            {loggedInUserDetails?.learners_level > 3 ||
+            loggedInUserDetails?.learners_level > "3"
+              ? "Trade Arena"
+              : "Academy"}
+          </p>
         </div>
         <div className="w-full p-4 border-b-2 ">
           <p>Block Level</p>
