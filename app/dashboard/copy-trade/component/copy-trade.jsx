@@ -49,7 +49,7 @@ export default function TopTraders() {
                 <div className="flex justify-between items-center">
                   <h3 className="text-lg font-semibold">{trader.user_name}</h3>
                   <span className="text-sm text-muted-foreground">
-                    Level {trader.equity_growth}
+                    Level {trader.trader_level}
                   </span>
                 </div>
                 <div className="grid grid-cols-2 gap-4 mt-4">
@@ -61,15 +61,17 @@ export default function TopTraders() {
                   </div>
                   <div>
                     <p className="text-sm text-muted-foreground text-right">
-                      1 Week Gain
+                      5-Day Rolling Return
                     </p>
                     <p className="text-lg font-medium text-green-500 text-right">
-                      +${trader.one_week_gain.toLocaleString()}
+                      {trader.one_week_gain.toLocaleString()}
                     </p>
                   </div>
                 </div>
                 <div className="mt-2">
-                  <p className="text-sm text-muted-foreground">Performance</p>
+                  <p className="text-sm text-muted-foreground">
+                    Return on Equity
+                  </p>
                   <p className="text-lg font-medium text-green-500">
                     {trader.equity_growth}
                   </p>
