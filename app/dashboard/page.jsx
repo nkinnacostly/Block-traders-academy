@@ -70,7 +70,7 @@ function Dashboard() {
       bgColor: "#D4AF37",
     },
     {
-      number: coursesDuration?.total_duration,
+      number: `${coursesDuration?.total_duration} min`,
       icon: <GiHourglass size={20} />,
       tittle: "Activity Hours",
       bgColor: "#D4AF37",
