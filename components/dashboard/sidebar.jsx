@@ -37,7 +37,7 @@ function DashboardSidebar() {
     },
     {
       icon: <CopyIcon />,
-      tittle: "Copy Trade",
+      tittle: "Copy Trading",
       link: "/dashboard/copy-trade",
     },
     {
