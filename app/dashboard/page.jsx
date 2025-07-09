@@ -78,7 +78,7 @@ function Dashboard() {
     {
       number: loggedInUserDetails?.learners_level,
       icon: <GiProgression size={20} />,
-      tittle: "Learners Level",
+      tittle: "Learner's Level",
       bgColor: "#D4AF37",
     },
     {
