@@ -10,7 +10,7 @@ export function LiveClasses({ meetings }) {
     );
   }
   return (
-    <div className="space-y-5 border border-red-500">
+    <div className="space-y-5 ">
       {meetings.map((meeting) => (
         <div
           key={meeting.id}
