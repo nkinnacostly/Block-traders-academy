@@ -76,6 +76,14 @@ export default function TopTraders() {
                     {trader.equity_growth}
                   </p>
                 </div>
+                <div className="mt-2">
+                  <p className="text-sm text-muted-foreground">
+                    Last Trade Date
+                  </p>
+                  <p className="text-lg font-medium text-green-500">
+                    {trader.last_trade_date[0]}
+                  </p>
+                </div>
                 <Button
                   className="w-full mt-4"
                   onClick={() => handleCopyTrade(trader.user_id)}
