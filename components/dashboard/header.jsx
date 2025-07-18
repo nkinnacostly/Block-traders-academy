@@ -15,27 +15,45 @@ function DashboardHeader() {
   return (
     <>
       <div className="items-center justify-center hidden w-full h-full p-4 mb-2 lg:flex">
-        <div className="flex items-center w-full justify-evenly ">
+        <div className="flex items-center w-full justify-between max-w-7xl mx-auto">
           <div>
-            <Image src={Logo} height={100} width={100} alt="logo" />
+            <Image
+              src={Logo}
+              height={80}
+              width={80}
+              alt="logo"
+              className="object-contain"
+            />
           </div>
-          <div className="flex items-center space-x-5">
-            <Link href={"/"} className="">
+          <div className="flex items-center space-x-6 lg:space-x-8">
+            <Link
+              href={"/"}
+              className="hover:text-gray-600 transition-colors font-medium"
+            >
               Home
             </Link>
-            <Link href={"/about"} className="">
+            <Link
+              href={"/about"}
+              className="hover:text-gray-600 transition-colors font-medium"
+            >
               About Us
             </Link>
-            <Link href={"/education"} className="flex items-center ">
+            <Link
+              href={"/education"}
+              className="flex items-center hover:text-gray-600 transition-colors font-medium"
+            >
               <p>Education Arena</p>
-              <span>
-                <Image src={Down} alt="carret-down" height={35} width={35} />
+              <span className="ml-1">
+                <Image src={Down} alt="carret-down" height={20} width={20} />
               </span>
             </Link>
-            <Link href={"/trading"} className="flex items-center ">
+            <Link
+              href={"/trading"}
+              className="flex items-center hover:text-gray-600 transition-colors font-medium"
+            >
               <p>Trading Arena</p>
-              <span>
-                <Image src={Down} alt="carret-down" height={35} width={35} />
+              <span className="ml-1">
+                <Image src={Down} alt="carret-down" height={20} width={20} />
               </span>
             </Link>
           </div>

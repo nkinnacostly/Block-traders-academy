@@ -62,7 +62,9 @@ export default function CoursesVideos() {
     isLoading: isLoadingLevel2,
     isError: isErrorLevel2,
   } = useGetRequest2(level2Url, level2reqKey, {
-    enabled: watchedVideos === 4 && challengeCompleted,
+    enabled:
+      loggedInUserDetails?.challenge === "firstChallengePassed" ||
+      loggedInUserDetails?.challenge === "secondChallengePassed",
   });
 
   const {
@@ -70,7 +72,8 @@ export default function CoursesVideos() {
     isLoading: isLoadingFirstFour,
     isError: isErrorFirstFour,
   } = useGetRequest2(getFirstFourVideos, firstFourreqKey, {
-    enabled: (!challengeCompleted || challenge2Completed) && isLevel2,
+    enabled:
+      loggedInUserDetails?.challenge === "secondChallengePassed" || isLevel2,
   });
 
   const { mutateAsync: initiatePayment, isPending: isPaymentPending } =
@@ -94,13 +97,13 @@ export default function CoursesVideos() {
       return level1Data?.data?.videos || [];
     } else {
       // For level 2 users
-      if (challengeCompleted && challenge2Completed) {
+      if (loggedInUserDetails?.challenge === "level2done") {
         // Final stage: Show both first and second videos together
         return [
-          ...(firstFourVideos?.data?.videos || []),
           ...(level2Data?.data?.videos || []),
+          ...(firstFourVideos?.data?.videos || []),
         ];
-      } else if (challengeCompleted && !challenge2Completed) {
+      } else if (loggedInUserDetails?.challenge === "firstChallengePassed") {
         // Stage 2: Show level2Data after first challenge is completed
         return level2Data?.data?.videos || [];
       } else {
@@ -110,11 +113,10 @@ export default function CoursesVideos() {
     }
   }, [
     isLevel1,
-    level1Data,
-    firstFourVideos,
-    level2Data,
-    challengeCompleted,
-    challenge2Completed,
+    level1Data?.data?.videos,
+    loggedInUserDetails?.challenge,
+    level2Data?.data?.videos,
+    firstFourVideos?.data?.videos,
   ]);
 
   const updatedVideos = useMemo(

@@ -62,5 +62,33 @@ export function SubmitCourse() {
       // console.log(error.error);
     }
   };
-  return { onSubmit, isPending, completed };
+
+  const challengeCompleted = async (userData) => {
+    try {
+      await mutateAsync(
+        {
+          method: "PUT",
+          url: "/update-user-challenge",
+          data: userData,
+        },
+        {
+          onSuccess: (data) => {
+            console.log(data);
+            //    toast.success(data.message);
+            //    storage.localStorage.set("user", data.user);
+            //    storage.localStorage.set("__session", data.data?.token);
+            //    router.push("/login");
+          },
+          onError: (error) => {
+            //    toast.error(error.message);
+            console.log(error, "This is my data error");
+          },
+        }
+      );
+    } catch (error) {
+      // console.error("Error adding data:", error.message);
+      // console.log(error.error);
+    }
+  };
+  return { onSubmit, isPending, completed, challengeCompleted };
 }

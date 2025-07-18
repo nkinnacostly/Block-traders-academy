@@ -29,7 +29,7 @@ export function WatchVideo({
 }) {
   const { loggedInUserDetails } = useUserStore();
   const match = getYouTubeVideoId(data?.path);
-  const { onSubmit, completed } = SubmitCourse();
+  const { onSubmit, completed, challengeCompleted } = SubmitCourse();
 
   // console.log(data);
   const [showButton, setShowButton] = useState(false);
@@ -69,6 +69,10 @@ export function WatchVideo({
       course_id: data?.id,
       course_level: data?.level,
     });
+    await challengeCompleted({
+      challenge: "secondChallengePassed",
+    });
+    // onWatched();
   };
   const handleVideoReady = async () => {
     setIsLoading(false);

@@ -6,12 +6,15 @@ import { useVideoStore } from "@/store/store";
 import { useRouter } from "next/navigation";
 import { quizData, quizData2 } from "./components/data";
 import { UpdateUserDetails } from "./services/update-user-details";
+import { SubmitCourse } from "../courses/services/courses-service";
 
 function Challenges() {
   const router = useRouter();
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
   const [showModal, setShowModal] = useState(false);
+  const { challengeCompleted: challengeCompletedService } = SubmitCourse();
+
   const {
     challengeCompleted,
     setChallengeCompleted,
@@ -50,14 +53,20 @@ function Challenges() {
     }, 0);
   };
 
-  const resetQuiz = (score) => {
+  const resetQuiz = async (score) => {
     const passingScore = quiz.length - 3; // Allow 3 wrong answers
 
     if (score >= passingScore) {
       router.push("/dashboard/courses");
+      await challengeCompletedService({
+        challenge: "firstChallengePassed",
+      });
       if (challengeCompleted && !challenge2Completed) {
         // Second challenge completed
         setChallenge2Completed(true);
+        await challengeCompletedService({
+          challenge: "secondChallengePassed",
+        });
         updateUserDetails();
       } else {
         // First challenge completed
