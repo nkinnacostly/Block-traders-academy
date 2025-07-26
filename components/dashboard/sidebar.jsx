@@ -76,10 +76,10 @@ function DashboardSidebar({ onLinkClick }) {
       <>
         {sideLinks.map((links, index) => (
           <Link
-            className={`flex items-center justify-start rounded-lg px-3 py-3 lg:py-2 cursor-pointer transition-all duration-200 hover:bg-gray-50 active:bg-gray-100 ${
+            className={`flex items-center justify-start rounded-lg px-3 py-3 lg:py-2 cursor-pointer transition-all duration-200 hover:bg-[#1E1E1E66] active:bg-gray-100 ${
               pathname === links?.link
                 ? "bg-[#1E1E1E99] border border-green-300 text-white"
-                : "hover:bg-gray-50"
+                : "hover:bg-[#1E1E1E66]"
             } ${links.disabled ? "pointer-events-none opacity-50" : ""}`}
             key={index}
             href={links.disabled ? "#" : links.link}
