@@ -20,22 +20,26 @@ const data = [
   {
     icon: "/assets/img/svg/education.svg",
     head: "Education",
-    info: "Knowledge is the Key to Unlocking Boundless Possibilities.",
+    heading: "Master Forex with a Structured Roadmap",
+    info: "Step-by-step video lessons, real challenges, and expert mentorship to build rock-solid trading skills.",
   },
   {
     icon: "/assets/img/svg/trade.svg",
     head: "Trade",
-    info: "Here Strategy Meets Opportunity, and Decisions Shape Destinies.",
+    heading: "Trade with Clarity, Confidence & a Journal",
+    info: "Apply strategies in live environments, track every move, and grow with mentor feedback.",
   },
   {
     icon: "/assets/img/svg/opportunity.svg",
     head: "Opportunity",
-    info: "Take advantage of market changes. Access a huge selection of FX, indices, commodities, and equity instruments.",
+    heading: "Unlock Real Capital, Not Just Simulations",
+    info: "Earn your spot in the Trading Arena and get funded to trade forex, indices, commodities & more.",
   },
   {
     icon: "/assets/img/svg/value.svg",
     head: "Value",
-    info: "Save more of your earnings. Trade with ultra-tight spreads, and build a professional traders portfolio.",
+    heading: "Earn More, Grow Your Profile, and Get Copied",
+    info: "Progress through our trader levels, manage investor capital, and become a featured trader on our Copy Trading platform.",
   },
 ];
 export default function Home() {
@@ -43,11 +47,14 @@ export default function Home() {
     <>
       <Topheader
         backgroundImage={"/assets/img/png/people.png"}
-        colouredText={"Learning"}
-        otherText={"on any other platform would be settling for less"}
-        check1={"Get educated on better trading"}
-        check2={"Take on the market with monitored funding "}
-        check3={"Your rollover made easier"}
+        colouredText={"Become a Profitable Trader"}
+        otherText={"We Train You, Fund You, and Feature You"}
+        check1={"Learn powerful trading strategies in our on-demand academy"}
+        check2={"Get Premium Mentorship with automated journal  for feedback"}
+        check3={"Earn your spot to manage real capital in our Trading Arena"}
+        check4={
+          "Get featured on our Copy Trading platform and get paid to be copied"
+        }
       />
       <div
         className="bg-no-repeat bg-cover "
@@ -58,7 +65,7 @@ export default function Home() {
           style={{ backgroundImage: `url('/assets/img/png/global.png')` }}
         >
           <p className=" text-black text-[25px] text-center lg:text-start lg:text-[40px] font-semibold underline">
-            Your Global Trade Educator
+            From Student to Funded Trader, We Equip You to Win
           </p>
           <Card cardData={data} />
         </div>
@@ -68,20 +75,23 @@ export default function Home() {
               <div className="lg:pl-[4rem] pt-[4rem] w-full lg:w-1/2">
                 <Textwithcolor
                   colouredText={"Welcome"}
-                  otherText={"to Block"}
+                  otherText={"to Block Traders Academy"}
                 />
+                <p className="text-base font-normal text-white text-opacity-90">
+                  Where Ambition Meets Skill and Skill Meets Capital.
+                </p>
                 <Checkwithtext
                   Check={Grad}
                   check1={"Trade Education"}
                   info={
-                    "Unlocking Knowledge Together: Knowledge is the Key to Unlocking Boundless Possibilities."
+                    "Learn smarter, not harder. Our expert-led curriculum teaches you how the markets really move with mentorship, practical challenges, and live feedback."
                   }
                 />
                 <Checkwithtext
                   Check={Fund}
                   check1={"Trade Markets"}
                   info={
-                    "Markets Are Catalysts for information: Here Strategy Meets Opportunity, and Decisions Shape Destinies."
+                    "From forex to indices and commodities, apply your strategy, prove your edge, and earn your place in the Trading Arena."
                   }
                 />
               </div>
@@ -96,34 +106,38 @@ export default function Home() {
               </div>
             </div>
             <div className="lg:px-[4rem] pt-[4rem]">
-              <Textwithcolor colouredText={"Welcome"} otherText={"to Block"} />
+              <Textwithcolor
+                colouredText={"What Sets "}
+                otherText={"Block Traders Apart"}
+              />
+
               <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
                 <Checkwithtext
                   Check={Fund}
                   check1={"Trade Funding"}
                   info={
-                    "Empowering Opportunity Through Free Trade Funding: Where borders fade, economies thrive, and innovation knows no limits."
+                    "Get funded. Top performers earn access to monitored capital from Block Traders Academy and our partners - no hidden costs, no limits on your growth."
                   }
                 />
                 <Checkwithtext
                   Check={Progress}
                   check1={"Tracked Education"}
                   info={
-                    "Guiding the Journey of Knowledge: With progress tracking, every step becomes a milestone towards a brighter, smarter future."
+                    "Every lesson, task, and trade you complete is recorded, giving both you and your mentors clear visibility into your growth. This structured system ensures you’re always on the right path toward professional trading."
                   }
                 />
                 <Checkwithtext
                   Check={Tap}
                   check1={"Interactive Sessions"}
                   info={
-                    "Unlocking Knowledge Together: In the realm of interactive sessions, learning transcends boundaries and curiosity sparks meaningful connections."
+                    "Join weekly live mentorship calls and trader roundtables. These sessions are your space to ask questions, get personalized guidance, and connect with a growing network of like-minded traders."
                   }
                 />
                 <Checkwithtext
                   Check={Think}
                   check1={"Challenges"}
                   info={
-                    "Challenges Are Catalysts for Growth: In every hurdle lies an opportunity to redefine our limits and shape our success."
+                    "Challenges are where theory meets execution. Put your skills to the test under real market conditions. Each challenge is a chance to prove consistency, level up, and unlock new opportunities."
                   }
                 />
               </div>
@@ -146,18 +160,19 @@ export default function Home() {
                   // otherText={"to Block"}
                 />
                 <p className="text-base font-normal text-white text-opacity-90">
-                  Trading is the act of purchasing and selling financial
-                  instruments for profit, including stocks, bonds, currencies,
-                  and commodities. Success also hinges on a trader`&apos;`s
-                  capacity for sustained profitability.
+                  Trading is the process of buying and selling financial assets
+                  such as stocks, currencies, commodities, and indices with the
+                  goal of generating profit. But it’s more than just buying low
+                  and selling high. Successful trading depends on consistency,
+                  discipline, and the ability to navigate market movements with
+                  a proven strategy
                   <br />
                   <br />
-                  Investors aim to benefit from buying or selling an asset at a
-                  higher or cheaper price by predicting market price
-                  fluctuations. A security can be purchased going long in the
-                  hopes that its value will increase and you will benefit, or it
-                  can be sold going short in the expectation that its value will
-                  decrease.
+                  Traders aim to capitalize on price fluctuations by going long
+                  (buying) or short (selling), anticipating how markets will
+                  move. Every decision is backed by proper analysis, risk
+                  management, and timing, that’s exactly what we teach at Block
+                  Traders Academy
                 </p>
               </div>
             </div>
@@ -168,15 +183,16 @@ export default function Home() {
                   // otherText={"to Block"}
                 />
                 <p className="text-base font-normal text-right text-white text-opacity-90">
-                  The term Forex (sometimes spelt FX) refers to the
-                  international market for buying and selling foreign
-                  currencies.
+                  Forex (short for “foreign exchange”) is the world’s largest
+                  and most liquid financial market, where currencies are traded
+                  around the clock. It’s a dynamic space where traders profit by
+                  speculating on the value of one currency against another.
                   <br />
                   <br />
-                  Every second, currency prices fluctuate, providing investors
-                  with countless opportunities to make deals. And investors aim
-                  to increase their profits by correctly anticipating the price
-                  changes of several pairs.
+                  At Block Traders Academy, we equip you with the skills to
+                  analyze currency pairs, spot trade setups, and take advantage
+                  of real-time volatility, turning every market movement into
+                  potential opportunity.
                 </p>
               </div>
               <div className="">
@@ -221,7 +237,8 @@ export default function Home() {
           </div>
           <div className="space-y-4">
             <div className="  text-black text-xl font-medium ">
-              Get access to trades with grown equity and great spreads.
+              Start copying top-performing traders with proven results and
+              real-time transparency.
             </div>
             <Button className="bg-black text-white" size="xl">
               Copy Trade
@@ -238,8 +255,8 @@ export default function Home() {
             </div>
           </div>
           <div className=" left-[636px] top-[122px] absolute text-white text-xl font-medium ">
-            Register for a Block trade account to get personalised course
-            recommendations and offers
+            Unlock your personal trading dashboard with tailored courses,
+            funding opportunities, and exclusive insights.
           </div>
           <div className="w-[515px] left-[86px] top-[115px] absolute text-center">
             <span className="text-white text-[40px] font-bold ">Join</span>

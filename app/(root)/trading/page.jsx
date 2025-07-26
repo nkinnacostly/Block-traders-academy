@@ -15,13 +15,15 @@ function Trading() {
     <div className="relative ">
       <Topheader
         backgroundImage={"/assets/img/png/trading-bg.png"}
-        colouredText={"Knowledge Hub"}
+        colouredText={"Trading Arena"}
         otherText={
-          ": Learn trading easily with the best-in-class education to build or refresh your trading skills"
+          ": Take your skills live, trade with discipline, and scale your way to real capital"
         }
-        check1={"Get educated on better trading"}
-        check2={"Take on the market with monitored funding "}
-        check3={"Your rollover made easier"}
+        check1={
+          "Trade in a structured environment with daily journaling and mentor feedback"
+        }
+        check2={"Unlock funding as you move up the ranks"}
+        check3={"Grow your equity and get discovered by real investors"}
         className={" z-10"}
       />
       <div
@@ -43,17 +45,33 @@ function Trading() {
             </div>
             <div className="flex flex-col items-start justify-center">
               <p className=" text-amber-400 text-[40px] font-semibold">
-                Beginner
+                Beginner Traders (Level 4–10)
               </p>
-              <p className="mt-3 text-xl font-semibold text-white text-opacity-90">
-                Trade markets while learning
-              </p>
-              <p className="mt-3 text-base font-normal text-white text-opacity-90">
-                Trade Markets while sharpening your skills <br />
-                Start small,dream big. Master trading basics with minimal risk,
-                and skill up before enjoying the benefits of our intermediate
-                account{" "}
-              </p>
+              <div className="mt-3">
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  Badge Progression:
+                </p>
+                <ul className="text-base font-normal text-white text-opacity-90 mb-4 space-y-2 list-disc list-inside">
+                  <li>Level 4–5: Profitable Trader</li>
+                  <li>Level 6–10: Risk Manager</li>
+                </ul>
+
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  What You Get:
+                </p>
+                <ul className="text-base font-normal text-white text-opacity-90 mb-4 space-y-2 list-disc list-inside">
+                  <li>Hands-on learning while trading live markets</li>
+                  <li>Guided mentorship and daily trade journaling</li>
+                  <li>Access to challenges designed to sharpen fundamentals</li>
+                </ul>
+
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  Funding Starts at Level 7
+                </p>
+                <p className="text-base font-normal text-white text-opacity-90 mb-4">
+                  Prop Account Funding: $3,000 – $5,000
+                </p>
+              </div>
               <Button size="xl" className="mt-4">
                 Start Here
               </Button>
@@ -67,20 +85,36 @@ function Trading() {
               alt="beginner"
               className="absolute -left-10"
             />
-            <div className="flex flex-col items-end justify-center">
+            <div className="flex flex-col items-start justify-center">
               <p className=" text-amber-400 text-[40px] font-semibold">
-                Beginner
+                Intermediate Traders (Level 11–16)
               </p>
-              <p className="mt-3 text-xl font-semibold text-white text-opacity-90">
-                Trade markets while learning
-              </p>
-              <p className="mt-3 text-base font-normal text-white text-opacity-90 text-end">
-                Given that our intermediate account is for more experienced
-                traders. Improve your trading skills through free educational
-                challenges and keep on top of the latest trends with
-                professional analysis and updates. <br />
-                <br /> Intermediate provides more.
-              </p>
+              <div className="mt-3">
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  Badge Progression:
+                </p>
+                <ul className="text-base font-normal text-white text-opacity-90 mb-4 space-y-2 list-disc list-inside">
+                  <li>Level 11–13: Signal Provider</li>
+                  <li>Level 14–16: Money Monger</li>
+                </ul>
+
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  What You Get:
+                </p>
+                <ul className="text-base font-normal text-white text-opacity-90 mb-4 space-y-2 list-disc list-inside">
+                  <li>Advanced technical and fundamental challenge sets</li>
+                  <li>Performance-based eligibility for larger accounts</li>
+                  <li>Recognition as a trusted signal provider</li>
+                </ul>
+
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  Funding Options:
+                </p>
+                <div className="text-base font-normal text-white text-opacity-90 mb-4">
+                  <p>Live Account: $5,000 – $10,000</p>
+                  <p>Prop Account: Up to $50,000</p>
+                </div>
+              </div>
               <Button size="xl" className="mt-4">
                 Start Here
               </Button>
@@ -105,20 +139,42 @@ function Trading() {
                 className="w-full h-full"
               />
             </div>
-            <div className="flex flex-col items-end justify-center">
+            <div className="flex flex-col items-start justify-center">
               <p className=" text-amber-400 text-[40px] font-semibold">
-                Expert
+                Expert Traders (Level 17–20)
               </p>
-              <p className="mt-3 text-xl font-semibold text-white text-opacity-90">
-                Trade markets while learning
-              </p>
-              <p className="mt-3 text-base font-normal text-white text-opacity-90 text-end">
-                With our Expert account, you get all the features that makes
-                intermediate accounts so popular plus it has the highest
-                funding. Getting to half a million dollars is very possible with
-                the expert account
-              </p>
-              {/* <Buttonwithbg btnText={"Start here"} className={"mt-3"} /> */}
+              <div className="mt-3">
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  Badge Earned:
+                </p>
+                <ul className="text-base font-normal text-white text-opacity-90 mb-4 space-y-2 list-disc list-inside">
+                  <li>Level 17–20: Block Trader</li>
+                </ul>
+
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  What You Get:
+                </p>
+                <ul className="text-base font-normal text-white text-opacity-90 mb-4 space-y-2 list-disc list-inside">
+                  <li>Highest level of funding and trader recognition</li>
+                  <li>Eligibility to appear on the Copy Trading leaderboard</li>
+                  <li>Deep risk reviews and trading authority</li>
+                </ul>
+
+                <p className="text-xl font-semibold text-white text-opacity-90 mb-4">
+                  Funding Options:
+                </p>
+                <div className="text-base font-normal text-white text-opacity-90 mb-4">
+                  <p>Live Account: $20,000 – $50,000</p>
+                  <p>Prop Account: $100,000 – $200,000</p>
+                </div>
+
+                <p className="text-sm font-normal text-white text-opacity-90 mb-4 italic">
+                  Note: Whether you receive a live account (funded by Block
+                  Traders) or a prop account (from our prop firm partners)
+                  depends on your performance, risk management, and journaling
+                  discipline in the Academy.
+                </p>
+              </div>
               <Button size="xl" className="mt-4">
                 Start Here
               </Button>

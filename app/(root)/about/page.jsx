@@ -16,22 +16,22 @@ const data = [
   {
     icon: "/assets/img/svg/education.svg",
     head: "Education",
-    info: "We offer instruction for novice and experienced traders in a range of forms to help you get started or enhance your trading abilities.",
+    info: "Learn through recorded classes, real-time Zoom sessions, and hands-on trading challenges.",
   },
   {
     icon: "/assets/img/svg/trade.svg",
     head: "Trade",
-    info: "We offer free funding to our traders eliminating prop firm challenge failure",
+    info: "Advance through our trading levels by proving consistency and discipline, not by paying extra.",
   },
   {
     icon: "/assets/img/svg/human.svg",
     head: "Trade needs",
-    info: "We give you funded accounts according to your trading level and expertise in the market ",
+    info: "Once you qualify, you can get access to investor-backed capital — no gimmicks, just results.",
   },
   {
     icon: "/assets/img/svg/platform.svg",
     head: "Platform",
-    info: "We offer the platform to track all your trading progress and help you be a better trader",
+    info: "You’ll be learning and growing alongside other serious traders and mentors who’ve been there.",
   },
 ];
 function AboutPage() {
@@ -39,11 +39,11 @@ function AboutPage() {
     <>
       <Topheader
         backgroundImage={"/assets/img/png/about.png"}
-        colouredText={"Years"}
-        otherText={"trusted trading and education"}
-        check1={"Get educated on better trading"}
-        check2={"Take on the market with monitored funding "}
-        check3={"Your rollover made easier"}
+        colouredText={"Years of Expertise"}
+        otherText={"One Platform. Unlimited Growth"}
+        check1={"Master the markets with structured education"}
+        check2={"Get funded when you prove your skill"}
+        check3={"Grow confidently with rollover support and insights"}
         className={"relative"}
       />
       <div
@@ -61,36 +61,28 @@ function AboutPage() {
               </span>
             </div>
             <p className="text-xl font-normal text-white text-opacity-90 lg:text-start 2xl:text-start">
-              Block Traders Academy was created because we believed that trading
-              was too interesting to be reserved for a select few.
+              Block Traders Academy was founded on the belief that trading
+              should not be reserved for a select few. We saw an opportunity to
+              make the financial markets more accessible and we took it.
               <br />
               <br />
-              As traders ourselves, we were able to see how the developing web
-              may present opportunities
+              As traders ourselves, we recognized how the evolving digital
+              landscape created new ways for anyone, anywhere, to learn, take
+              smart risks, and grow. So we built a platform guided by three core
+              principles: transparency, opportunity, and community.
               <br />
-              to anyone willing to take a small amount of risk and invest the
-              time to learn. We established
+              We’re committed to an open, honest experience, no hidden fees, no
+              skewed trader stats, no gimmicks. Just real education and real
+              chances to succeed.
               <br />
-              three guidelines to direct our goal and help the globe seize
-              opportunity.
-              <br />
-              <br />
-              Anyone who choose to trade with us would be able to do so with
-              complete confidence . We committed to being open and truthful.
-              Hence, there were no stealth fees and no trader-specific
-              statistics.
+              Access to quality trading knowledge shouldn’t be locked away. If
+              investors like Warren Buffett built wealth through insight and
+              strategy, why shouldn’t the rest of us?
               <br />
               <br />
-              Access to knowledge and education regarding success in the Forex
-              market shouldn’t be hidden anymore, like Warren Buffetts, to
-              maximize
-              <br />
-              benefits.
-              <br />
-              Our commitment is to reduce trading costs and provide
-              collaborative services, helping clients
-              <br />
-              become profitable traders.
+              At Block Traders, we reduce costs, cut through the noise, and
+              focus on collaborative tools that help you become a consistent,
+              profitable trader.
             </p>
           </div>
         </div>
@@ -102,15 +94,15 @@ function AboutPage() {
         <p className="text-2xl  text-black lg:text-[40px] font-semibold  w-full px-[2rem] lg:px-[5rem] py-[3rem]">
           Block Traders In Numbers
         </p>
-        <div className="w-full bg-black lg:h-[270px] flex-col lg:flex-row flex items-center px-[2rem] justify-between xl:px-[7rem] space-y-10 lg:space-y-0 py-5 lg:py-0">
+        <div className="w-full bg-black lg:h-[270px] grid grid-cols-1 lg:grid-cols-4  items-center px-[2rem] gap-5 justify-between xl:px-[2rem] space-y-10 lg:space-y-0 py-5 lg:py-0">
           <div className="flex flex-col items-center justify-center">
             <div>
               <span className="text-5xl font-bold text-amber-400 ">200</span>
               <span className="text-5xl font-semibold text-white ">+</span>
             </div>
             <p className="text-base font-normal text-center text-white capitalize">
-              Around the world, more than 200 <br /> people have chosen to learn
-              with Block
+              Trained Students <br /> Aspiring traders from around the world
+              have gained real skills through our structured programs.
             </p>
           </div>
           <div className="flex flex-col items-center justify-center">
@@ -119,19 +111,31 @@ function AboutPage() {
               <span className="text-5xl font-semibold text-white ">+</span>
             </div>
             <p className="text-base font-normal text-center text-white capitalize">
-              Block traders has been opted for <br /> by more than 200 persons
-              globally
+              Platform Users
+              <br /> From beginners to advanced traders — over 300 users trust
+              Block to guide their trading journey.
             </p>
           </div>
           <div className="flex flex-col items-center justify-center">
             <div>
-              <span className="text-5xl font-bold text-amber-400 ">100</span>
+              <span className="text-5xl font-bold text-amber-400 ">50</span>
               <span className="text-5xl font-semibold text-white ">+</span>
             </div>
             <p className="text-base font-normal text-center text-white capitalize">
-              Block Traders has been chosen to <br /> work with more than 100
-              trading <br />
-              companies and investors worldwide
+              Active Copy Traders <br /> Our copy trading platform is growing
+              fast — with over 100 users replicating top strategies in real
+              time.
+            </p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <div>
+              <span className="text-5xl font-bold text-amber-400 ">50</span>
+              <span className="text-5xl font-semibold text-white ">+</span>
+            </div>
+            <p className="text-base font-normal text-center text-white capitalize">
+              Partner Firms & Investors
+              <br /> We’ve built relationships with over 100 firms and investors
+              supporting top-performing traders.
             </p>
           </div>
         </div>
@@ -141,23 +145,41 @@ function AboutPage() {
           </p>
           <Card cardData={data} />
         </div>
-        <div className="px-[2rem] flex-col lg:flex-row items-center justify-center flex lg:justify-between lg:px-[5rem] mt-[8rem] pb-[4rem]">
+        <div className="px-[2rem]  items-center justify-center  grid grid-cols-1 lg:grid-cols-2 lg:justify-between lg:px-[5rem] mt-[8rem] pb-[4rem]">
           <div className="">
             <span className="text-black text-[40px] font-bold ">Copy</span>
             <span className="text-black text-[40px] font-semibold "> </span>
-            <span className="text-black text-[40px] font-semibold ">Block</span>
+            <span className="text-black text-[40px] font-semibold ">
+              Trading
+            </span>
+            <span className="text-black text-[40px] font-semibold "> You</span>
             <span className="text-black text-[40px] font-semibold "> </span>
-            <span className="text-black text-[40px] font-bold ">Traders</span>
+
+            <span className="text-black text-[40px] font-bold ">Can</span>
+            <span className="text-black text-[40px] font-semibold ">
+              {" "}
+              Trust
+            </span>
           </div>
 
           <div className="mt-5 space-y-4">
             <p className="text-xl font-medium text-black ">
-              Get access to trades with grown equity and great spreads.
+              Our top-performing traders don’t just get funded, they get
+              featured. With Block Traders Copy Trading, qualified traders with
+              a proven track record can be copied by others in the community.
+              It’s a win-win: skilled traders earn more, and followers benefit
+              from their expertise. Whether you’re an investor or just getting
+              started, our copy trading system puts the best of Block in your
+              hands.
             </p>
-
-            <Button className="bg-black text-white" size="xl">
-              Copy Trade
-            </Button>
+            <div className="flex flex-col lg:flex-row gap-5">
+              <Button className="bg-black text-white" size="xl">
+                Learn More
+              </Button>
+              <Button className="bg-black text-white" size="xl">
+                Copy Trading
+              </Button>
+            </div>
           </div>
         </div>
         <div className="border-2 px-[2rem] w-full bg-black  xl:px-[5rem] py-[3rem]">

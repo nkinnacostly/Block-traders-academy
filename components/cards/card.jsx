@@ -14,6 +14,9 @@ function Card({ cardData }) {
             <p className="text-2xl font-semibold text-black underline ">
               {info?.head}
             </p>
+            <p className="text-lg font-semibold text-black text-center">
+              {info?.heading}
+            </p>
 
             <p className="text-black text-base font-normal   capitalize text-center">
               {info?.info}

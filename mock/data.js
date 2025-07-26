@@ -1,21 +1,21 @@
 export const Testimonials = [
   {
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
-    name: "Juslin Sega",
+      "Block Traders Academy made trading make sense for me. I went from complete beginner to confident trader in just a few months.",
+    name: "Emmanuel Iferi",
     pic: "/assets/img/png/person.png",
     color: "#fff",
   },
   {
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
-    name: "Ryan Godsey",
+      "The mentorship and challenges pushed me to improve every week. I’ve never felt more prepared or supported in my trading journey.",
+    name: "Divine Akindamola",
     pic: "/assets/img/png/man.png",
     color: "#D4AF37",
   },
   {
     comment:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut.",
+      "I copied a few top traders and watched my equity grow — without spending hours in front of the screen. Simple, smart, and effective.",
     name: "Jack Ryan",
     pic: "/assets/img/png/chef.png",
     color: "#fff",

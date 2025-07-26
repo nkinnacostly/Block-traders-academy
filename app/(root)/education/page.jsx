@@ -15,13 +15,15 @@ function Education() {
     <div className=" ">
       <Topheader
         backgroundImage={"/assets/img/png/ed-bg.png"}
-        colouredText={"Knowledge Hub"}
+        colouredText={"Education Arena"}
         otherText={
-          ": Learn trading easily with the best-in-class education to build or refresh your trading skills"
+          ": Learn trading from the ground up or sharpen your edge with structured, step-by-step education built for real-world results."
         }
-        check1={"Get educated on better trading"}
-        check2={"Take on the market with monitored funding "}
-        check3={"Your rollover made easier"}
+        check1={
+          "Master the fundamentals and beyond with expert-led video classes"
+        }
+        check2={"Prepare for real trading through practical challenges"}
+        check3={"Access mentorship, support, and monitored funding as you grow"}
       />
       <div
         className=" p-6 bg-repeat bg-cover"

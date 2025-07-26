@@ -24,7 +24,8 @@ function HomepageFooter() {
               </button>
             </div>
             <p className="text-[#D4AF37] text-sm mt-2">
-              * Will send you weekly updates for your better tool management.
+              Stay ahead with our Weekly updates, strategy tips, and platform
+              news straight to your inbox.
             </p>
           </div>
         </div>
@@ -52,9 +53,9 @@ function HomepageFooter() {
               blocktraders
             </p>
             <p className="mt-2 text-sm text-white">+234-000-000-000</p>
-            <p className="mt-2 text-sm text-white">
+            {/* <p className="mt-2 text-sm text-white">
               22 Obayan close, Lagos,Nigeria
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
