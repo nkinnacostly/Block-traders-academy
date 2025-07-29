@@ -211,14 +211,7 @@ function Trading() {
                   $3,000 – $5,000 (Prop Account)
                 </p>
               </div>
-              <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
-                <p className="text-xl font-semibold text-center text-white ">
-                  Currency
-                </p>
-                <p className="text-base font-normal text-center text-white ">
-                  US cents/ EU <br /> cents/ GBP pence
-                </p>
-              </div>
+
               <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
                 <p className="text-xl font-semibold text-center text-white ">
                   Requirements
@@ -266,14 +259,7 @@ function Trading() {
                   Up to $50,000 (Prop Account)
                 </p>
               </div>
-              <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
-                <p className="text-xl font-semibold text-center text-white ">
-                  Currency
-                </p>
-                <p className="text-base font-normal text-center text-white ">
-                  USD/ EUR/ GBP
-                </p>
-              </div>
+
               <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
                 <p className="text-xl font-semibold text-center text-white ">
                   Requirements
@@ -319,14 +305,6 @@ function Trading() {
                   $20,000 – $50,000 (Live Account) or
                   <br />
                   $100,000 – $200,000 (Prop Account)
-                </p>
-              </div>
-              <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
-                <p className="text-xl font-semibold text-center text-white ">
-                  Currency
-                </p>
-                <p className="text-base font-normal text-center text-white ">
-                  USD/ EUR/ GBP
                 </p>
               </div>
               <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
