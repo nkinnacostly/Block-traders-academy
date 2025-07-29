@@ -160,7 +160,7 @@ function AboutPage() {
                 href={"/copy-trade"}
                 className={`${buttonVariants({ variant: "default", size: "xl" })} mt-4`}
               >
-                Copy Trade
+                Copy Trading
               </Link>
             </div>
           </div>

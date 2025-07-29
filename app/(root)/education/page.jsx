@@ -106,7 +106,7 @@ function Education() {
               href={"/copy-trade"}
               className={`${buttonVariants({ variant: "default" })} mt-4`}
             >
-              Copy Trade
+              Copy Trading
             </Link>
           </div>
         </div>

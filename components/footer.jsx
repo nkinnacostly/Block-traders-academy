@@ -49,7 +49,7 @@ function HomepageFooter() {
               Education
             </Link>
             <Link href="/copy-trade" className="mt-2 text-sm text-white">
-              Copy Trade
+              Copy Trading
             </Link>
           </div>
           <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
