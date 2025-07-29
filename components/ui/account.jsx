@@ -40,7 +40,7 @@ function Account() {
             </div>
           </div>
           <div className="w-[146px] text-center text-white text-xl font-medium ">
-            Start learning
+            Then, Start learning
             <br />
           </div>
         </div>
@@ -53,7 +53,7 @@ function Account() {
             </div>
           </div>
           <div className="w-[146px] text-center text-white text-xl font-medium ">
-            Start trading
+            Then, Start trading
             <br />
           </div>
         </div>
@@ -78,7 +78,7 @@ function Account() {
             </div>
           </div>
           <div className="w-[146px] text-center text-white text-xl font-medium ">
-            Get Funded
+            Then, Get Funded
             <br />
           </div>
         </div>
