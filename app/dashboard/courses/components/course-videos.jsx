@@ -119,15 +119,6 @@ export default function CoursesVideos() {
     firstFourVideos?.data?.videos,
   ]);
 
-  const updatedVideos = useMemo(
-    () =>
-      videos.map((video) => ({
-        ...video,
-        image: `/assets/${video.id}.jpeg`,
-      })),
-    [videos]
-  );
-
   const handleVideoWatched = () => {
     if (!isLevel1) {
       if (challengeCompleted && !challenge2Completed) {
@@ -223,7 +214,7 @@ export default function CoursesVideos() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {updatedVideos.map((video, index) => {
+        {videos.map((video, index) => {
           const isAccessible = index === 0 || loggedInUserDetails.paid === "1";
 
           return (
@@ -233,7 +224,7 @@ export default function CoursesVideos() {
             >
               <div className={`relative ${!isAccessible && "opacity-50"}`}>
                 <Image
-                  src={video.image}
+                  src={video.thumbnail}
                   alt={video.name}
                   className="w-full h-48 object-cover"
                   width={400}
