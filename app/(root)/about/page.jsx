@@ -6,6 +6,7 @@ import Footercontact from "@/components/ui/footer-contact";
 import React from "react";
 import Topheader from "@/components/screens/top-header/top-header";
 import Account from "@/components/ui/account";
+import Link from "next/link";
 const data = [
   {
     icon: "/assets/img/svg/education.svg",
@@ -165,9 +166,11 @@ function AboutPage() {
         <div className="hidden  lg:block">
           <div className="w-full h-[312px] relative bg-[#D4AF37]">
             <div className="w-[187px] mt-8 h-16 px-[30px] py-5 left-[641px] top-[189px] absolute bg-black rounded-lg justify-center items-center gap-2.5 inline-flex">
-              <div className="text-base font-medium text-center text-white capitalize">
-                Create Account
-              </div>
+              <Link href={"/sign-up"}>
+                <div className="text-base font-medium text-center text-white capitalize">
+                  Create Account
+                </div>
+              </Link>
             </div>
             <div className=" left-[636px] top-[122px] absolute text-white text-xl font-medium ">
               Unlock your personal trading dashboard with tailored courses,

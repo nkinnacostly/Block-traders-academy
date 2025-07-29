@@ -16,7 +16,7 @@ function Topheader({
   check1,
   check2,
   check3,
-
+  check4,
   colouredText,
   otherText,
   className,
@@ -52,12 +52,14 @@ function Topheader({
               </span>
               <p className="text-xl font-normal text-white">{check3}</p>
             </div>
-            {/* <div className="flex items-center mt-5 space-x-3">
-              <span className="">
-                <Image src={Check} height={30} width={30} alt="check" />
-              </span>
-              <p className="text-xl font-normal text-white">{check4}</p>
-            </div> */}
+            {check4 && (
+              <div className="flex items-center mt-5 space-x-3">
+                <span className="">
+                  <Image src={Check} height={30} width={30} alt="check" />
+                </span>
+                <p className="text-xl font-normal text-white">{check4}</p>
+              </div>
+            )}
           </div>
           <div className="lg:flex items-center justify-center lg:justify-start lg:space-x-8 mt-[4rem]  w-full space-y-8 lg:space-y-0">
             {/* <Link
