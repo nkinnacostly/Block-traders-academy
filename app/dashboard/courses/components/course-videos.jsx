@@ -224,7 +224,7 @@ export default function CoursesVideos() {
             >
               <div className={`relative ${!isAccessible && "opacity-50"}`}>
                 <Image
-                  src={video.thumbnail}
+                  src={video.thumbnail || "/assets/img/png/logo.png"}
                   alt={video.name}
                   className="w-full h-48 object-cover"
                   width={400}
