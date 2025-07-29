@@ -55,6 +55,13 @@ function MobileNav() {
                 <p>Trading Arena</p>
                 <FaSortDown size={30} className="mb-3" />
               </Link>
+              <Link
+                href={"/copy-trade"}
+                className="flex items-center  justify-center space-x-3"
+              >
+                <p>Copy Trade</p>
+                <FaSortDown size={30} className="mb-3" />
+              </Link>
             </div>
             <div className="flex items-center justify-center flex-col space-y-5 mt-3">
               <Link
