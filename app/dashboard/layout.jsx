@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
 
 import DashboardHeader from "@/components/dashboard/header";
 import DashboardSidebar from "@/components/dashboard/sidebar";
@@ -10,10 +10,18 @@ import { PiSquaresFourFill } from "react-icons/pi";
 import { IoClose } from "react-icons/io5";
 import Image from "next/image";
 import Logo from "@/public/assets/img/png/logo.png";
+import { useTheme } from "next-themes";
+import LogoDark from "@/public/assets/img/png/logo-black.png";
 
 function DashboardLayout({ children }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { resolvedTheme } = useTheme();
 
+  // useEffect only runs on the client, so now we can safely show the UI
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
@@ -41,7 +49,12 @@ function DashboardLayout({ children }) {
             >
               <PiSquaresFourFill size={24} />
             </button>
-            <Image src={Logo} height={35} width={35} alt="logo" />
+            <Image
+              src={mounted && resolvedTheme === "dark" ? LogoDark : Logo}
+              height={35}
+              width={35}
+              alt="logo"
+            />
           </div>
           <div className="text-lg font-semibold">Dashboard</div>
           <div className="w-10"></div> {/* Spacer for centering */}
