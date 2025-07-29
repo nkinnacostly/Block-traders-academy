@@ -57,21 +57,25 @@ function Challenges() {
     const passingScore = quiz.length - 3; // Allow 3 wrong answers
 
     if (score >= passingScore) {
-      router.push("/dashboard/courses");
-      await challengeCompletedService({
-        challenge: "firstChallengePassed",
-      });
-      if (challengeCompleted && !challenge2Completed) {
+      // Determine which challenge is being completed
+      const isSecondChallenge = challengeCompleted && !challenge2Completed;
+
+      if (isSecondChallenge) {
         // Second challenge completed
-        setChallenge2Completed(true);
         await challengeCompletedService({
           challenge: "secondChallengePassed",
         });
+        setChallenge2Completed(true);
         updateUserDetails();
       } else {
         // First challenge completed
+        await challengeCompletedService({
+          challenge: "firstChallengePassed",
+        });
         setChallengeCompleted(true);
       }
+
+      router.push("/dashboard/courses");
     } else {
       setCurrentQuestion(0);
       setUserAnswers({});

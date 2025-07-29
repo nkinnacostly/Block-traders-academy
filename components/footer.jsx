@@ -1,10 +1,51 @@
+"use client";
 import { Button } from "./ui/button";
 import Image from "next/image";
 import Logo from "@/public/assets/img/png/logo.png";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
+import { apiClient } from "@/lib/api-client";
+import { toast } from "sonner";
 
 function HomepageFooter() {
+  const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubscribe = async () => {
+    if (!email) {
+      toast.error("Please enter your email address");
+      return;
+    }
+
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    setIsLoading(true);
+    try {
+      await apiClient.post("https://blocktraders.academy/api/newsletter", {
+        email: email,
+      });
+
+      toast.success("Successfully subscribed to newsletter!");
+      setEmail("");
+    } catch (error) {
+      console.error("Newsletter subscription error:", error);
+      toast.error(error.message || "Failed to subscribe. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleSubscribe();
+    }
+  };
+
   return (
     <>
       {/* <hr className="border" /> */}
@@ -18,10 +59,22 @@ function HomepageFooter() {
             <div className="flex">
               <input
                 placeholder="Enter Email"
-                className="bg-[#1E1E1E99] border-none focus:outline-none  p-4"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onKeyPress={handleKeyPress}
+                disabled={isLoading}
+                className="bg-[#1E1E1E99] border-none focus:outline-none  p-4 flex-1"
               />
-              <button className="bg-[#D4AF37] text-white px-5">
-                Subscribe
+              <button
+                onClick={handleSubscribe}
+                disabled={isLoading}
+                className="bg-[#D4AF37] text-white px-5 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center min-w-[100px]"
+              >
+                {isLoading ? (
+                  <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                ) : (
+                  "Subscribe"
+                )}
               </button>
             </div>
             <p className="text-[#D4AF37] text-sm mt-2">
