@@ -1,7 +1,7 @@
 import React from "react";
 import TopTraders from "./component/copy-trade";
 import Topheader from "@/components/screens/top-header/top-header";
-import { Button } from "@/components/ui/button";
+
 import Card from "@/components/cards/card";
 import Account from "@/components/ui/account";
 import Footercontact from "@/components/ui/footer-contact";
@@ -89,7 +89,7 @@ function page() {
         <div className="w-full bg-black lg:h-[270px] grid grid-cols-1 lg:grid-cols-4 items-center px-[2rem] gap-5 justify-between xl:px-[2rem] space-y-10 lg:space-y-0 py-5 lg:py-0">
           <div className="flex flex-col items-center justify-center">
             <div>
-              <span className="text-5xl font-bold text-amber-400">150</span>
+              <span className="text-5xl font-bold text-amber-400">50</span>
               <span className="text-5xl font-semibold text-white">+</span>
             </div>
             <p className="text-base font-normal text-center text-white capitalize">
@@ -99,7 +99,7 @@ function page() {
           </div>
           <div className="flex flex-col items-center justify-center">
             <div>
-              <span className="text-5xl font-bold text-amber-400">500</span>
+              <span className="text-5xl font-bold text-amber-400">200</span>
               <span className="text-5xl font-semibold text-white">+</span>
             </div>
             <p className="text-base font-normal text-center text-white capitalize">
@@ -109,7 +109,9 @@ function page() {
           </div>
           <div className="flex flex-col items-center justify-center">
             <div>
-              <span className="text-5xl font-bold text-amber-400">$2.5M</span>
+              <span className="text-5xl font-bold text-amber-400">
+                $100,000
+              </span>
               <span className="text-5xl font-semibold text-white"></span>
             </div>
             <p className="text-base font-normal text-center text-white capitalize">
@@ -119,7 +121,7 @@ function page() {
           </div>
           <div className="flex flex-col items-center justify-center">
             <div>
-              <span className="text-5xl font-bold text-amber-400">98</span>
+              <span className="text-5xl font-bold text-amber-400">90</span>
               <span className="text-5xl font-semibold text-white">%</span>
             </div>
             <p className="text-base font-normal text-center text-white capitalize">
@@ -138,27 +140,6 @@ function page() {
       </div>
 
       <TopTraders />
-
-      <div className="hidden lg:block bg-white">
-        <div className="w-full h-[312px] flex items-center justify-between px-[5rem]">
-          <div className="">
-            <span className="text-black text-[40px] font-bold">Start</span>
-            <span className="text-black text-[40px] font-semibold"> </span>
-            <span className="text-black text-[40px] font-semibold">Copy</span>
-            <span className="text-black text-[40px] font-semibold"> </span>
-            <span className="text-black text-[40px] font-bold">Trading</span>
-          </div>
-          <div className="space-y-4">
-            <div className="text-black text-xl font-medium">
-              Join thousands of investors who are already profiting from our
-              copy trading platform.
-            </div>
-            <Button className="bg-black text-white" size="xl">
-              Get Started
-            </Button>
-          </div>
-        </div>
-      </div>
 
       <Account />
 

@@ -37,7 +37,7 @@ function Navbar() {
             </span>
           </Link>
           <Link href={"/copy-trade"} className="flex items-center text-white">
-            <p>Copy Trade</p>
+            <p>Copy Trading</p>
             <span>
               <Image src={Down} alt="carret-down" height={35} width={35} />
             </span>

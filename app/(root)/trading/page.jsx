@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 // import Buttonwithbg from "@/components/ui/button-with-bg";
 import Footercontact from "@/components/ui/footer-contact";
 import Image from "next/image";
@@ -80,9 +80,12 @@ function Trading() {
                   discipline in the Academy.
                 </p>
               </div>
-              <Button size="xl" className="mt-4">
+              <Link
+                href={"/sign-up"}
+                className={`${buttonVariants({ variant: "default" })} mt-4`}
+              >
                 Start Here
-              </Button>
+              </Link>
             </div>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 place-content-center mt-[4rem] relative">
@@ -129,9 +132,12 @@ function Trading() {
                   discipline in the Academy.
                 </p>
               </div>
-              <Button size="xl" className="mt-4">
+              <Link
+                href={"/sign-up"}
+                className={`${buttonVariants({ variant: "default" })} mt-4`}
+              >
                 Start Here
-              </Button>
+              </Link>
             </div>
             <div>
               <Image
@@ -189,9 +195,12 @@ function Trading() {
                   discipline in the Academy.
                 </p>
               </div>
-              <Button size="xl" className="mt-4">
+              <Link
+                href={"/sign-up"}
+                className={`${buttonVariants({ variant: "default" })} mt-4`}
+              >
                 Start Here
-              </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -360,9 +369,12 @@ function Trading() {
               Start copying top-performing traders with proven results and
               real-time transparency.
             </div>
-            <Button className="bg-black text-white" size="xl">
+            <Link
+              href={"/copy-trade"}
+              className={`${buttonVariants({ variant: "default" })} mt-4`}
+            >
               Copy Trade
-            </Button>
+            </Link>
           </div>
         </div>
       </div>

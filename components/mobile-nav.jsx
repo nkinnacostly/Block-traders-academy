@@ -59,7 +59,7 @@ function MobileNav() {
                 href={"/copy-trade"}
                 className="flex items-center  justify-center space-x-3"
               >
-                <p>Copy Trade</p>
+                <p>Copy Trading</p>
                 <FaSortDown size={30} className="mb-3" />
               </Link>
             </div>
