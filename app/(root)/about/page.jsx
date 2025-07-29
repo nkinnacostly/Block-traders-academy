@@ -42,7 +42,7 @@ function AboutPage() {
         className={"relative"}
       />
       <div
-        className="w-full px-[5rem] py-[2rem]  bg-cover bg-center bg-no-repeat"
+        className="w-full lg:px-[5rem] px-[1rem] py-[2rem]  bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
         <div className=" bg-black p-6 rounded-[20px]">

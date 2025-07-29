@@ -87,7 +87,7 @@ function Trading() {
               alt="beginner"
               className="absolute -left-10"
             />
-            <div className="flex flex-col items-start justify-center">
+            <div className="flex flex-col items-start justify-center mt-10">
               <p className=" text-amber-400 text-[40px] font-semibold">
                 Intermediate Traders (Level 11–16)
               </p>

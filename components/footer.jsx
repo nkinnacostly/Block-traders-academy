@@ -82,10 +82,14 @@ function HomepageFooter() {
         <div className="flex items-center justify-center space-x-2">
           {/* <Buttonwithbg btnText={"Get Educated"} />
           <ithoutbg Btntext={"Start Trading"} className={"text-white"} /> */}
-          <Button variant="outline" size="lg">
-            Get Educated
-          </Button>
-          <Button size="lg">Start Trading</Button>
+          <Link href={"/education"}>
+            <Button variant="outline" size="lg" className="text-white">
+              Get Educated
+            </Button>
+          </Link>
+          <Link href={"/sign-up"}>
+            <Button size="lg">Start Trading</Button>
+          </Link>
         </div>
       </div>
     </>

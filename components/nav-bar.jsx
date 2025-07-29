@@ -49,7 +49,10 @@ function Navbar() {
             path="/sign-up"
             /> */}
           <Link
-            className={cn(buttonVariants({ size: "lg", variant: "outline" }))}
+            className={cn(
+              buttonVariants({ size: "lg", variant: "outline" }),
+              "text-white"
+            )}
             href={"/login"}
           >
             Sign in

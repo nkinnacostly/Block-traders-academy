@@ -78,7 +78,7 @@ export default function Home() {
                   colouredText={"Welcome"}
                   otherText={"to Block Traders Academy"}
                 />
-                <p className="text-base font-normal text-white text-opacity-90">
+                <p className="text-base font-normal text-white text-opacity-90 text-center lg:text-start">
                   Where Ambition Meets Skill and Skill Meets Capital.
                 </p>
                 <Checkwithtext
@@ -106,7 +106,7 @@ export default function Home() {
                 />
               </div>
             </div>
-            <div className="lg:px-[4rem] ">
+            <div className="lg:px-[4rem] pt-[5rem] ">
               <Textwithcolor
                 colouredText={"What Sets "}
                 otherText={"Block Traders Apart"}

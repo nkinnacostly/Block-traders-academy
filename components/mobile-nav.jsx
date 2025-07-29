@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import { FaSortDown } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
-import Logo from "@/public/assets/img/png/logo.png";
+import Logo from "@/public/assets/img/png/logo-black.png";
 import { PiSquaresFourFill } from "react-icons/pi";
 import { buttonVariants } from "./ui/button";
 import { cn } from "@/lib/utils";
@@ -37,11 +37,11 @@ function MobileNav() {
               <Link href={"/"} className="">
                 Home
               </Link>
-              <Link href={"/homepage/about"} className="">
+              <Link href={"/about"} className="">
                 About Us
               </Link>
               <Link
-                href={"/homepage/education"}
+                href={"/education"}
                 className="flex items-center   justify-center space-x-3"
               >
                 <p>Education Arena</p>
@@ -49,7 +49,7 @@ function MobileNav() {
                 <FaSortDown size={30} className="mb-3" />
               </Link>
               <Link
-                href={"/homepage/trading"}
+                href={"/trading"}
                 className="flex items-center  justify-center space-x-3"
               >
                 <p>Trading Arena</p>
