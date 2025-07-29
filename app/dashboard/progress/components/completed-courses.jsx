@@ -51,7 +51,10 @@ export function CoursesCompleted() {
             {completedData?.courses?.map((video, id) => (
               <div className="relative rounded-bl-3xl rounded-br-3xl" key={id}>
                 <Image
-                  src={getYoutubeThumbnail(video?.video?.path)}
+                  src={
+                    getYoutubeThumbnail(video?.video?.path) ||
+                    `${video?.video?.thumbnail}`
+                  }
                   alt={video?.video?.name}
                   className="w-full rounded-t-xl"
                   height={200}
