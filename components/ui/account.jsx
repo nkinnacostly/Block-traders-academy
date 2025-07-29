@@ -41,6 +41,7 @@ function Account() {
           </div>
           <div className="w-[146px] text-center text-white text-xl font-medium ">
             Start learning
+            <br />
           </div>
         </div>
         <div className="flex-col justify-center items-center gap-2.5 inline-flex">
@@ -53,6 +54,7 @@ function Account() {
           </div>
           <div className="w-[146px] text-center text-white text-xl font-medium ">
             Start trading
+            <br />
           </div>
         </div>
         <div className="flex-col justify-center items-center gap-2.5 inline-flex">
@@ -77,6 +79,7 @@ function Account() {
           </div>
           <div className="w-[146px] text-center text-white text-xl font-medium ">
             Get Funded
+            <br />
           </div>
         </div>
       </div>
