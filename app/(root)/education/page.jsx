@@ -5,7 +5,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import Footercontact from "@/components/ui/footer-contact";
-import Image from "next/image";
+
 import NumbersCard from "@/components/cards/numbersCard";
 import React from "react";
 import Topheader from "@/components/screens/top-header/top-header";
@@ -36,33 +36,51 @@ function Education() {
                 Top Featured Videos
               </p>
             </div>
-            <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 mt-[6rem] lg:mt-0">
-              <VideoWithButton />
-              <VideoWithButton />
+            <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 mt-[6rem] lg:mt-0 ">
+              <VideoWithButton
+                image="/assets/img/png/fastest-way.png"
+                title="Trading Arena : Hidden Gems "
+                description="Fastest way to get funded $50,000 as a Block Trader"
+              />
+              <VideoWithButton
+                image="/assets/img/png/top-secrets.png"
+                title="Trading Arena : Hidden Gems "
+                description="Top Secrets To Profitability"
+              />
+              {/* <VideoWithButton
+                image="/assets/img/png/top-secrets.png"
+                title="Trading Arena : Hidden Gems "
+                description="Top Secrets To Profitability"
+              /> */}
             </div>
             <div className="mt-[3.5rem] mb-8 w-full flex justify-between items-center">
               <p className="text-center text-white text-2xl lg:text-[40px] font-semibold ">
                 Course Path
               </p>
-              <button className="flex items-center space-x-4 px-6 py-[15px] rounded-[10px] border border-white">
-                <Image
-                  src={"/assets/img/svg/filter.svg"}
-                  height={30}
-                  width={30}
-                  alt="filter"
-                />
-                <p className="w-[54px] text-center text-white text-xl font-medium ">
-                  Filter
-                </p>
-              </button>
             </div>
-            <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-2">
-              <VideoWithButtons />
+            <div className="grid w-full grid-cols-1 gap-5 lg:grid-cols-2 items-stretch">
+              <VideoWithButtons
+                image="/assets/img/png/concept.png"
+                title="Trading for Intermediates: Level 2"
+                description="Introduction To Institutional Trading Concept"
+              />
 
-              <VideoWithButtons />
+              <VideoWithButtons
+                image="/assets/img/png/reversal.png"
+                title="Trading for Intermediates: Level 2"
+                description="Reversal And Consolidation"
+              />
 
-              <VideoWithButtons />
-              <VideoWithButtons />
+              <VideoWithButtons
+                image="/assets/img/png/4.png"
+                title="Trading for Experts: Level 2"
+                description="Market Buy and Sell Model "
+              />
+              <VideoWithButtons
+                image="/assets/img/png/3.png"
+                title="Trading for Experts: Level 2"
+                description="How To Predict Next Market Direction "
+              />
             </div>
           </div>
         </div>

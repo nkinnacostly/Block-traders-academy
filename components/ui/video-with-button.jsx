@@ -3,38 +3,44 @@
 // import Buttonwithbg from "./button-with-bg";
 // import Buttonwithoutbg from "./button-without-bg";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-export function VideoWithButton() {
+export function VideoWithButton({
+  image,
+  title,
+  description,
+  buttonText = "Watch video",
+}) {
   return (
-    <div className="">
-      <div className="flex items-center justify-between ">
-        <div className="relative bg-white rounded-bl-3xl rounded-br-3xl">
-          <Image
-            src={"/assets/img/png/chart.png"}
-            alt=""
-            className="w-full"
-            height={100}
-            width={100}
-          />
-          <Image
-            src={"/assets/img/svg/play.svg"}
-            alt=""
-            className="absolute right-4 top-[11rem] lg:top-[15rem] cursor-pointer"
-            height={70}
-            width={70}
-          />
-          <div className="px-5  ">
-            <p className="  text-black text-2xl font-medium mt-[2rem]">
-              Trading for Beginners: Entry Level
-            </p>
-            <p className="mt-3 text-base font-normal text-stone-900">
-              Introduction to Trading Basics for Beginners: Exploring the World
-              of Financial Markets
+    <div className=" w-full h-full ">
+      <div className="flex w-full justify-between h-full">
+        <div className="relative bg-white rounded-bl-3xl rounded-br-3xl flex flex-col h-full w-full">
+          <div className="relative">
+            <Image
+              src={image}
+              alt={title}
+              className="w-full object-cover "
+              height={192}
+              width={400}
+            />
+            <Image
+              src={"/assets/img/svg/play.svg"}
+              alt=""
+              className="absolute right-4  transform -translate-y-1/2 cursor-pointer"
+              height={70}
+              width={70}
+            />
+          </div>
+          <div className="px-5 flex-1 flex flex-col">
+            <p className="text-black text-2xl font-medium mt-[2rem]">{title}</p>
+            <p className="mt-3 text-base font-normal text-stone-900 flex-1">
+              {description}
             </p>
             <div className="flex items-center justify-center w-full mt-8 mb-8">
-              <button className=" px-5 py-2.5 bg-amber-400 rounded-lg  text-center text-black text-base font-medium  capitalize">
-                Watch video
+              <button className="px-5 py-2.5 bg-amber-400 rounded-lg text-center text-black text-base font-medium capitalize">
+                <Link href={"/sign-up"}>{buttonText}</Link>
+                {/* {buttonText} */}
               </button>
             </div>
           </div>
@@ -44,33 +50,42 @@ export function VideoWithButton() {
   );
 }
 
-export function VideoWithButtons() {
+export function VideoWithButtons({
+  image,
+  title,
+  description,
+  duration = "10 - 12mins",
+  learners = "234 Learners",
+  // moreInfoText = "More info",
+  startLearningText = "start learning",
+}) {
   return (
-    <>
-      <div className="relative bg-white rounded-bl-3xl rounded-br-3xl">
-        <Image
-          src={"/assets/img/png/chart.png"}
-          alt=""
-          className="w-full"
-          height={100}
-          width={100}
-        />
-        <Image
-          src={"/assets/img/svg/play.svg"}
-          alt=""
-          className="absolute right-4 top-[11rem] lg:top-[17rem] cursor-pointer"
-          height={70}
-          width={70}
-        />
-        <div className="px-5  ">
-          <p className=" text-black text-2xl font-medium mt-[2rem] text-center">
-            Trading for Beginners: Entry Level
+    <div className="h-full">
+      <div className="relative bg-white rounded-bl-3xl rounded-br-3xl flex flex-col h-full">
+        <div className="relative">
+          <Image
+            src={image}
+            alt={title}
+            className="w-full object-cover "
+            height={192}
+            width={400}
+          />
+          <Image
+            src={"/assets/img/svg/play.svg"}
+            alt=""
+            className="absolute right-4  transform -translate-y-1/2 cursor-pointer"
+            height={70}
+            width={70}
+          />
+        </div>
+        <div className="px-5 flex-1 flex flex-col">
+          <p className="text-black text-2xl font-medium mt-[2rem] text-center">
+            {title}
           </p>
-          <p className="mt-3 text-base font-normal text-center text-stone-900">
-            Introduction to Trading Basics for Beginners: Exploring the World of
-            Financial Markets
+          <p className="mt-3 text-base font-normal text-center text-stone-900 flex-1">
+            {description}
           </p>
-          <div className=" flex items-center justify-between mt-[1rem]">
+          <div className="flex items-center justify-between mt-[1rem]">
             <div className="flex items-center justify-center space-x-2">
               <Image
                 src={"/assets/img/svg/clock.svg"}
@@ -79,7 +94,7 @@ export function VideoWithButtons() {
                 alt="clock"
               />
               <p className="text-base font-medium text-center text-neutral-700">
-                10 - 12hours
+                {duration}
               </p>
             </div>
             <div className="flex items-center justify-center space-x-2">
@@ -90,24 +105,27 @@ export function VideoWithButtons() {
                 alt="clock"
               />
               <p className="text-base font-medium text-center text-neutral-700">
-                234 Learners
+                {learners}
               </p>
             </div>
           </div>
           <div className="flex items-center justify-center w-full mt-8 mb-8 space-x-8">
-            <div className="w-[165px] h-11 px-5 py-2.5 rounded-lg border-2 border-amber-400 justify-center items-center gap-2.5 inline-flex cursor-pointer">
+            {/* <div className="w-[165px] h-11 px-5 py-2.5 rounded-lg border-2 border-amber-400 justify-center items-center gap-2.5 inline-flex cursor-pointer">
               <div className="text-base font-medium text-center text-black capitalize">
-                More info
+                {moreInfoText}
               </div>
-            </div>
+            </div> */}
             <div className="w-[165px] h-11 px-5 py-2.5 bg-amber-400 rounded-lg justify-center items-center gap-2.5 inline-flex cursor-pointer">
-              <div className="text-base font-medium text-center text-black capitalize">
-                start learning
-              </div>
+              <Link
+                href={"/sign-up"}
+                className="text-base font-medium text-center text-black capitalize"
+              >
+                {startLearningText}
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

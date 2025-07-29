@@ -70,8 +70,8 @@ export default function Home() {
           <Card cardData={data} />
         </div>
         <div className="w-full lg:px-[5rem] ">
-          <div className="bg-black lg:rounded-3xl pb-[4rem]">
-            <div className="flex flex-col-reverse justify-between gap-4 lg:flex-row ">
+          <div className="bg-black lg:rounded-3xl pb-[3rem]">
+            <div className="flex flex-col-reverse justify-between gap-4 lg:flex-row h-[600px]">
               <div className="lg:pl-[4rem] pt-[4rem] w-full lg:w-1/2">
                 <Textwithcolor
                   colouredText={"Welcome"}
@@ -101,11 +101,11 @@ export default function Home() {
                   // height={100}
                   // width={100}
                   alt="stocks"
-                  className="lg:w-full lg:h-full h-[30%]"
+                  className="lg:w-full lg:h-full h-[30%] object-cover hidden lg:block"
                 />
               </div>
             </div>
-            <div className="lg:px-[4rem] pt-[4rem]">
+            <div className="lg:px-[4rem] ">
               <Textwithcolor
                 colouredText={"What Sets "}
                 otherText={"Block Traders Apart"}

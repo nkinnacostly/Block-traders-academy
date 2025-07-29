@@ -2,6 +2,7 @@ import { Button } from "./ui/button";
 import Image from "next/image";
 import Logo from "@/public/assets/img/png/logo.png";
 import React from "react";
+import Link from "next/link";
 
 function HomepageFooter() {
   return (
@@ -42,10 +43,21 @@ function HomepageFooter() {
           </div>
           <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
             <h5 className="text-[24px]  font-[600] text-white">Legal</h5>
-            <p className="mt-2 text-sm text-white">Privacy Policy</p>
-            <p className="mt-2 text-sm text-white">Terms and Services</p>
-            <p className="mt-2 text-sm text-white">Terms of Use</p>
-            <p className="mt-2 text-sm text-white">Refund Policy</p>
+            <Link href="/privacy-policy" className="mt-2 text-sm text-white">
+              Privacy Policy
+            </Link>
+            <Link
+              href="/terms-and-services"
+              className="mt-2 text-sm text-white"
+            >
+              Terms and Services
+            </Link>
+            <Link href="/terms-of-use" className="mt-2 text-sm text-white">
+              Terms of Use
+            </Link>
+            <Link href="/refund-policy" className="mt-2 text-sm text-white">
+              Refund Policy
+            </Link>
           </div>
           <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
             <h5 className="text-[24px]  font-[600] text-white">Contact</h5>

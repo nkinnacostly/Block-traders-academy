@@ -187,7 +187,7 @@ function Trading() {
         style={{ backgroundImage: `url('/assets/img/png/ab-bg.png')` }}
       >
         <div className="flex flex-col items-center justify-center w-full ">
-          <div className="flex flex-col w-full space-y-10 lg:flex-row lg:space-y-0 justify-evenly lg:gap-2">
+          <div className="grid grid-cols-1 lg:grid-cols-3 w-full space-y-10 lg:flex-row lg:space-y-0 justify-evenly lg:gap-2">
             <div className=" bg-black bg-opacity-80  h-[532px] rounded-tl-xl rounded-bl-xl p-5 flex flex-col justify-evenly ">
               <div className="flex flex-col items-center justify-center">
                 <Image
@@ -201,12 +201,12 @@ function Trading() {
                   Beginner
                 </p>
               </div>
-              <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400">
+              <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 gap-5">
                 <p className="text-xl font-semibold text-center text-white ">
                   Funding
                 </p>
                 <p className="text-base font-normal text-center text-white ">
-                  $3k
+                  $3,000 – $5,000 (Prop Account)
                 </p>
               </div>
               <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
@@ -222,12 +222,22 @@ function Trading() {
                   Requirements
                 </p>
                 <div className="w-[122px] text-center">
-                  <span className="text-base font-normal text-white ">
-                    Must complete challenges{" "}
-                  </span>
-                  <span className="text-base font-semibold text-amber-400 ">
-                    Level 1-10
-                  </span>
+                  <p className="text-base font-normal text-white ">
+                    Reach Level 7 – Level 10
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
+                <p className="text-xl font-semibold text-center text-white ">
+                  Badges
+                </p>
+                <div className="w-[122px] text-center">
+                  <p className="text-base font-normal text-white ">
+                    Profitable Trader (Level 4–5)
+                  </p>
+                  <p className="text-base font-normal text-white ">
+                    Risk Manager (Level 6–10)
+                  </p>
                 </div>
               </div>
             </div>
@@ -249,7 +259,9 @@ function Trading() {
                   Funding
                 </p>
                 <p className="text-base font-normal text-center text-white ">
-                  $10k-$30k
+                  $5,000 – $10,000 (Live Account) or
+                  <br />
+                  Up to $50,000 (Prop Account)
                 </p>
               </div>
               <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
@@ -265,12 +277,22 @@ function Trading() {
                   Requirements
                 </p>
                 <div className="w-[122px] text-center">
-                  <span className="text-base font-normal text-white ">
-                    Must have completed{" "}
-                  </span>
-                  <span className="text-base font-semibold text-amber-400 ">
-                    Level 10 challenge
-                  </span>
+                  <p className="text-base font-normal text-white ">
+                    Reach Level 11 – Level 16
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
+                <p className="text-xl font-semibold text-center text-white ">
+                  Badges
+                </p>
+                <div className="w-[122px] text-center">
+                  <p className="text-base font-normal text-white ">
+                    Signal Provider (Level 11–13)
+                  </p>
+                  <p className="text-base font-normal text-white ">
+                    Money Monger (Level 14–16)
+                  </p>
                 </div>
               </div>
             </div>
@@ -292,7 +314,9 @@ function Trading() {
                   Funding
                 </p>
                 <p className="text-base font-normal text-center text-white ">
-                  $90k+
+                  $20,000 – $50,000 (Live Account) or
+                  <br />
+                  $100,000 – $200,000 (Prop Account)
                 </p>
               </div>
               <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
@@ -308,12 +332,19 @@ function Trading() {
                   Requirements
                 </p>
                 <div className="w-[122px] text-center">
-                  <span className="text-base font-normal text-white ">
-                    Must have completed{" "}
-                  </span>
-                  <span className="text-base font-semibold text-amber-400 ">
-                    Level 20 challenge
-                  </span>
+                  <p className="text-base font-normal text-white ">
+                    Reach Level 17 – Level 20
+                  </p>
+                </div>
+              </div>
+              <div className="flex justify-between items-center p-2.5 border-b-2 border-amber-400 mt-5">
+                <p className="text-xl font-semibold text-center text-white ">
+                  Badges
+                </p>
+                <div className="w-[122px] text-center">
+                  <p className="text-base font-normal text-white ">
+                    Block Trader (Level 17–20)
+                  </p>
                 </div>
               </div>
             </div>
