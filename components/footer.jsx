@@ -48,6 +48,9 @@ function HomepageFooter() {
             <Link href="/education" className="mt-2 text-sm text-white">
               Education
             </Link>
+            <Link href="/copy-trade" className="mt-2 text-sm text-white">
+              Copy Trade
+            </Link>
           </div>
           <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
             <h5 className="text-[24px]  font-[600] text-white">Legal</h5>

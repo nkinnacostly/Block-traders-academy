@@ -36,6 +36,12 @@ function Navbar() {
               <Image src={Down} alt="carret-down" height={35} width={35} />
             </span>
           </Link>
+          <Link href={"/copy-trade"} className="flex items-center text-white">
+            <p>Copy Trade</p>
+            <span>
+              <Image src={Down} alt="carret-down" height={35} width={35} />
+            </span>
+          </Link>
         </div>
         <div className="flex items-center justify-center space-x-3">
           {/* <Buttonwithoutbg
