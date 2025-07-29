@@ -73,6 +73,12 @@ function Trading() {
                 <p className="text-base font-normal text-white text-opacity-90 mb-4">
                   Prop Account Funding: $3,000 – $5,000
                 </p>
+                <p className="text-sm font-normal text-white text-opacity-90 mb-4 italic">
+                  Note: Whether you receive a live account (funded by Block
+                  Traders) or a prop account (from our prop firm partners)
+                  depends on your performance, risk management, and journaling
+                  discipline in the Academy.
+                </p>
               </div>
               <Button size="xl" className="mt-4">
                 Start Here
@@ -116,6 +122,12 @@ function Trading() {
                   <p>Live Account: $5,000 – $10,000</p>
                   <p>Prop Account: Up to $50,000</p>
                 </div>
+                <p className="text-sm font-normal text-white text-opacity-90 mb-4 italic">
+                  Note: Whether you receive a live account (funded by Block
+                  Traders) or a prop account (from our prop firm partners)
+                  depends on your performance, risk management, and journaling
+                  discipline in the Academy.
+                </p>
               </div>
               <Button size="xl" className="mt-4">
                 Start Here
