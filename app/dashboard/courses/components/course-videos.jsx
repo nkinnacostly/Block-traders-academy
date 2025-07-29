@@ -97,7 +97,7 @@ export default function CoursesVideos() {
       return level1Data?.data?.videos || [];
     } else {
       // For level 2 users
-      if (loggedInUserDetails?.challenge === "level2done") {
+      if (loggedInUserDetails?.challenge === "secondChallengePassed") {
         // Final stage: Show both first and second videos together
         return [
           ...(level2Data?.data?.videos || []),
