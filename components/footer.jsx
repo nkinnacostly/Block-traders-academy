@@ -30,16 +30,24 @@ function HomepageFooter() {
             </p>
           </div>
         </div>
-        <div className="w-full lg:w-[60%] grid grid-cols-1 lg:grid-cols-4 gap-3 ">
+        <div className="w-full  grid grid-cols-1 lg:grid-cols-4 gap-3 ">
           <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
             <h5 className="text-[24px]  font-[600] text-white">Company</h5>
-            <p className="mt-2 text-sm text-white">About Us</p>
-            <p className="mt-2 text-sm text-white">Contacts</p>
+            <Link href="/about" className="mt-2 text-sm text-white">
+              About Us
+            </Link>
+            <Link href="/#" className="mt-2 text-sm text-white">
+              Contacts
+            </Link>
           </div>
           <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
             <h5 className="text-[24px]  font-[600] text-white">Services</h5>
-            <p className="mt-2 text-sm text-white">Trading</p>
-            <p className="mt-2 text-sm text-white">Education</p>
+            <Link href="/trading" className="mt-2 text-sm text-white">
+              Trading
+            </Link>
+            <Link href="/education" className="mt-2 text-sm text-white">
+              Education
+            </Link>
           </div>
           <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
             <h5 className="text-[24px]  font-[600] text-white">Legal</h5>
@@ -59,20 +67,17 @@ function HomepageFooter() {
               Refund Policy
             </Link>
           </div>
-          <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start">
+          <div className="flex flex-col items-center justify-center lg:items-start lg:justify-start ">
             <h5 className="text-[24px]  font-[600] text-white">Contact</h5>
-            <p className="flex flex-wrap mt-2 text-sm text-white truncate">
-              blocktraders
+            <p className="mt-2 text-sm text-white break-words">
+              support@blocktradersacademy.com
             </p>
             <p className="mt-2 text-sm text-white">+234-000-000-000</p>
-            {/* <p className="mt-2 text-sm text-white">
-              22 Obayan close, Lagos,Nigeria
-            </p> */}
           </div>
         </div>
       </div>
       <hr className="hidden border lg:block" />
-      <div className="flex flex-col items-center justify-between p-5 space-y-8 lg:flex-row lg:space-y-0">
+      <div className="flex flex-col items-center justify-between p-5 space-y-8 lg:flex-row lg:space-y-0 ">
         <Image src={Logo} height={100} width={100} alt="logo" />
         <div className="flex items-center justify-center space-x-2">
           {/* <Buttonwithbg btnText={"Get Educated"} />

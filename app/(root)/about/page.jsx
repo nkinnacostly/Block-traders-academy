@@ -1,17 +1,11 @@
 import { Button } from "@/components/ui/button";
 import Card from "@/components/cards/card";
-// import Image from "next/image";
-// import Textwithcolor from "@/src/components/ui/text-with-color";
-// import Envelop from "@/public/assets/img/svg/Envelope.svg";
-// import Telephone from "@/public/assets/img/svg/Telephone.svg";
-// import Address from "@/public/assets/img/svg/address.svg";
-// import Send from "@/public/assets/img/svg/send.svg";
-// import Buttonwithbg from "@/src/components/ui/button-with-bg";
-// import Buttonwithoutbg from "@/src/components/ui/button-without-bg";
+
 import Footercontact from "@/components/ui/footer-contact";
-import NumbersCard from "@/components/cards/numbersCard";
+
 import React from "react";
 import Topheader from "@/components/screens/top-header/top-header";
+import Account from "@/components/ui/account";
 const data = [
   {
     icon: "/assets/img/svg/education.svg",
@@ -145,82 +139,50 @@ function AboutPage() {
           </p>
           <Card cardData={data} />
         </div>
-        <div className="px-[2rem]  items-center justify-center  grid grid-cols-1 lg:grid-cols-2 lg:justify-between lg:px-[5rem] mt-[8rem] pb-[4rem]">
-          <div className="">
-            <span className="text-black text-[40px] font-bold ">Copy</span>
-            <span className="text-black text-[40px] font-semibold "> </span>
-            <span className="text-black text-[40px] font-semibold ">
-              Trading
-            </span>
-            <span className="text-black text-[40px] font-semibold "> You</span>
-            <span className="text-black text-[40px] font-semibold "> </span>
-
-            <span className="text-black text-[40px] font-bold ">Can</span>
-            <span className="text-black text-[40px] font-semibold ">
-              {" "}
-              Trust
-            </span>
-          </div>
-
-          <div className="mt-5 space-y-4">
-            <p className="text-xl font-medium text-black ">
-              Our top-performing traders don’t just get funded, they get
-              featured. With Block Traders Copy Trading, qualified traders with
-              a proven track record can be copied by others in the community.
-              It’s a win-win: skilled traders earn more, and followers benefit
-              from their expertise. Whether you’re an investor or just getting
-              started, our copy trading system puts the best of Block in your
-              hands.
-            </p>
-            <div className="flex flex-col lg:flex-row gap-5">
+        <div className="hidden lg:block ">
+          <div className="w-full h-[312px] flex items-center justify-between px-[5rem]">
+            <div className=" ">
+              <span className="text-black text-[40px] font-bold ">Copy</span>
+              <span className="text-black text-[40px] font-semibold "> </span>
+              <span className="text-black text-[40px] font-semibold ">
+                Block
+              </span>
+              <span className="text-black text-[40px] font-semibold "> </span>
+              <span className="text-black text-[40px] font-bold ">Traders</span>
+            </div>
+            <div className="space-y-4">
+              <div className="  text-black text-xl font-medium ">
+                Start copying top-performing traders with proven results and
+                real-time transparency.
+              </div>
               <Button className="bg-black text-white" size="xl">
-                Learn More
-              </Button>
-              <Button className="bg-black text-white" size="xl">
-                Copy Trading
+                Copy Trade
               </Button>
             </div>
           </div>
         </div>
-        <div className="border-2 px-[2rem] w-full bg-black  xl:px-[5rem] py-[3rem]">
-          <h5 className=" text-white text-xl lg:text-[32px] font-medium mb-5 text-center lg:text-start">
-            How to open an account
-          </h5>
-          <div className="flex flex-col items-center space-y-10 lg:space-y-0 lg:flex-row justify-evenly">
-            <NumbersCard number={"1"} text={"Create a Block Account"} />
-            <NumbersCard number={"2"} text={"Start Learning"} />
-            <NumbersCard number={"3"} text={"Get Funded"} />
-            <NumbersCard number={"4"} text={"Start Trading"} />
-          </div>
-        </div>
-        <div className="px-[2rem] flex flex-col justify-center lg:flex-row lg:justify-between xl:px-[5rem] py-[4rem] bg-amber-400 ">
-          <div className="text-center lg:text-start">
-            <span className=" text-2xl lg:text-[40px] font-bold text-white italic">
-              Join
-            </span>
-            <span className="text-black text-2xl lg:text-[40px]  "> </span>
-            <span className="text-black text-2xl lg:text-[40px]  ">Block</span>
-            <span className="text-black text-2xl lg:text-[40px]  "> </span>
-            <span className="text-black text-2xl lg:text-[40px]  ">
-              Traders
-            </span>
-            <span className="text-black text-2xl lg:text-[40px] font-bold ">
-              {" "}
-            </span>
-            <span className="text-white italic text-2xl lg:text-[40px] font-bold ">
-              Today
-            </span>
-          </div>
-
-          <div className="text-center lg:text-start">
-            <p className="text-xl font-medium text-white ">
-              Register for a Block trade account to get personalised course
-              recommendations and offers
-            </p>
-            <div className=" h-16 px-[30px] py-5 bg-black rounded-lg justify-center items-center gap-2.5 inline-flex mt-5 cursor-pointer">
-              <p className="text-base font-medium text-center text-white capitalize">
+        <Account />
+        <div className="hidden  lg:block">
+          <div className="w-full h-[312px] relative bg-[#D4AF37]">
+            <div className="w-[187px] mt-8 h-16 px-[30px] py-5 left-[641px] top-[189px] absolute bg-black rounded-lg justify-center items-center gap-2.5 inline-flex">
+              <div className="text-base font-medium text-center text-white capitalize">
                 Create Account
-              </p>
+              </div>
+            </div>
+            <div className=" left-[636px] top-[122px] absolute text-white text-xl font-medium ">
+              Unlock your personal trading dashboard with tailored courses,
+              funding opportunities, and exclusive insights.
+            </div>
+            <div className="w-[515px] left-[86px] top-[115px] absolute text-center">
+              <span className="text-white text-[40px] font-bold ">Join</span>
+              <span className="text-black text-[40px] font-semibold "> </span>
+              <span className="text-black text-[40px] font-semibold ">
+                Block
+              </span>
+              <span className="text-black text-[40px] font-semibold ">
+                Traders{" "}
+              </span>
+              <span className="text-white text-[40px] font-bold ">Today</span>
             </div>
           </div>
         </div>

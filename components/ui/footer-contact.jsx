@@ -1,5 +1,5 @@
 "use client";
-import Address from "@/public/assets/img/svg/address.svg";
+// import Address from "@/public/assets/img/svg/address.svg";
 import { Button } from "./button";
 // import Buttonwithbg from "./button-with-bg";
 import Envelop from "@/public/assets/img/svg/Envelope.svg";
@@ -37,12 +37,12 @@ function Footercontact() {
                 +234-000-000-000
               </p>
             </div>
-            <div className="flex items-center justify-start pl-4 space-x-4">
+            {/* <div className="flex items-center justify-start pl-4 space-x-4">
               <Image src={Address} height={20} width={20} alt="envelop" />
               <p className="text-xl font-medium text-white ">
                 22 Obayan street, Lagos, Nigeria
               </p>
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="">

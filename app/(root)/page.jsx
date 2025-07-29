@@ -65,7 +65,7 @@ export default function Home() {
           style={{ backgroundImage: `url('/assets/img/png/global.png')` }}
         >
           <p className=" text-black text-[25px] text-center lg:text-start lg:text-[40px] font-semibold underline">
-            From Student to Funded Trader, We Equip You to Win
+            From Student to Funded Trader - We Equip You to Win
           </p>
           <Card cardData={data} />
         </div>

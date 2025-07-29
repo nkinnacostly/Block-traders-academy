@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 function VidCard({ image, title, description }) {
@@ -11,13 +12,15 @@ function VidCard({ image, title, description }) {
         height={100}
         width={150}
       />
-      <Image
-        src={"/assets/img/svg/play.svg"}
-        alt=""
-        className="absolute right-4 lg:top-[11rem] top-[11rem] cursor-pointer"
-        height={70}
-        width={70}
-      />
+      <Link href={"/sign-up"}>
+        <Image
+          src={"/assets/img/svg/play.svg"}
+          alt=""
+          className="absolute right-4 lg:top-[11rem] top-[11rem] cursor-pointer"
+          height={70}
+          width={70}
+        />
+      </Link>
       <div className="p-4">
         <p className=" text-center text-black text-2xl font-medium ">{title}</p>
         <p className=" text-center text-stone-900 text-base font-normal mt-[1rem]">
@@ -32,7 +35,11 @@ function Video() {
   return (
     <div className="px-[2rem] lg:px-[4rem] mt-[4rem]">
       <p className=" text-white text-[40px] font-semibold ">Trading Basics</p>
-      <p className="mb-8 text-2xl font-medium text-amber-400">See all videos</p>
+      <Link href={"/sign-up"} className="mb-8">
+        <p className="mb-8 text-2xl font-medium text-amber-400">
+          See all videos
+        </p>
+      </Link>
       <div className="flex flex-col lg:flex-row items-center justify-between space-y-8 lg:space-x-5 lg:space-y-0">
         <VidCard
           image="/assets/img/png/forex.png"

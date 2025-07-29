@@ -24,13 +24,15 @@ export function VideoWithButton({
               height={192}
               width={400}
             />
-            <Image
-              src={"/assets/img/svg/play.svg"}
-              alt=""
-              className="absolute right-4  transform -translate-y-1/2 cursor-pointer"
-              height={70}
-              width={70}
-            />
+            <Link href={"/sign-up"}>
+              <Image
+                src={"/assets/img/svg/play.svg"}
+                alt="play"
+                className="absolute right-4  transform -translate-y-1/2 cursor-pointer"
+                height={70}
+                width={70}
+              />
+            </Link>
           </div>
           <div className="px-5 flex-1 flex flex-col">
             <p className="text-black text-2xl font-medium mt-[2rem]">{title}</p>
@@ -70,13 +72,15 @@ export function VideoWithButtons({
             height={192}
             width={400}
           />
-          <Image
-            src={"/assets/img/svg/play.svg"}
-            alt=""
-            className="absolute right-4  transform -translate-y-1/2 cursor-pointer"
-            height={70}
-            width={70}
-          />
+          <Link href={"/sign-up"}>
+            <Image
+              src={"/assets/img/svg/play.svg"}
+              alt=""
+              className="absolute right-4  transform -translate-y-1/2 cursor-pointer"
+              height={70}
+              width={70}
+            />
+          </Link>
         </div>
         <div className="px-5 flex-1 flex flex-col">
           <p className="text-black text-2xl font-medium mt-[2rem] text-center">
