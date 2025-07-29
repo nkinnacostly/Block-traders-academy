@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Card from "@/components/cards/card";
 
 import Footercontact from "@/components/ui/footer-contact";
@@ -156,9 +156,12 @@ function AboutPage() {
                 Start copying top-performing traders with proven results and
                 real-time transparency.
               </div>
-              <Button className="bg-black text-white" size="xl">
+              <Link
+                href={"/copy-trade"}
+                className={`${buttonVariants({ variant: "default", size: "xl" })} mt-4`}
+              >
                 Copy Trade
-              </Button>
+              </Link>
             </div>
           </div>
         </div>

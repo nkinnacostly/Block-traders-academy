@@ -5,7 +5,6 @@ import Topheader from "@/components/screens/top-header/top-header";
 import Card from "@/components/cards/card";
 import Account from "@/components/ui/account";
 import Footercontact from "@/components/ui/footer-contact";
-import Link from "next/link";
 
 const copyTradeData = [
   {
@@ -143,7 +142,7 @@ function page() {
 
       <Account />
 
-      <div className="hidden lg:block">
+      {/* <div className="hidden lg:block">
         <div className="w-full h-[312px] relative bg-[#D4AF37]">
           <div className="w-[187px] mt-8 h-16 px-[30px] py-5 left-[641px] top-[189px] absolute bg-black rounded-lg justify-center items-center gap-2.5 inline-flex">
             <Link href={"/sign-up"}>
@@ -164,7 +163,7 @@ function page() {
             <span className="text-white text-[40px] font-bold">Trading</span>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <Footercontact />
     </>

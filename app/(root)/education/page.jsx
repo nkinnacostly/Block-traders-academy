@@ -3,7 +3,7 @@ import {
   VideoWithButtons,
 } from "@/components/ui/video-with-button";
 
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Footercontact from "@/components/ui/footer-contact";
 
 // import NumbersCard from "@/components/cards/numbersCard";

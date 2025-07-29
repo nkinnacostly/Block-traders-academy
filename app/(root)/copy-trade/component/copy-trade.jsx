@@ -35,7 +35,7 @@ export default function TopTraders() {
   if (error) return <div>Error loading data</div>;
   if (!traders?.length)
     return (
-      <div className="w-full py-16 px-4 flex items-center justify-center">
+      <div className="w-full py-16 px-4 flex items-center justify-center border ">
         <div className="text-center max-w-md">
           {/* 3D Style Empty State Illustration */}
           <div className="relative mb-8">

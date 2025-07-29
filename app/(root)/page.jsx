@@ -1,5 +1,5 @@
 import Account from "@/components/ui/account";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import Card from "@/components/cards/card";
 import Checkwithtext from "@/components/ui/check-with-text";
 import Exchange from "@/public/assets/img/png/exchange.png";
@@ -241,9 +241,12 @@ export default function Home() {
               Start copying top-performing traders with proven results and
               real-time transparency.
             </div>
-            <Button className="bg-black text-white" size="xl">
+            <Link
+              href={"/copy-trade"}
+              className={`${buttonVariants({ variant: "default", size: "xl" })} mt-4`}
+            >
               Copy Trade
-            </Button>
+            </Link>
           </div>
         </div>
       </div>
