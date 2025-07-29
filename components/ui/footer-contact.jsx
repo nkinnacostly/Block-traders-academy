@@ -53,7 +53,7 @@ function Footercontact() {
             <div className="grid w-full grid-cols-1 lg:grid-cols-2 gap-3 lg:gap-8 mt-4">
               <Button
                 size="lg"
-                className={`${activeTab === "trading" ? "bg-amber-400" : "bg-white"}`}
+                className={`border-stone-900 border-opacity-60 text-stone-900 ${activeTab === "trading" ? "bg-amber-400" : "bg-white"}`}
                 onClick={() => setActiveTab("trading")}
               >
                 Trading
