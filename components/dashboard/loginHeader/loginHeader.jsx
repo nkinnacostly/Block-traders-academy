@@ -1,11 +1,15 @@
 import React from "react";
 import Image from "next/image";
+import { useTheme } from "next-themes";
+import Logo from "@/public/assets/img/png/logo.png";
+import LogoDark from "@/public/assets/img/png/logo-black.png";
 
 function LoginHeader() {
+  const { resolvedTheme } = useTheme();
   return (
     <div className="w-full flex items-center justify-center flex-col">
       <Image
-        src={"/assets/img/png/logo.png"}
+        src={resolvedTheme === "dark" ? Logo : LogoDark}
         alt="logo"
         height={80}
         width={80}
@@ -14,7 +18,7 @@ function LoginHeader() {
         Welcome to Block Traders Academy{" "}
       </h3>
       <p className="text-[14px] font-[400] uppercase">
-        (The online wall street)
+        (Where Traders Are Built)
       </p>
     </div>
   );

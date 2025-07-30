@@ -218,7 +218,7 @@ export default function Home() {
         className="bg-no-repeat bg-cover px-[2rem] lgpx-[4rem] pt-[4rem] pb-[4rem]"
         style={{ backgroundImage: `url('/assets/img/png/testimonials.png')` }}
       >
-        <p className=" text-black text-[40px] font-semibold leading-[72px] mb-[4rem]">
+        <p className=" text-[40px] font-semibold leading-[72px] mb-[4rem]">
           Testimonials
         </p>
         <div className="flex flex-col items-center justify-evenly lg:flex-row space-y-14 lg:space-y-0">
