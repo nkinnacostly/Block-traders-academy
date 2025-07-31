@@ -13,7 +13,7 @@ function TestimonialsCard({ testimonial }) {
             alt="pp"
             height={30}
             width={30}
-            className="w-20 h-20 rounded-full"
+            className="w-20 h-20 rounded-full object-fit"
           />
         </div>
         <p className=" text-stone-900 text-base font-normal  leading-[30px] italic">
