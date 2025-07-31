@@ -4,8 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { useGetTopTraders } from "../services/get-copy-trades";
 import { useCopyTrader } from "../services/copy-trade";
-
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import TextInput from "@/components/input/textInput";
 import { toast } from "sonner";
 
 export default function TopTraders() {
@@ -15,20 +22,56 @@ export default function TopTraders() {
   const copyTraderMutation = useCopyTrader();
 
   const [loadingTraders, setLoadingTraders] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedTraderId, setSelectedTraderId] = useState(null);
+  const [formData, setFormData] = useState({
+    email: "",
+    name: "",
+  });
 
-  const handleCopyTrade = async (userId) => {
+  const handleCopyTradeClick = (userId) => {
+    setSelectedTraderId(userId);
+    setIsModalOpen(true);
+  };
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleCopyTrade = async () => {
+    if (!formData.email || !formData.name) {
+      toast.error("Please fill in both email and name");
+      return;
+    }
+
     try {
-      setLoadingTraders((prev) => ({ ...prev, [userId]: true }));
+      setLoadingTraders((prev) => ({ ...prev, [selectedTraderId]: true }));
       await copyTraderMutation.mutateAsync({
-        url: `https://block-traders.com.blocktraders.academy/api/copy-trader/${userId}`,
+        url: `https://block-traders.com.blocktraders.academy/api/copy-trader/${selectedTraderId}`,
+        data: {
+          email: formData.email,
+          name: formData.name,
+        },
       });
-      const trader = traders?.find((t) => t.user_id === userId);
+      const trader = traders?.find((t) => t.user_id === selectedTraderId);
       toast.success(`Successfully copied ${trader?.user_name}'s trades`);
+      setIsModalOpen(false);
+      setFormData({ email: "", name: "" });
     } catch (error) {
       toast.error("Failed to copy trader");
     } finally {
-      setLoadingTraders((prev) => ({ ...prev, [userId]: false }));
+      setLoadingTraders((prev) => ({ ...prev, [selectedTraderId]: false }));
     }
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+    setFormData({ email: "", name: "" });
+    setSelectedTraderId(null);
   };
 
   // if (isLoading) return <div>Loading...</div>;
@@ -137,7 +180,7 @@ export default function TopTraders() {
                 </div>
                 <Button
                   className="w-full mt-4"
-                  onClick={() => handleCopyTrade(trader.user_id)}
+                  onClick={() => handleCopyTradeClick(trader.user_id)}
                   disabled={loadingTraders[trader.user_id]}
                 >
                   {loadingTraders[trader.user_id] ? "Copying..." : "Copy Trade"}
@@ -147,6 +190,36 @@ export default function TopTraders() {
           ))}
         </div>
       </CardContent>
+
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Copy Trade Details</DialogTitle>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <TextInput
+              inputText="Email"
+              name="email"
+              onChange={handleInputChange}
+              placeholder="Enter your email"
+              type="email"
+            />
+            <TextInput
+              inputText="Name"
+              name="name"
+              onChange={handleInputChange}
+              placeholder="Enter your name"
+              type="text"
+            />
+          </div>
+          <DialogFooter>
+            <Button variant="outline" onClick={handleCloseModal}>
+              Cancel
+            </Button>
+            <Button onClick={handleCopyTrade}>Copy Trade</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 }

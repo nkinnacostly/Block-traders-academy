@@ -110,7 +110,7 @@ function Footercontact() {
             <div className="flex items-center justify-start space-x-4 border-2 border-amber-400 rounded-2xl h-[78px] pl-4">
               <Image src={Telephone} height={20} width={20} alt="envelop" />
               <p className="text-xl font-medium text-white ">
-                +234-000-000-000
+                (+234) 02013309022
               </p>
             </div>
             {/* <div className="flex items-center justify-start pl-4 space-x-4">
