@@ -128,7 +128,7 @@ function HomepageFooter() {
             <p className="mt-2 text-sm text-white break-words">
               support@blocktradersacademy.com
             </p>
-            <p className="mt-2 text-sm text-white">+234-000-000-000</p>
+            <p className="mt-2 text-sm text-white"> 02013309022</p>
           </div>
         </div>
       </div>

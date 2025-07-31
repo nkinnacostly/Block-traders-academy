@@ -73,10 +73,14 @@ function LoginComponent() {
         <p className="text-[16px] font-[400]  p-2 mt-2">
           {" "}
           By creating an account, you agree to the{" "}
-          <span className="underline cursor-pointer">
+          <Link href={"/terms-of-use"} className="underline cursor-pointer">
             Terms of use
-          </span> and{" "}
-          <span className="underline cursor-pointer">Privacy Policy</span>.
+          </Link>{" "}
+          and{" "}
+          <Link href={"/privacy-policy"} className="underline cursor-pointer">
+            Privacy Policy
+          </Link>
+          .
         </p>
         <Button
           btnText={"Login"}

@@ -185,7 +185,9 @@ export default function TopTraders() {
                   onClick={() => handleCopyTradeClick(trader.user_id)}
                   disabled={loadingTraders[trader.user_id]}
                 >
-                  {loadingTraders[trader.user_id] ? "Copying..." : "Copy Trade"}
+                  {loadingTraders[trader.user_id]
+                    ? "Copying..."
+                    : "Copy Trader"}
                 </Button>
               </div>
             </Card>
@@ -220,7 +222,7 @@ export default function TopTraders() {
             <Button variant="outline" onClick={handleCloseModal}>
               Cancel
             </Button>
-            <Button onClick={handleCopyTrade}>Copy Trade</Button>
+            <Button onClick={handleCopyTrade}>Copy Trader</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
