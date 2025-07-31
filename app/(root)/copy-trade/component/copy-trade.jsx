@@ -12,7 +12,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import TextInput from "@/components/input/textInput";
+
 import { toast } from "sonner";
 
 export default function TopTraders() {
@@ -197,19 +197,21 @@ export default function TopTraders() {
             <DialogTitle>Copy Trade Details</DialogTitle>
           </DialogHeader>
           <div className="grid gap-4 py-4">
-            <TextInput
+            <input
               inputText="Email"
               name="email"
               onChange={handleInputChange}
               placeholder="Enter your email"
               type="email"
+              className="w-full border border-gray-300 rounded-md p-2"
             />
-            <TextInput
+            <input
               inputText="Name"
               name="name"
               onChange={handleInputChange}
               placeholder="Enter your name"
               type="text"
+              className="w-full border border-gray-300 rounded-md p-2"
             />
           </div>
           <DialogFooter>
