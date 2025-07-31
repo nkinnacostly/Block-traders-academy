@@ -54,9 +54,9 @@ export default function TopTraders() {
                 </div>
                 <div className="grid grid-cols-2 gap-4 mt-4">
                   <div>
-                    <p className="text-sm text-muted-foreground">Equity</p>
+                    <p className="text-sm text-muted-foreground">Win Rate</p>
                     <p className="text-lg font-medium">
-                      ${trader.equity.toLocaleString()}
+                      ${trader.win_rate.toLocaleString()}
                     </p>
                   </div>
                   <div>
