@@ -80,7 +80,7 @@ export default function TopTraders() {
                   </div>
                   <div className="mt-2 text-right">
                     <p className="text-sm text-muted-foreground">Win Rate</p>
-                    <p className="text-lg font-medium">
+                    <p className="text-lg font-medium text-green-500">
                       ${trader.win_rate.toLocaleString()}
                     </p>
                   </div>
