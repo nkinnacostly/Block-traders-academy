@@ -63,7 +63,7 @@ function HomepageFooter() {
                 onChange={(e) => setEmail(e.target.value)}
                 onKeyPress={handleKeyPress}
                 disabled={isLoading}
-                className="bg-[#1E1E1E99] border-none focus:outline-none  p-4 flex-1"
+                className="bg-[#1E1E1E99] border-none focus:outline-none  p-4 flex-1 text-white"
               />
               <button
                 onClick={handleSubscribe}
