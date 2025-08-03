@@ -5,10 +5,10 @@ import Image from "next/image";
 import { GetCoursesCompleted } from "../../services/services";
 import { Skeleton } from "@/components/ui/skeleton";
 
-const getYoutubeThumbnail = (url) => {
-  const videoId = url.split("v=")[1] || url.split("/").pop();
-  return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
-};
+// const getYoutubeThumbnail = (url) => {
+//   const videoId = url.split("v=")[1] || url.split("/").pop();
+//   return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+// };
 
 export function CoursesCompleted() {
   const {
@@ -51,10 +51,7 @@ export function CoursesCompleted() {
             {completedData?.courses?.map((video, id) => (
               <div className="relative rounded-bl-3xl rounded-br-3xl" key={id}>
                 <Image
-                  src={
-                    getYoutubeThumbnail(video?.video?.path) ||
-                    `${video?.video?.thumbnail}`
-                  }
+                  src={`${video?.video?.thumbnail}`}
                   alt={video?.video?.name}
                   className="w-full rounded-t-xl"
                   height={200}
