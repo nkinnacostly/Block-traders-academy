@@ -16,8 +16,8 @@ export const Testimonials = [
   {
     comment:
       "I copied a few top traders and watched my equity grow — without spending hours in front of the screen. Simple, smart, and effective.",
-    name: "Jack Ryan",
-    pic: "/assets/img/png/t2.jpeg",
+    name: "Spencer",
+    pic: "/assets/img/png/t4.jpeg",
     color: "#fff",
   },
 ];
