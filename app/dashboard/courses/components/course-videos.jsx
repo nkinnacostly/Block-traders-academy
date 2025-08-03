@@ -100,8 +100,8 @@ export default function CoursesVideos() {
       if (loggedInUserDetails?.challenge === "secondChallengePassed") {
         // Final stage: Show both first and second videos together
         return [
-          ...(level2Data?.data?.videos || []),
           ...(firstFourVideos?.data?.videos || []),
+          ...(level2Data?.data?.videos || []),
         ];
       } else if (loggedInUserDetails?.challenge === "firstChallengePassed") {
         // Stage 2: Show level2Data after first challenge is completed
