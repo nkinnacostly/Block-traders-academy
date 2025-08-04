@@ -83,7 +83,7 @@ function DashboardLayout({ children }) {
         >
           <div className="flex items-center justify-between p-4 border-b ">
             <Image
-              src={mounted && resolvedTheme === "dark" ? LogoDark : Logo}
+              src={mounted && resolvedTheme === "dark" ? Logo : LogoDark}
               height={35}
               width={35}
               alt="logo"
