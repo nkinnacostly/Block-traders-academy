@@ -56,7 +56,8 @@ export default function TopTraders() {
         name: formData.name,
       });
       // const trader = traders?.find((t) => t.user_id === selectedTraderId);
-      toast.success(`Successfully copied`);
+      toast.success(`Copy Request Received`);
+
       setIsModalOpen(false);
       setFormData({ email: "", name: "" });
     } catch (error) {
