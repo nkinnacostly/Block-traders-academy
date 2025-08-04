@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/img/png/logo.png";
 import LogoDark from "@/public/assets/img/png/logo-black.png";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useTheme } from "next-themes";
 // import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 // import { UserIcon } from "lucide-react";
@@ -14,14 +14,13 @@ import { useTheme } from "next-themes";
 function DashboardHeader() {
   // const { loggedInUserDetails } = useUserStore();
   // console.log(loggedInUserDetails);
-  // const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
-  // console.log(resolvedTheme);
 
   // useEffect only runs on the client, so now we can safely show the UI
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
@@ -29,7 +28,7 @@ function DashboardHeader() {
         <div className="flex items-center w-full justify-between max-w-7xl mx-auto">
           <div>
             <Image
-              src={resolvedTheme === "dark" ? Logo : LogoDark}
+              src={mounted && resolvedTheme === "dark" ? LogoDark : Logo}
               height={80}
               width={80}
               alt="logo"
