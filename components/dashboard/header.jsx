@@ -16,6 +16,7 @@ function DashboardHeader() {
   // console.log(loggedInUserDetails);
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
+  console.log(resolvedTheme);
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -28,7 +29,7 @@ function DashboardHeader() {
         <div className="flex items-center w-full justify-between max-w-7xl mx-auto">
           <div>
             <Image
-              src={mounted && resolvedTheme === "dark" ? LogoDark : Logo}
+              src={mounted && resolvedTheme === "dark" ? Logo : LogoDark}
               height={80}
               width={80}
               alt="logo"
