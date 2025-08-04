@@ -17,6 +17,11 @@ import { useUpdateUserInfo } from "../service/update-user-info-service";
 
 export default function UsersInfo() {
   const { loggedInUserDetails } = useUserStore();
+  const blockPath =
+    loggedInUserDetails?.learners_level > 3 ||
+    loggedInUserDetails?.learners_level > "3"
+      ? "Trade Arena"
+      : "Academy";
   const { mutateAsync, isPending } = useUpdateUserInfo();
   const { error } = useGetUserInfo();
   const queryClient = useQueryClient();
@@ -31,6 +36,7 @@ export default function UsersInfo() {
     defaultValues: {
       id: loggedInUserDetails?.id,
       email: loggedInUserDetails?.email,
+      block_path: blockPath,
     },
   });
 
@@ -40,14 +46,13 @@ export default function UsersInfo() {
         first_name: loggedInUserDetails.first_name,
         last_name: loggedInUserDetails.last_name,
         phone: loggedInUserDetails.phone,
-        block_path: loggedInUserDetails.block_path,
+        block_path: blockPath,
         email: loggedInUserDetails?.email,
         id: loggedInUserDetails?.id,
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [loggedInUserDetails]);
-
   const onSubmit = async (userData) => {
     try {
       const response = await mutateAsync(userData);
@@ -122,19 +127,14 @@ export default function UsersInfo() {
         </div>
         <div className="w-full p-4 border-b-2 ">
           <p>Block Trader Path</p>
-          <TextInput
-            name="block_path"
-            register={register}
-            error={errors.block_path}
+          <input
             type="text"
+            {...register("block_path")}
             placeholder="Block Trader Path"
-            value={
-              loggedInUserDetails?.learners_level > 3 ||
-              loggedInUserDetails?.learners_level > "3"
-                ? "Trade Arena"
-                : "Academy"
-            }
+            value={blockPath}
+            className="w-full h-[56px] rounded-[12px] border-2 pl-6 focus:outline-none"
             readOnly
+            disabled
           />
         </div>
         <div className="w-full p-4 border-b-2 ">

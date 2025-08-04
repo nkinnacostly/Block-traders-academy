@@ -178,18 +178,21 @@ export default function CoursesVideos() {
 
   return (
     <div className="flex flex-col gap-4">
-      {userData?.paid === 0 && (
-        <div className="w-full flex items-center justify-between p-4 bg-secondary rounded-lg shadow-sm">
-          <h5 className="text-2xl font-medium">Pay to Unlock other Lessons</h5>
-          <Button
-            onClick={handlePayment}
-            disabled={isPaymentPending}
-            className="bg-amber-500 hover:bg-amber-600"
-          >
-            {isPaymentPending ? "Processing..." : "Proceed to Payment"}
-          </Button>
-        </div>
-      )}
+      {userData?.paid === 0 ||
+        (userData?.paid === "0" && (
+          <div className="w-full flex items-center justify-between p-4 bg-secondary rounded-lg shadow-sm">
+            <h5 className="text-2xl font-medium">
+              Pay to Unlock other Lessons
+            </h5>
+            <Button
+              onClick={handlePayment}
+              disabled={isPaymentPending}
+              className="bg-amber-500 hover:bg-amber-600"
+            >
+              {isPaymentPending ? "Processing..." : "Proceed to Payment"}
+            </Button>
+          </div>
+        ))}
       {!isLevel1 && !isLevel2 && (
         <div className="w-full flex items-center justify-between p-4 bg-secondary rounded-lg shadow-sm">
           <h5 className="text-2xl font-medium">
