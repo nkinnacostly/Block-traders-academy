@@ -22,8 +22,8 @@ export default function TopTraders() {
       await copyTraderMutation.mutateAsync({
         url: `https://block-traders.com.blocktraders.academy/api/copy-trader/${userId}`,
       });
-      const trader = traders?.find((t) => t.user_id === userId);
-      toast.success(`Successfully copied ${trader?.user_name}'s trades`);
+      // const trader = traders?.find((t) => t.user_id === userId);
+      toast.success(`Copy Request Received`);
     } catch (error) {
       toast.error("Failed to copy trader");
     } finally {
