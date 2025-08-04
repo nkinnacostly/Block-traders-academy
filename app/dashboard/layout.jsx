@@ -50,7 +50,7 @@ function DashboardLayout({ children }) {
               <PiSquaresFourFill size={24} />
             </button>
             <Image
-              src={mounted && resolvedTheme === "dark" ? LogoDark : Logo}
+              src={mounted && resolvedTheme === "dark" ? Logo : LogoDark}
               height={35}
               width={35}
               alt="logo"
@@ -82,7 +82,12 @@ function DashboardLayout({ children }) {
           }`}
         >
           <div className="flex items-center justify-between p-4 border-b ">
-            <Image src={Logo} height={35} width={35} alt="logo" />
+            <Image
+              src={mounted && resolvedTheme === "dark" ? LogoDark : Logo}
+              height={35}
+              width={35}
+              alt="logo"
+            />
             <button
               onClick={closeSidebar}
               className="p-2 hover:bg-black rounded-lg transition-colors"
