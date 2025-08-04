@@ -68,7 +68,7 @@ export default function UsersInfo() {
           User Information
         </p>
         <div className="flex items-start flex-col lg:flex-row justify-between w-full p-4 space-y-3 lg:space-y-0 lg:space-x-3 border-b-2">
-          <div>
+          <div className="w-full">
             <p>First Name</p>
             <TextInput
               name="first_name"
@@ -79,7 +79,7 @@ export default function UsersInfo() {
               placeholder="First Name"
             />
           </div>
-          <div>
+          <div className="w-full">
             <p>Last Name</p>
             <TextInput
               name="last_name"
@@ -126,14 +126,15 @@ export default function UsersInfo() {
             name="block_path"
             register={register}
             error={errors.block_path}
-            type="text" // value=""
+            type="text"
             placeholder="Block Trader Path"
-            defaultValue={
+            value={
               loggedInUserDetails?.learners_level > 3 ||
               loggedInUserDetails?.learners_level > "3"
                 ? "Trade Arena"
                 : "Academy"
             }
+            readOnly
           />
         </div>
         <div className="w-full p-4 border-b-2 ">
