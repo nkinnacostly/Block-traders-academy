@@ -52,10 +52,8 @@ export default function TopTraders() {
       setLoadingTraders((prev) => ({ ...prev, [selectedTraderId]: true }));
       await copyTraderMutation.mutateAsync({
         url: `https://block-traders.com.blocktraders.academy/api/copy-trader/${selectedTraderId}`,
-        data: {
-          email: formData.email,
-          name: formData.name,
-        },
+        email: formData.email,
+        name: formData.name,
       });
       // const trader = traders?.find((t) => t.user_id === selectedTraderId);
       toast.success(`Successfully copied`);
