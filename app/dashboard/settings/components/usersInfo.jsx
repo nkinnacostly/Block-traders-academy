@@ -62,10 +62,10 @@ export default function UsersInfo() {
   };
   if (error) return <>{toast.error("Something Went Wrong")}</>;
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl border-2">
         <p className="  text-xl font-medium mt-[2rem] text-start">
-          Notification Preferences
+          User Information
         </p>
         <div className="flex items-start flex-col lg:flex-row justify-between w-full p-4 space-y-3 lg:space-y-0 lg:space-x-3 border-b-2">
           <div>
