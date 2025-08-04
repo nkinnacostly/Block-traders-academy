@@ -7,6 +7,7 @@ import { useCopyTrader } from "../services/copy-trade";
 
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useUserStore } from "@/store/store";
 
 export default function TopTraders() {
   const { data, error } = useGetTopTraders();
@@ -15,12 +16,15 @@ export default function TopTraders() {
   const copyTraderMutation = useCopyTrader();
 
   const [loadingTraders, setLoadingTraders] = useState({});
+  const { loggedInUserDetails } = useUserStore();
 
   const handleCopyTrade = async (userId) => {
     try {
       setLoadingTraders((prev) => ({ ...prev, [userId]: true }));
       await copyTraderMutation.mutateAsync({
         url: `https://block-traders.com.blocktraders.academy/api/copy-trader/${userId}`,
+        email: loggedInUserDetails?.email,
+        name: loggedInUserDetails?.name,
       });
       // const trader = traders?.find((t) => t.user_id === userId);
       toast.success(`Copy Request Received`);
