@@ -28,7 +28,7 @@ function DashboardHeader() {
         <div className="flex items-center w-full justify-between max-w-7xl mx-auto">
           <div>
             <Image
-              src={mounted && resolvedTheme === "dark" ? LogoDark : Logo}
+              src={mounted && resolvedTheme === "dark" ? Logo : LogoDark}
               height={80}
               width={80}
               alt="logo"
