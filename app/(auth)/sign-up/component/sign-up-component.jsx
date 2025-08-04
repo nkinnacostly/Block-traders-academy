@@ -9,7 +9,7 @@ import Link from "next/link";
 // import { FaCircle } from "react-icons/fa";
 import LoginHeader from "@/components/dashboard/loginHeader/loginHeader";
 import PasswordInput from "@/components/input/passwordInput";
-import React from "react";
+import React, { useState } from "react";
 import { SignUpSchema } from "@/schemas/sign-in";
 import TextInput from "@/components/input/textInput";
 import { storeItemToSessionStorage } from "@/utils/storage";
@@ -18,10 +18,17 @@ import useApiRequest from "@/hooks/useCustonApiQuery";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useResendVerificationEmail } from "../../login/service/login-service";
 
 function SignUp() {
   const { useMutationRequest } = useApiRequest(); // Destructure the custom hook
+  const [showResendVerificationEmail, setShowResendVerificationEmail] =
+    useState(false);
   const router = useRouter();
+  const {
+    mutateAsync: resendVerificationEmail,
+    isPending: isResendVerificationEmailPending,
+  } = useResendVerificationEmail();
 
   const {
     register,
@@ -62,6 +69,9 @@ function SignUp() {
           onError: (error) => {
             toast.error(error.message);
             console.log(error, "This is my data error");
+            if (error.message.includes("Failed to send verification email")) {
+              setShowResendVerificationEmail(true);
+            }
           },
         }
       );
@@ -75,6 +85,17 @@ function SignUp() {
   const handleCheckedChange = (name, value) => {
     if (name === "notification_status") {
       setValue(name, Number(value));
+    }
+  };
+
+  const resendVerificationEmailFunction = async (userDetails) => {
+    try {
+      const response = await resendVerificationEmail(userDetails);
+      if (response) {
+        toast.success(`Verification Email Sent`);
+      }
+    } catch (error) {
+      toast.error(error.message);
     }
   };
   return (
@@ -204,6 +225,26 @@ function SignUp() {
           disabled={!isDirty || isPending}
           loading={isPending}
         />
+        {showResendVerificationEmail && (
+          <Button
+            btnText={"Resend Verification Email"}
+            variant="outline"
+            className={"mt-2 disabled:bg-gray-400 bg-blue-400"}
+            onClick={() => {
+              const formData = watch();
+              if (formData.username && formData.email) {
+                resendVerificationEmailFunction({
+                  username: formData.username,
+                  email: formData.email,
+                });
+              } else {
+                toast.error("Please fill in both username and email");
+              }
+            }}
+            disabled={isResendVerificationEmailPending}
+            loading={isResendVerificationEmailPending}
+          />
+        )}
       </form>
 
       <div className="flex items-center justify-center w-full">

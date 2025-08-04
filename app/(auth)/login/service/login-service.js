@@ -18,3 +18,21 @@ export const useCreateStore = () => {
 
   return mutation;
 };
+
+export const resendVerificationEmail = async (userDetails) => {
+  const response = await request({
+    url: `/resend_email`,
+    method: "POST",
+    data: userDetails,
+  });
+
+  return response;
+};
+
+export const useResendVerificationEmail = () => {
+  const mutation = useMutation({
+    mutationFn: resendVerificationEmail,
+  });
+
+  return mutation;
+};
