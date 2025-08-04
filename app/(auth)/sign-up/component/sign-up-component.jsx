@@ -71,6 +71,8 @@ function SignUp() {
             console.log(error, "This is my data error");
             if (error.message.includes("Failed to send verification email")) {
               setShowResendVerificationEmail(true);
+            } else {
+              setShowResendVerificationEmail(true);
             }
           },
         }
