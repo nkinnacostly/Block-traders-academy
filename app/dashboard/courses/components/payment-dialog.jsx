@@ -21,7 +21,7 @@ function PaymentDialog({ handleOpenChange, openChange, data }) {
   const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLICK_KEY;
   const { formatCurrency } = useCurrencyFormatter();
   const config = {
-    reference: data?.reference + new Date().getTime().toString(),
+    reference: `${data?.reference}-${new Date().getTime().toString()}`,
     email: email,
     amount: amount,
     publicKey: publicKey,
