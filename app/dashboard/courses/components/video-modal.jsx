@@ -47,13 +47,20 @@ export function WatchVideo({
       console.log("Yoloooo");
     }
   };
+
+  // Responsive YouTube player options
   const opts = {
     width: "100%",
+    height: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
+      modestbranding: 1,
+      rel: 0,
+      showinfo: 0,
     },
   };
+
   // console.log(loggedInUserDetails?.block_level, "Block level");
   const handleExerciseComplete = async () => {
     setShowDialog(false);
@@ -96,47 +103,50 @@ export function WatchVideo({
   return (
     <Dialog open={showDialog} onOpenChange={setShowDialog}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className="w-[95vw] max-w-4xl  p-4 sm:p-6">
-        <DialogHeader>
-          <DialogTitle className="text-sm sm:text-base">
-            {data?.name}
-          </DialogTitle>
-          <DialogDescription className="text-xs sm:text-sm">
+      <DialogContent className="w-[95vw] max-w-4xl p-4 sm:p-6">
+        <DialogHeader className="space-y-2">
+          <DialogTitle className="text-lg sm:text-xl">{data?.name}</DialogTitle>
+          <DialogDescription className="text-sm sm:text-base">
             {data?.duration}
           </DialogDescription>
         </DialogHeader>
         <Separator />
         {isLoading && <Skeleton className="h-4 w-full" />}
-        <div className="w-full flex items-center justify-center">
+
+        {/* Responsive video container */}
+        <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden">
           {loggedInUserDetails?.learners_level === "1" ? (
-            <div className="w-full  ">
+            <div className="absolute inset-0">
               <YouTube
                 videoId={videoCode}
-                // containerClassName="w-full h-full border border-blue-500"
+                className="w-full h-full"
+                iframeClassName="w-full h-full"
                 onStateChange={handleStateChange}
-                // className="w-full h-full border border-blue-500"
                 opts={opts}
                 onReady={handleVideoReady}
               />
             </div>
           ) : (
-            <div className="w-full aspect-video">
-              <video
-                src={data?.path}
-                controls
-                autoPlay={false}
-                onPlay={handleVideoPlay}
-                onEnded={handleExerciseComplete}
-                className="w-full h-full object-cover"
-              />
-            </div>
+            <video
+              src={data?.path}
+              controls
+              autoPlay={false}
+              onPlay={handleVideoPlay}
+              onEnded={handleExerciseComplete}
+              className="w-full h-full object-contain"
+            />
           )}
         </div>
+
         <Separator />
 
         {showButton && (
-          <DialogFooter>
-            <Button size="sm" onClick={handleExerciseComplete}>
+          <DialogFooter className="pt-4">
+            <Button
+              size="sm"
+              onClick={handleExerciseComplete}
+              className="w-full sm:w-auto"
+            >
               Done
             </Button>
           </DialogFooter>
