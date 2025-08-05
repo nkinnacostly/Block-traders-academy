@@ -48,6 +48,7 @@ export function WatchVideo({
     }
   };
   const opts = {
+    width: "100%",
     playerVars: {
       // https://developers.google.com/youtube/player_parameters
       autoplay: 0,
@@ -95,30 +96,40 @@ export function WatchVideo({
   return (
     <Dialog open={showDialog} onOpenChange={setShowDialog}>
       <DialogTrigger asChild>{children}</DialogTrigger>
-      <DialogContent className=" ">
+      <DialogContent className="w-[95vw] max-w-4xl  p-4 sm:p-6">
         <DialogHeader>
-          <DialogTitle>{data?.name}</DialogTitle>
-          <DialogDescription>{data?.duration}</DialogDescription>
+          <DialogTitle className="text-sm sm:text-base">
+            {data?.name}
+          </DialogTitle>
+          <DialogDescription className="text-xs sm:text-sm">
+            {data?.duration}
+          </DialogDescription>
         </DialogHeader>
         <Separator />
         {isLoading && <Skeleton className="h-4 w-full" />}
         <div className="w-full flex items-center justify-center">
           {loggedInUserDetails?.learners_level === "1" ? (
-            <YouTube
-              videoId={videoCode}
-              containerClassName="w-full"
-              onStateChange={handleStateChange}
-              opts={opts}
-              onReady={handleVideoReady}
-            />
+            <div className="w-full  ">
+              <YouTube
+                videoId={videoCode}
+                // containerClassName="w-full h-full border border-blue-500"
+                onStateChange={handleStateChange}
+                // className="w-full h-full border border-blue-500"
+                opts={opts}
+                onReady={handleVideoReady}
+              />
+            </div>
           ) : (
-            <video
-              src={data?.path}
-              controls
-              autoPlay={false}
-              onPlay={handleVideoPlay}
-              onEnded={handleExerciseComplete}
-            />
+            <div className="w-full aspect-video">
+              <video
+                src={data?.path}
+                controls
+                autoPlay={false}
+                onPlay={handleVideoPlay}
+                onEnded={handleExerciseComplete}
+                className="w-full h-full object-cover"
+              />
+            </div>
           )}
         </div>
         <Separator />

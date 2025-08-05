@@ -20,7 +20,7 @@ const manrope = Manrope({
 
 export const metadata = {
   title: "Block Traders Academy",
-  description: "Best Trading Platform",
+  description: "Best Forex and Funding Academy",
 };
 
 export default function RootLayout({ children }) {
