@@ -43,8 +43,8 @@ function UserAccountStatus() {
       toast.success("Account deleted successfully");
       logout();
     }
-    if (response.error) {
-      toast.error(response.error);
+    if (response?.error) {
+      toast.error(response?.error);
     }
   };
 
