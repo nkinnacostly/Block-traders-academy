@@ -52,9 +52,9 @@ function UserAccountStatus() {
     setShowDeleteModal(true);
   };
 
-  const handleConfirmDelete = () => {
+  const handleConfirmDelete = async () => {
+    await handleDeleteAccount();
     setShowDeleteModal(false);
-    handleDeleteAccount();
   };
 
   const handleCancelDelete = () => {
