@@ -19,6 +19,7 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useResendVerificationEmail } from "../../login/service/login-service";
+import { handleApiError } from "@/utils/error-parser";
 
 function SignUp() {
   const { useMutationRequest } = useApiRequest(); // Destructure the custom hook
@@ -35,7 +36,7 @@ function SignUp() {
     handleSubmit,
     watch,
     setValue,
-    getValues,
+
     formState: { errors, isDirty },
   } = useForm({
     resolver: zodResolver(SignUpSchema),
@@ -61,14 +62,34 @@ function SignUp() {
         },
         {
           onSuccess: (data) => {
-            toast.success(data.message);
-            storeItemToSessionStorage("user", data.user);
-            storeItemToSessionStorage("__session", data.data?.token);
-            router.push("/login");
+            if (data.status === 422) {
+              // Handle validation errors from backend
+              if (data.errors && typeof data.errors === "object") {
+                Object.keys(data.errors).forEach((field) => {
+                  const messages = data.errors[field];
+                  if (Array.isArray(messages)) {
+                    messages.forEach((message) => {
+                      toast.error(message);
+                    });
+                  } else if (typeof messages === "string") {
+                    toast.error(messages);
+                  }
+                });
+              } else {
+                toast.error(data.message || "Validation failed");
+              }
+              return;
+            }
+
+            if (data.status === 200 || data.status === 201) {
+              toast.success(data.message);
+              storeItemToSessionStorage("user", data.user);
+              storeItemToSessionStorage("__session", data.data?.token);
+              router.push("/login");
+            }
           },
           onError: (error) => {
-            toast.error(error.message);
-            console.log(error, "This is my data error");
+            handleApiError(error);
             if (error.message.includes("Failed to send verification email")) {
               setShowResendVerificationEmail(true);
             } else {
@@ -78,12 +99,10 @@ function SignUp() {
         }
       );
     } catch (error) {
-      // console.error("Error adding data:", error.message);
-      // console.log(error.error);
+      handleApiError(error);
     }
   };
-  const values = getValues();
-  console.log(values);
+
   const handleCheckedChange = (name, value) => {
     if (name === "notification_status") {
       setValue(name, Number(value));
@@ -107,7 +126,6 @@ function SignUp() {
         <TextInput
           inputText={"Email"}
           placeholder={"Enter your Email Address"}
-          // onChange={handleUserInputs}
           type="text"
           name={"email"}
           register={register}
@@ -116,7 +134,6 @@ function SignUp() {
         <TextInput
           inputText={"Username"}
           placeholder={"Enter Username"}
-          // onChange={handleUserInputs}
           error={errors.username}
           type="text"
           name={"username"}
@@ -124,7 +141,6 @@ function SignUp() {
         />
         <PasswordInput
           inputText={"Password"}
-          // setIsValid={setIsValid}
           error={errors.password}
           name={"password"}
           register={register}
@@ -132,7 +148,6 @@ function SignUp() {
         <TextInput
           inputText={"Referral Code"}
           placeholder={"Enter Referral Code (Optional)"}
-          // onChange={handleUserInputs}
           error={errors.referral_code}
           type="text"
           name={"referral_code"}
@@ -194,10 +209,8 @@ function SignUp() {
           <Checkbox
             checked={watch("notification_status")}
             name="notification_status"
-            onCheckedChange={
-              (value) => handleCheckedChange("notification_status", value)
-              // setValue("notification_status", Number(value)),
-              // console.log(value, "This is value")
+            onCheckedChange={(value) =>
+              handleCheckedChange("notification_status", value)
             }
           />
           <Label
@@ -254,7 +267,6 @@ function SignUp() {
           Already have an account?{" "}
           <Link
             className="underline cursor-pointer text-[#EE1D52]"
-            // onClick={() => router.push("/login")}
             href={"/login"}
           >
             Login

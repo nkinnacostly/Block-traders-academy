@@ -18,6 +18,7 @@ import { useUserStore } from "@/store/store";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Cookies from "js-cookie";
 import { useCreateStore } from "../service/login-service";
+import { handleApiError } from "@/utils/error-parser";
 function LoginComponent() {
   const { mutateAsync, isPending } = useCreateStore();
   const router = useRouter();
@@ -46,8 +47,7 @@ function LoginComponent() {
         router.push("/dashboard");
       }
     } catch (error) {
-      toast.error(`${error.error}`);
-      console.error("Login failed:", error.error);
+      handleApiError(error);
     }
   };
 
