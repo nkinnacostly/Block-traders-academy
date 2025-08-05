@@ -17,11 +17,11 @@ import { toast } from "sonner";
 function PaymentDialog({ handleOpenChange, openChange, data }) {
   const queryClient = useQueryClient();
   const email = data?.sender_email;
-  const amount = data?.amount + "00";
+  const amount = (data?.amount * 100).toString();
   const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLICK_KEY;
   const { formatCurrency } = useCurrencyFormatter();
   const config = {
-    reference: data?.reference + "",
+    reference: data?.reference + new Date().getTime().toString(),
     email: email,
     amount: amount,
     publicKey: publicKey,
