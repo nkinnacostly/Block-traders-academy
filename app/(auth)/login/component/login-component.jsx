@@ -46,8 +46,8 @@ function LoginComponent() {
         router.push("/dashboard");
       }
     } catch (error) {
-      toast.error(`${error.message}`);
-      console.error("Login failed:", error.message);
+      toast.error(`${error.error}`);
+      console.error("Login failed:", error.error);
     }
   };
 
