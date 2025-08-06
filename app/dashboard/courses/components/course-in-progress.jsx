@@ -8,7 +8,7 @@ import { Progress } from "@/components/ui/progress";
 
 export function CoursesInProgress() {
   const { data, isLoading: inProgressLoading, error } = GetCoursesInProgress();
-  console.log(data, "This is my data");
+
   if (inProgressLoading)
     return (
       <>
