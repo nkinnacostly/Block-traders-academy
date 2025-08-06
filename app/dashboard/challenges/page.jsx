@@ -65,13 +65,17 @@ function Challenges() {
         await challengeCompletedService({
           challenge: "secondChallengePassed",
         });
+        router.push("/dashboard/courses");
+
         setChallenge2Completed(true);
         updateUserDetails();
       } else {
         // First challenge completed
+
         await challengeCompletedService({
           challenge: "firstChallengePassed",
         });
+        router.push("/dashboard/courses");
         setChallengeCompleted(true);
       }
 
