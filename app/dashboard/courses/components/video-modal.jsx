@@ -63,13 +63,13 @@ export function WatchVideo({
 
   // console.log(loggedInUserDetails?.block_level, "Block level");
   const handleExerciseComplete = async () => {
+    onWatched();
     setShowDialog(false);
     await completed({
       ...inProgress,
       course_id: data?.id,
       course_level: data?.level,
     });
-    onWatched();
   };
   const handleVideoPlay = async () => {
     await onSubmit({
