@@ -2,12 +2,13 @@
 import Image from "next/image";
 import { GetCoursesInProgress } from "../../services/services";
 import { Skeleton } from "@/components/ui/skeleton";
-import BlockImg from "@/public/assets/1.jpeg";
+// import BlockImg from "@/public/assets/1.jpeg";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
 
 export function CoursesInProgress() {
   const { data, isLoading: inProgressLoading, error } = GetCoursesInProgress();
+  console.log(data, "This is my data");
   if (inProgressLoading)
     return (
       <>
@@ -42,7 +43,7 @@ export function CoursesInProgress() {
             {data?.courses?.map((video, id) => (
               <div className="relative p-2 rounded-md  border " key={id}>
                 <Image
-                  src={BlockImg}
+                  src={video?.video?.thumbnail}
                   alt=""
                   className="w-full rounded-t-xl"
                   height={100}
