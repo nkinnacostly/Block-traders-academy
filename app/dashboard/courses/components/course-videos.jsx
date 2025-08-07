@@ -118,10 +118,10 @@ export default function CoursesVideos() {
     level2Data?.data?.videos,
     firstFourVideos?.data?.videos,
   ]);
-
+  console.log(challengeCompleted, "challengeCompleted");
   const handleVideoWatched = () => {
     if (!isLevel1) {
-      if (challengeCompleted && !challenge2Completed) {
+      if (loggedInUserDetails?.challenge === "firstChallengePassed") {
         // Stage 2: After first challenge, count second set of videos
         incrementWatchedVideosStage2();
       } else {
