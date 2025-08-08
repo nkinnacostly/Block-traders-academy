@@ -75,7 +75,7 @@ export default function CoursesVideos() {
     enabled:
       loggedInUserDetails?.challenge === "secondChallengePassed" || isLevel2,
   });
-  console.log(watchedVideos, "watchedVideos");
+
   const { mutateAsync: initiatePayment, isPending: isPaymentPending } =
     useInitiatePayment(loggedInUserDetails?.uuid);
 
@@ -118,7 +118,7 @@ export default function CoursesVideos() {
     level2Data?.data?.videos,
     firstFourVideos?.data?.videos,
   ]);
-  console.log(challengeCompleted, "challengeCompleted");
+
   const handleVideoWatched = () => {
     if (!isLevel1) {
       if (loggedInUserDetails?.challenge === "firstChallengePassed") {

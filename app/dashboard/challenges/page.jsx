@@ -71,7 +71,6 @@ function Challenges() {
         updateUserDetails();
       } else {
         // First challenge completed
-
         await challengeCompletedService({
           challenge: "firstChallengePassed",
         });
@@ -79,8 +78,9 @@ function Challenges() {
         setChallengeCompleted(true);
       }
 
-      router.push("/dashboard/courses");
+      // router.push("/dashboard/courses");
     } else {
+      router.push("/dashboard/courses");
       setCurrentQuestion(0);
       setUserAnswers({});
       setShowModal(false);
