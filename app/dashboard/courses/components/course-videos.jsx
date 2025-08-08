@@ -18,6 +18,8 @@ import { toast } from "sonner";
 import useGetUserInfo from "@/hooks/useGetUserInfo";
 
 export default function CoursesVideos() {
+  const { data: userInfo } = useGetUserInfo();
+  const userData = userInfo?.data?.user;
   const router = useRouter();
   const { loggedInUserDetails } = useUserStore();
 
@@ -48,8 +50,7 @@ export default function CoursesVideos() {
   const firstFourreqKey = ["first-four-videos"];
   const level1reqKey = ["level1-videos"];
   const level2reqKey = ["level2-videos"];
-  const { data: userInfo } = useGetUserInfo();
-  const userData = userInfo?.data?.user;
+
   const { useGetRequest } = useApiRequest();
   const { useGetRequest2 } = useFetchLevel2();
 
