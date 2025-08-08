@@ -28,6 +28,7 @@ export default function CoursesVideos() {
     incrementWatchedVideosStage2,
     challengeCompleted,
     challenge2Completed,
+    resetWatchedVideos,
   } = useVideoStore();
   const [isVisible, toggleVisibility] = useToggle(false);
   const [paymentData, setPaymentData] = useState(null);
@@ -166,6 +167,7 @@ export default function CoursesVideos() {
   const navigateToChallenge = () => {
     closeModal();
     router.push("/dashboard/challenges");
+    resetWatchedVideos();
   };
 
   if (isErrorLevel1 || isErrorLevel2 || isErrorFirstFour) {
