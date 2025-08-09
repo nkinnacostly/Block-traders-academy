@@ -21,7 +21,7 @@ export function LiveClasses({ meetings }) {
             <div className="flex justify-start space-x-5 w-[80%] mt-2 border-b-2 ml-3">
               <p className="font-medium">{meeting.topic}</p>
               {/* <p className="capitalize">{meeting.type}</p> */}
-              <p>{meeting.duration}min</p>
+              <p>{meeting.duration}</p>
             </div>
             <div className="flex justify-start ml-3 space-x-5">
               <p>Meeting Link</p>
