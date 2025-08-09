@@ -31,6 +31,7 @@ export default function CoursesVideos() {
     challengeCompleted,
     challenge2Completed,
     resetWatchedVideos,
+    resetWatchedVideosStage2,
   } = useVideoStore();
   const [isVisible, toggleVisibility] = useToggle(false);
   const [paymentData, setPaymentData] = useState(null);
@@ -142,12 +143,14 @@ export default function CoursesVideos() {
     ) {
       setModalOpen(true);
       setHasShownModal(true);
+      // resetWatchedVideosStage2();
     }
   }, [
     watchedVideosStage2,
     challengeCompleted,
     challenge2Completed,
     hasShownModal,
+    // resetWatchedVideosStage2,
   ]);
 
   // Reset modal state when challenge is completed
@@ -168,7 +171,9 @@ export default function CoursesVideos() {
   const navigateToChallenge = () => {
     closeModal();
     router.push("/dashboard/challenges");
+
     resetWatchedVideos();
+    resetWatchedVideosStage2();
   };
 
   if (isErrorLevel1 || isErrorLevel2 || isErrorFirstFour) {

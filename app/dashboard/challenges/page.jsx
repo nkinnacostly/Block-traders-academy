@@ -54,6 +54,7 @@ function Challenges() {
   };
 
   const resetQuiz = async (score) => {
+    setShowModal(false);
     const passingScore = quiz.length - 3; // Allow 3 wrong answers
 
     if (score >= passingScore) {
@@ -85,6 +86,12 @@ function Challenges() {
       setUserAnswers({});
       setShowModal(false);
     }
+  };
+  const handleBackToCourses = () => {
+    router.push("/dashboard/courses");
+    setCurrentQuestion(0);
+    setUserAnswers({});
+    setShowModal(false);
   };
 
   return (
@@ -187,14 +194,17 @@ function Challenges() {
             </p>
             {calculateScore() >= quiz.length - 3 ? (
               <button
-                onClick={() => resetQuiz(calculateScore())}
+                onClick={() => {
+                  resetQuiz(calculateScore());
+                  handleBackToCourses();
+                }}
                 className="mt-6 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-md"
               >
                 Done
               </button>
             ) : (
               <button
-                onClick={() => router.push("/dashboard/courses")}
+                onClick={handleBackToCourses}
                 className="mt-6 px-6 py-2bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-md"
               >
                 Back to Courses
