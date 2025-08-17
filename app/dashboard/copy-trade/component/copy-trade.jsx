@@ -22,7 +22,7 @@ export default function TopTraders() {
     try {
       setLoadingTraders((prev) => ({ ...prev, [userId]: true }));
       await copyTraderMutation.mutateAsync({
-        url: `https://block-traders.com.blocktraders.academy/api/copy-trader/${userId}`,
+        url: `http://admin-api.blocktradersacademy.com/api/copy-trader/${userId}`,
         email: loggedInUserDetails?.email,
         name: loggedInUserDetails?.first_name,
       });

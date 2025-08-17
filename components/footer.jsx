@@ -26,9 +26,12 @@ function HomepageFooter() {
 
     setIsLoading(true);
     try {
-      await apiClient.post("https://blocktraders.academy/api/newsletter", {
-        email: email,
-      });
+      await apiClient.post(
+        "http://api.blocktradersacademy.com/api/newsletter",
+        {
+          email: email,
+        }
+      );
 
       toast.success("Successfully subscribed to newsletter!");
       setEmail("");
