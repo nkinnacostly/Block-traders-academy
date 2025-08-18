@@ -226,7 +226,10 @@ export default function CoursesVideos() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {videos.map((video, index) => {
-          const isAccessible = index === 0 || loggedInUserDetails.paid === "1";
+          const isAccessible =
+            index === 0 ||
+            loggedInUserDetails.paid === 1 ||
+            loggedInUserDetails.paid === "1";
 
           return (
             <div
