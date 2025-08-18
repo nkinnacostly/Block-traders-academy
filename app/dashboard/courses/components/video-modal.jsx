@@ -115,7 +115,8 @@ export function WatchVideo({
 
         {/* Responsive video container */}
         <div className="relative w-full aspect-video bg-black rounded-lg overflow-hidden">
-          {loggedInUserDetails?.learners_level === 1 ? (
+          {loggedInUserDetails?.learners_level === 1 ||
+          loggedInUserDetails?.learners_level === "1" ? (
             <div className="absolute inset-0">
               <YouTube
                 videoId={videoCode}

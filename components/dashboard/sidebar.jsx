@@ -18,7 +18,9 @@ function DashboardSidebar({ onLinkClick }) {
   const { loggedInUserDetails } = useUserStore();
 
   const { watchedVideos } = useVideoStore();
-  const isLevel1 = loggedInUserDetails?.learners_level === 1;
+  const isLevel1 =
+    loggedInUserDetails?.learners_level === 1 ||
+    loggedInUserDetails?.learners_level === "1";
   const pathname = usePathname();
 
   const handleLinkClick = () => {
