@@ -51,7 +51,7 @@ export default function TopTraders() {
     try {
       setLoadingTraders((prev) => ({ ...prev, [selectedTraderId]: true }));
       await copyTraderMutation.mutateAsync({
-        url: `http://admin-api.blocktradersacademy.com/api/copy-trader/${selectedTraderId}`,
+        url: `https://admin-api.blocktradersacademy.com/api/copy-trader/${selectedTraderId}`,
         email: formData.email,
         name: formData.name,
       });
