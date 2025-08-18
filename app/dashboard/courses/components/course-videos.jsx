@@ -46,7 +46,7 @@ export default function CoursesVideos() {
     loggedInUserDetails?.learners_level === "1";
   const isLevel2 =
     loggedInUserDetails?.learners_level > 1 ||
-    (loggedInUserDetails?.learners_level === "1" &&
+    (loggedInUserDetails?.learners_level > "1" &&
       loggedInUserDetails?.paid === 1);
   const level1Url = "/all-videos";
   const level2Url = "/api/get-level-2";
