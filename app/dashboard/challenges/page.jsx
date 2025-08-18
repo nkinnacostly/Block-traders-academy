@@ -205,7 +205,7 @@ function Challenges() {
             ) : (
               <button
                 onClick={handleBackToCourses}
-                className="mt-6 px-6 py-2bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-md"
+                className="mt-6 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-semibold rounded-md"
               >
                 Back to Courses
               </button>
