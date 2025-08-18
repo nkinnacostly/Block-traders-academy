@@ -41,9 +41,13 @@ export default function CoursesVideos() {
     user_id: loggedInUserDetails?.id || "",
     course_id: "",
   });
-  const isLevel1 = loggedInUserDetails?.learners_level === 1;
+  const isLevel1 =
+    loggedInUserDetails?.learners_level === 1 ||
+    loggedInUserDetails?.learners_level === "1";
   const isLevel2 =
-    loggedInUserDetails?.learners_level > 1 && loggedInUserDetails?.paid === 1;
+    loggedInUserDetails?.learners_level > 1 ||
+    (loggedInUserDetails?.learners_level === "1" &&
+      loggedInUserDetails?.paid === 1);
   const level1Url = "/all-videos";
   const level2Url = "/api/get-level-2";
   const getFirstFourVideos = "/api/get-first-four";
