@@ -62,7 +62,7 @@ function Footercontact() {
       };
 
       await apiClient.post(
-        "http://api.blocktradersacademy.com/api/contact-form",
+        "https://api.blocktradersacademy.com/api/contact-form",
         payload
       );
 

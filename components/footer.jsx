@@ -27,7 +27,7 @@ function HomepageFooter() {
     setIsLoading(true);
     try {
       await apiClient.post(
-        "http://api.blocktradersacademy.com/api/newsletter",
+        "https://api.blocktradersacademy.com/api/newsletter",
         {
           email: email,
         }
