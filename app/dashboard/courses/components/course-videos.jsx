@@ -49,8 +49,8 @@ export default function CoursesVideos() {
     (loggedInUserDetails?.learners_level > "1" &&
       loggedInUserDetails?.paid === 1);
   const level1Url = "/all-videos";
-  const level2Url = "/api/get-level-2";
-  const getFirstFourVideos = "/api/get-first-four";
+  const level2Url = "/get-level-2";
+  const getFirstFourVideos = "/get-first-four";
   const firstFourreqKey = ["first-four-videos"];
   const level1reqKey = ["level1-videos"];
   const level2reqKey = ["level2-videos"];
