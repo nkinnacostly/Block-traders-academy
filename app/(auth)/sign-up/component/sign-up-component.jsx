@@ -62,6 +62,7 @@ function SignUp() {
         },
         {
           onSuccess: (data) => {
+            console.log(data, "data");
             if (data.status === 422) {
               // Handle validation errors from backend
               if (data.errors && typeof data.errors === "object") {
@@ -78,6 +79,12 @@ function SignUp() {
               } else {
                 toast.error(data.message || "Validation failed");
               }
+              return;
+            }
+            if (data.status === 500) {
+              setShowResendVerificationEmail(true);
+
+              toast.error(data.message || "Something went wrong");
               return;
             }
 
@@ -99,7 +106,13 @@ function SignUp() {
         }
       );
     } catch (error) {
-      handleApiError(error);
+      // handleApiError(error);
+
+      if (error.message.includes("Failed to send verification email")) {
+        setShowResendVerificationEmail(true);
+      } else {
+        setShowResendVerificationEmail(true);
+      }
     }
   };
 
@@ -239,9 +252,11 @@ function SignUp() {
           onClick={handleSubmit}
           disabled={!isDirty || isPending}
           loading={isPending}
+          type="submit"
         />
         {showResendVerificationEmail && (
           <Button
+            type="button"
             btnText={"Resend Verification Email"}
             variant="outline"
             className={"mt-2 disabled:bg-gray-400 bg-blue-400"}

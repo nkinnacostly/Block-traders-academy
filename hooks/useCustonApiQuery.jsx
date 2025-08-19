@@ -32,25 +32,19 @@ function useApiRequest() {
   };
 
   // Function to handle mutation (POST, PUT, DELETE, etc.)
+  // Function to handle mutation (POST, PUT, DELETE, etc.)
   const mutateData = async ({ method, url, data, headers = {} }) => {
-    try {
-      const response = await axiosInstance({
-        method,
-        url,
-        data,
-        headers: {
-          ...headers, // Include custom headers if provided
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "application/json",
-        },
-      });
-      return response.data;
-    } catch (error) {
-      // toast.error(`${error.response.data.error}`);
-
-      // throw new Error(`${error}`);
-      return error?.response?.data;
-    }
+    const response = await axiosInstance({
+      method,
+      url,
+      data,
+      headers: {
+        ...headers, // Include custom headers if provided
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      },
+    });
+    return response.data;
   };
 
   // Custom hook for GET requests using React Query

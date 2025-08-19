@@ -7,6 +7,7 @@ interface ButtonProps {
   className?: string;
   disabled?: boolean;
   loading?: boolean;
+  type?: "button" | "submit" | "reset";
 }
 
 function Button({
@@ -15,12 +16,14 @@ function Button({
   className,
   disabled,
   loading,
+  type,
 }: ButtonProps) {
   return (
     <button
       className={`w-full py-4 rounded-[10px] text-white  mt-5 ${className}`}
       onClick={onClick}
       disabled={disabled}
+      type={type}
     >
       {loading ? (
         <div
