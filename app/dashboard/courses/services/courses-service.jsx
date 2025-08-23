@@ -1,4 +1,4 @@
-import { toast } from "sonner";
+// import { toast } from "sonner";
 import useApiRequest from "@/hooks/useCustonApiQuery";
 
 export function SubmitCourse() {
@@ -23,13 +23,15 @@ export function SubmitCourse() {
             //    router.push("/login");
           },
           onError: (error) => {
-            toast.error(error.message);
+            console.error(
+              error?.response?.data?.message || "An error occurred"
+            );
             // console.log(error, "This is my data error");
           },
         }
       );
     } catch (error) {
-      toast.error(error);
+      console.error(error?.response?.data?.message || "An error occurred");
       // console.error("Error adding data:", error.message);
     }
   };

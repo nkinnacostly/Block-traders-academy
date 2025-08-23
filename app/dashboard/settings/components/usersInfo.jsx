@@ -62,10 +62,19 @@ export default function UsersInfo() {
       }
     } catch (error) {
       console.error("Login failed:", error.error);
-      toast.error(`${error.error}`);
+      toast.error(
+        error?.error?.message || error?.message || "An error occurred"
+      );
     }
   };
-  if (error) return <>{toast.error("Something Went Wrong")}</>;
+  if (error) {
+    toast.error("Something Went Wrong");
+    return (
+      <div className="text-red-500 text-center p-4">
+        Something went wrong. Please try again.
+      </div>
+    );
+  }
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <div className="flex flex-col items-start justify-start w-full lg:w-[534px] p-5 space-y-5 shadow-xl rounded-xl border-2">

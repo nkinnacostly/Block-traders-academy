@@ -28,23 +28,28 @@ function useApiRequest() {
     } catch (error) {
       // throw new Error(`Failed to fetch data from ${url}: ${error.message}`);
       console.log("Request Error:", error);
+      throw error; // Re-throw the error so React Query can handle it properly
     }
   };
 
   // Function to handle mutation (POST, PUT, DELETE, etc.)
-  // Function to handle mutation (POST, PUT, DELETE, etc.)
   const mutateData = async ({ method, url, data, headers = {} }) => {
-    const response = await axiosInstance({
-      method,
-      url,
-      data,
-      headers: {
-        ...headers, // Include custom headers if provided
-        Authorization: `Bearer ${token}`,
-        "Content-Type": "application/json",
-      },
-    });
-    return response.data;
+    try {
+      const response = await axiosInstance({
+        method,
+        url,
+        data,
+        headers: {
+          ...headers, // Include custom headers if provided
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+      return response.data;
+    } catch (error) {
+      console.log("Mutation Error:", error);
+      throw error; // Re-throw the error so React Query can handle it properly
+    }
   };
 
   // Custom hook for GET requests using React Query

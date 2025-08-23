@@ -65,18 +65,26 @@ export function WatchVideo({
   const handleExerciseComplete = async () => {
     onWatched();
     setShowDialog(false);
-    await completed({
-      ...inProgress,
-      course_id: data?.id,
-      course_level: data?.level,
-    });
+    try {
+      await completed({
+        ...inProgress,
+        course_id: data?.id,
+        course_level: data?.level,
+      });
+    } catch (error) {
+      console.error("Error completing exercise:", error);
+    }
   };
   const handleVideoPlay = async () => {
-    await onSubmit({
-      ...inProgress,
-      course_id: data?.id,
-      course_level: data?.level,
-    });
+    try {
+      await onSubmit({
+        ...inProgress,
+        course_id: data?.id,
+        course_level: data?.level,
+      });
+    } catch (error) {
+      console.error("Error submitting video play:", error);
+    }
     // await challengeCompleted({
     //   challenge: "secondChallengePassed",
     // });
@@ -90,12 +98,15 @@ export function WatchVideo({
     // YouTube player states: -1 (unstarted), 0 (ended), 1 (playing), 2 (paused), 3 (buffering), 5 (video cued)
     if (e.data === 1) {
       // When video starts playing
-
-      await onSubmit({
-        ...inProgress,
-        course_id: data?.id,
-        course_level: data?.level,
-      });
+      try {
+        await onSubmit({
+          ...inProgress,
+          course_id: data?.id,
+          course_level: data?.level,
+        });
+      } catch (error) {
+        console.error("Error submitting video state change:", error);
+      }
     }
     checkElapsedTime(e);
   };

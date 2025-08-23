@@ -34,6 +34,7 @@ function useFetchLevel2() {
     } catch (error) {
       // throw new Error(`Failed to fetch data from ${url}: ${error.message}`);
       console.log("Request Error:", error);
+      throw error; // Re-throw the error so React Query can handle it properly
     }
   };
 
