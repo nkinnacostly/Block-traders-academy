@@ -13,6 +13,7 @@ function LoginHeader() {
         alt="logo"
         height={500}
         width={200}
+        className="mb-5"
       />
       <h3 className="text-[32px] font-[500] text-center pb-2">
         Welcome to Block Traders Academy{" "}
