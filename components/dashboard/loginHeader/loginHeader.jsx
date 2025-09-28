@@ -11,8 +11,8 @@ function LoginHeader() {
       <Image
         src={resolvedTheme === "dark" ? Logo : LogoDark}
         alt="logo"
-        height={80}
-        width={80}
+        height={500}
+        width={200}
       />
       <h3 className="text-[32px] font-[500] text-center pb-2">
         Welcome to Block Traders Academy{" "}
